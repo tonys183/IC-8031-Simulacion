@@ -1,4 +1,1 @@
-\# IC-8031-Simulacion
-
-
-
+# IC-8031-Simulacion
