@@ -20,8 +20,8 @@ def pruebaVarianza(n, distri):
     chi = (n-1)*s2 / varianza
 
     grados = n-1
-    limiteI = grados - 1.96 * sqrt(2 * grados)
-    limiteS = grados + 1.96 * sqrt(2 * grados)
+    limiteI = grados-1.96 * sqrt(2*grados)
+    limiteS = grados+1.96 * sqrt(2*grados)
 
     print(f'Varianza: {s2} - Chi^2: {chi}')
     print(f'Límite inferior: {limiteI} - Límite superior: {limiteS}')
@@ -66,8 +66,20 @@ def pruebaPoker(n, distri):
     print(f'Chi^2: {chi}')
     return f'Prueba aprobada' if chi <= 12.5916 else f'Prueba reprobada'
 
-def pruebaSeries(n, distri): 
-    pass
+def pruebaSeries(n, distri, c): 
+    freq = [0]*(c*c)
+    for i in range(n-1):
+        fi = min(int(distri[i]*c), c-1)
+        col = min(int(distri[i+1]*c), c-1)
+        freq[fi*c+col]+=1
+
+    fe = (n-1)/(c*c)
+    chi = sum(((fo-fe)*(fo-fe))/fe for fo in freq)
+    grados = (c*c)-1
+    z0 = (chi-grados) / sqrt(2*grados)
+    print(f'Chi^2: {chi} - z0: {z0}')
+    return f'Prueba aprobada' if abs(z0) <= 1.96 else f'Prueba reprobada'
+
 
 def menuEjercicio10():
     """
@@ -84,7 +96,6 @@ def menuEjercicio10():
     6. Método congruencial polinomial
 
     """
-
     while True:
         print("\n--- Ejercicio 10 ---")
         print("1. Prueba de Promedio")
@@ -96,15 +107,17 @@ def menuEjercicio10():
         print("7. Prueba de Series")
         print("0. Volver")
         op = input("Opción: ")
+        pruebas = ['Promedio', 'Varianza', 'Corridas', 'Huecos de dígitos', 'Huecos de números', 'Poker', 'Series']
 
         if op == '0':
             break
 
         if op in ['1','2', '3', '4', '5', '6', '7']:
+            print(f"\n--- Prueba de {pruebas[int(op)-1]} ---")
             n, x0, m = int(1e6), 15318679, 4567234902
             distri = list(map(lambda x: x/m, 
                     [(x0 := congruMixMulti(x0, 100485, (1<<27)-1, m)) for _ in range(n)]))
- 
+
             if op == '1':
                 print(pruebaPromedio(n, distri))
 
@@ -117,20 +130,24 @@ def menuEjercicio10():
             elif op == '6':
                 print(pruebaPoker(n, distri))
 
+            elif op == '7':
+                c = int(input("Celdas: "))
+                print(pruebaSeries(n, distri, c))
+
 def main():
     while True:
         print("\n=================")
         print("      MENÚ")
         print("=================")
-        print("4. Ejercicio 4")
-        print("10. Ejercicio 10")
+        print("1. Ejercicio 4")
+        print("2. Ejercicio 10")
         print("0. Salir")
         op = input("Opción: ")
 
-        if op == '4':
+        if op == '1':
             pass
 
-        elif op == '10':
+        elif op == '2':
             menuEjercicio10()
 
         elif op == '0':
