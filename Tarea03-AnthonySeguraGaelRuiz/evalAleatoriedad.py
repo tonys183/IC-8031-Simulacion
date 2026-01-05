@@ -176,7 +176,7 @@ def main():
              '4': 'python/pythonseis.txt', '5': 'c/ccuatro.txt', '6': 'c/cocho.txt', 
              '7': 'scheme/scheme.txt', '8': 'javascript/javascript.txt'}
     rangos = {'1': [0,1], '2': [0,1], '3': [0,1], '4': [1,6], 
-              '5': [1,4], '6': [1,8], '7': [1,20], '8': [0,1]}
+              '5': [1,4], '6': [1,8], '7': [1,20], '8': [1,30]}
     
     while True:
         print("\n---------- MENÚ ----------")
@@ -187,7 +187,7 @@ def main():
         print("5. Pruebas para C {1,2,3,4}")
         print("6. Pruebas para C {1,2,3,4,5,6,7,8}")
         print("7. Pruebas para Scheme [1,20]")
-        print("8. Pruebas para JavaScript")
+        print("8. Pruebas para JavaScript [1,30]")
         print("0. Salir")
         op = input("Opción: ")
 

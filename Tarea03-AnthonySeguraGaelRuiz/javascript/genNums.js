@@ -9,4 +9,4 @@ function genNums(n, nombreArchivo, min, max) {
     stream.end();
 }
 const n = 1000000;
-genNums(n, 'javascript.txt', 1, 100);
+genNums(n, 'javascript.txt', 1, 30);
