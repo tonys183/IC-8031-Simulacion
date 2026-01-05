@@ -94,10 +94,10 @@ def exePruebas(n, distri):
 def main():
     files = {'1': 'java/java.txt', '2': 'erlang/erlang.txt', '3': 'python/pythonuno.txt', 
              '4': 'python/pythonseis.txt', '5': 'c/ccuatro.txt', '6': 'c/cocho.txt', 
-             '7': 'scheme/scheme.txt', '8': 'extra'}
+             '7': 'scheme/scheme.txt', '8': 'javascript/javascript.txt'}
     tests = {'1': 'java.txt', '2': 'erlang.txt', '3': 'pythonuno.txt', 
              '4': 'pythonseis.txt', '5': 'ccuatro.txt', '6': 'cocho.txt', 
-             '7': 'scheme.txt', '8': 'extra'}
+             '7': 'scheme.txt', '8': 'javascript.txt'}
     
     while True:
         print("\n---------- MENÚ ----------")
@@ -108,6 +108,7 @@ def main():
         print("5. Pruebas para C {1,2,3,4}")
         print("6. Pruebas para C {1,2,3,4,5,6,7,8}")
         print("7. Pruebas para Scheme [1,20]")
+        print("8. Pruebas para JavaScript")
         print("0. Salir")
         op = input("Opción: ")
 
