@@ -1,12 +1,7 @@
 from math import sqrt
 
-def congruMixMulti(n,a,c,m):
-    return (n*a+c) % m
-
-# Ejercicio 4
-
-# Ejercicio 10
 def pruebaPromedio(n, distri):
+    print(f"\n--- Prueba de Promedio ---")
     promedio = sum(distri)/n
     media = 0.5
     z0 = (promedio - media) / sqrt((1/12)/n)
@@ -14,6 +9,7 @@ def pruebaPromedio(n, distri):
     return f'Prueba aprobada' if abs(z0)<=1.96 else f'Prueba reprobada'
 
 def pruebaVarianza(n, distri):
+    print(f"\n--- Prueba de Varianza ---")
     promedio = sum(distri)/n
     s2 = sum(map(lambda x: (x-promedio)*(x-promedio), distri))/(n-1)
     varianza = 1/12
@@ -28,6 +24,7 @@ def pruebaVarianza(n, distri):
     return f'Prueba aprobada' if limiteI <= chi <=limiteS else f'Prueba reprobada'
 
 def pruebaCorridas(n, distri):
+    print(f"\n--- Prueba de Corridas ---")
     esperanza = (2*n -1) / 3
     varianza = (16*n-29) / 90
     h = 1 + sum([(distri[i-2]<=distri[i-1]) ^ (distri[i-1]<=distri[i]) for i in range(2,n)])
@@ -54,6 +51,7 @@ def mano(n):
     return 0
 
 def pruebaPoker(n, distri): 
+    print(f"\n--- Prueba de Poker ---")
     freq = [0]*7
     proba = list(map(lambda p: n*p, [0.30240, 0.50400, 0.10800, 0.07200, 0.00900, 0.00450, 0.00010]))
     distri = list(map(lambda n: str(int(n * 100000)).zfill(5), distri))
@@ -67,6 +65,7 @@ def pruebaPoker(n, distri):
     return f'Prueba aprobada' if chi <= 12.5916 else f'Prueba reprobada'
 
 def pruebaSeries(n, distri, c): 
+    print(f"\n--- Prueba de Series ---")
     freq = [0]*(c*c)
     for i in range(n-1):
         fi = min(int(distri[i]*c), c-1)
@@ -80,78 +79,46 @@ def pruebaSeries(n, distri, c):
     print(f'Chi^2: {chi} - z0: {z0}')
     return f'Prueba aprobada' if abs(z0) <= 1.96 else f'Prueba reprobada'
 
+def obtenerDistri(nombreArchivo):
+    with open(nombreArchivo, 'r') as archivo:
+        lineas = archivo.readlines()
+    return [float(linea.strip()) for linea in lineas]
 
-def menuEjercicio10():
-    """
-    1. Método congruencial binario
+def exePruebas(n, distri):
+    print(pruebaPromedio(n, distri))
+    print(pruebaVarianza(n, distri))
+    print(pruebaCorridas(n, distri))
+    print(pruebaPoker(n, distri))
+    print(pruebaSeries(n, distri, 10))
 
-    2. Método de los cuadrados medios
-
-    3. Método congruencial mixto
-
-    4. Método congruencial multiplicativo
-
-    5. Método congruencial aditivo
-
-    6. Método congruencial polinomial
-
-    """
+def main():
+    files = {'1': 'java/java.txt', '2': 'erlang/erlang.txt', '3': 'python/pythonuno.txt', 
+             '4': 'python/pythonseis.txt', '5': 'c/ccuatro.txt', '6': 'c/cocho.txt', 
+             '7': 'scheme/scheme.txt', '8': 'extra'}
+    tests = {'1': 'java.txt', '2': 'erlang.txt', '3': 'pythonuno.txt', 
+             '4': 'pythonseis.txt', '5': 'ccuatro.txt', '6': 'cocho.txt', 
+             '7': 'scheme.txt', '8': 'extra'}
+    
     while True:
-        print("\n--- Ejercicio 10 ---")
-        print("1. Prueba de Promedio")
-        print("2. Prueba de Varianza")
-        print("3. Prueba de Corridas")
-        print("4. Prueba de Huecos de dígitos")
-        print("5. Prueba de Huecos de números")
-        print("6. Prueba de Poker")
-        print("7. Prueba de Series")
-        print("0. Volver")
+        print("\n---------- MENÚ ----------")
+        print("1. Pruebas para Java")
+        print("2. Pruebas para Erlang")
+        print("3. Pruebas para Python [0,1[")
+        print("4. Pruebas para Python {1,2,3,4,5,6}")
+        print("5. Pruebas para C {1,2,3,4}")
+        print("6. Pruebas para C {1,2,3,4,5,6,7,8}")
+        print("7. Pruebas para Scheme [1,20]")
+        print("0. Salir")
         op = input("Opción: ")
-        pruebas = ['Promedio', 'Varianza', 'Corridas', 'Huecos de dígitos', 'Huecos de números', 'Poker', 'Series']
 
         if op == '0':
             break
 
-        if op in ['1','2', '3', '4', '5', '6', '7']:
-            print(f"\n--- Prueba de {pruebas[int(op)-1]} ---")
-            n, x0, m = int(1e6), 15318679, 4567234902
-            distri = list(map(lambda x: x/m, 
-                    [(x0 := congruMixMulti(x0, 100485, (1<<27)-1, m)) for _ in range(n)]))
-
-            if op == '1':
-                print(pruebaPromedio(n, distri))
-
-            elif op == '2':
-                print(pruebaVarianza(n, distri))
-
-            elif op == '3':
-                print(pruebaCorridas(n, distri))
-
-            elif op == '6':
-                print(pruebaPoker(n, distri))
-
-            elif op == '7':
-                c = int(input("Celdas: "))
-                print(pruebaSeries(n, distri, c))
-
-def main():
-    while True:
-        print("\n=================")
-        print("      MENÚ")
-        print("=================")
-        print("1. Ejercicio 4")
-        print("2. Ejercicio 10")
-        print("0. Salir")
-        op = input("Opción: ")
-
-        if op == '1':
-            pass
-
-        elif op == '2':
-            menuEjercicio10()
-
-        elif op == '0':
-            break
+        if op in files:
+            print(f'Pruebas para archivo: {tests[op]}')
+            distri = obtenerDistri(files[op])
+            n = 1000000
+            exePruebas(n, distri)  
 
 if __name__ == "__main__":
     main()
