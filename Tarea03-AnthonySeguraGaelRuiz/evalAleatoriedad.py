@@ -18,7 +18,6 @@ def pruebaVarianza(n, distri, real, a, b):
     s2 = sum(map(lambda x: (x-promedio)*(x-promedio), distri))/(n-1)
     varianza = 1/12 if real else ((b-a+1)*(b-a+1)-1)/12
     chi = (n-1)*s2 / varianza
-
     grados = n-1
     limiteI = grados-1.96 * sqrt(2*grados)
     limiteS = grados+1.96 * sqrt(2*grados)
@@ -85,7 +84,6 @@ def pruebaHuecosNums(n, distri, real, b):
     for tam, cant in frecObtenidos.items(): obtenidos[min(tam, 5)] += cant
     for k in range(5): esperados[k] = totalH*p*pow(1-p, k)
     esperados[5] = totalH * pow(1-p, 5)
-
     chi = sum((fo-fe)*(fo-fe)/fe for fo, fe in zip(obtenidos, esperados) if fe)    
     print(f'Valores esperados: {esperados}')
     print(f'Valores obtenidos: {obtenidos}')
@@ -128,7 +126,6 @@ def pruebaPoker(n, distri, real, b):
         distri = agruparDigitos(distri)
         n = len(distri)
         k = b
-
     freq = [0]*7
     proba = list(map(lambda p: n*p, probas(k)))
     if real: distri = list(map(lambda n: str(int(n * 100000)).zfill(5), distri))
@@ -151,9 +148,7 @@ def pruebaSeries(n, distri, c, real, a, b):
         else:
             fi = min(int((distri[i]-a)*c/b), c-1)
             col = min(int((distri[i+1]-a)*c/b), c-1)
-            
         freq[fi*c+col]+=1
-
     fe = (n-1)/(c*c)
     chi = sum(((fo-fe)*(fo-fe))/fe for fo in freq)
     grados = (c*c)-1
@@ -175,7 +170,6 @@ def exePruebas(n, distri, real, rango):
     print(pruebaHuecosDig(n, distri, real, rango[1]))
     print(pruebaPoker(n, distri, real, rango[1]))
     print(pruebaSeries(n, distri, 10, real, rango[0], rango[1]))
-
 
 def main():
     files = {'1': 'java/java.txt', '2': 'erlang/erlang.txt', '3': 'python/pythonuno.txt', 
