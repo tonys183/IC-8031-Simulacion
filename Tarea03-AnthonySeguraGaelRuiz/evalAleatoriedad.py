@@ -195,7 +195,7 @@ def main():
             break
 
         if op in files:
-            real = not op in ['4','5','6','7','8']
+            real = op in ['1','2','3']
             print(f'Pruebas para archivo: {files[op].split("/")[1]}')
             distri = obtenerDistri(files[op])
             n = 1000000
