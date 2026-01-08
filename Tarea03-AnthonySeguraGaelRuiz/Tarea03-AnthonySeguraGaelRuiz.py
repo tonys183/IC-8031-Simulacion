@@ -120,7 +120,7 @@ def agruparDigitos(distri):
     return ["".join(grupos) for grupos in digitos]
 
 def pruebaPoker(n, distri, real, b): 
-    print(f"\n--- Prueba de Poker ---") 
+    print(f"\n--- Prueba de Poker ---")
     k = 10
     if not real: 
         distri = agruparDigitos(distri)
@@ -135,7 +135,7 @@ def pruebaPoker(n, distri, real, b):
     print(f'Esperados: {[int(x) for x in proba]}')
     print(f'Obtenidos: {freq}')
     print(f'Chi^2: {chi}')
-    return f'Prueba aprobada' if chi <= 12.5916 else f'Prueba reprobada'
+    return f'Prueba aprobada' if chi <= (11.0705 if (not real and k == 4) else 12.5916) else f'Prueba reprobada'
 
 def pruebaSeries(n, distri, c, real, a, b): 
     print(f"\n--- Prueba de Series ---")
