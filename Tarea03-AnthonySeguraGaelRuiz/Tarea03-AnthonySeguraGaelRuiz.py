@@ -73,18 +73,18 @@ def pruebaHuecosDig(n, distri, real, b):
     return f'Prueba aprobada' if chi <= 11.07 else f'Prueba reprobada'
 
 def pruebaHuecosNums(n, distri, real, b):
-    print(f"\n--- Prueba de Huecos de Números ---") 
+    print(f"\n--- Prueba de Huecos de Números ---")
     inf = b/3 if real else int(b/2)+1
     sup = b-inf if real else b
     p = (sup-inf)/b if real else (sup-inf+1)/b
     frecObtenidos = contarHuecos(distri, inf, sup, lambda val,i,s: i<=val<=s)
-    totalH = sum(frecObtenidos.values()) 
+    totalH = sum(frecObtenidos.values())
     obtenidos = [0]*6
     esperados = [0]*6
     for tam, cant in frecObtenidos.items(): obtenidos[min(tam, 5)] += cant
     for k in range(5): esperados[k] = totalH*p*pow(1-p, k)
     esperados[5] = totalH * pow(1-p, 5)
-    chi = sum((fo-fe)*(fo-fe)/fe for fo, fe in zip(obtenidos, esperados) if fe)    
+    chi = sum((fo-fe)*(fo-fe)/fe for fo, fe in zip(obtenidos, esperados) if fe)
     print(f'Valores esperados: {esperados}')
     print(f'Valores obtenidos: {obtenidos}')
     print(f'Chi^2: {chi}')
