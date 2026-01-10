@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from math import sqrt, log10
-from scipy.stats import norm, nbinom
+from scipy.stats import chi2, norm, nbinom
 from random import uniform
 
 def cdf(x, tipo, params):
@@ -11,7 +11,7 @@ def cdf(x, tipo, params):
         return nbinom.cdf(x, *params)
     return 0
 
-def pdf(x, tipo, params):
+def pf(x, tipo, params):
     if tipo == 'n':
         return norm.pdf(x, *params)
     if tipo == 'nb':
@@ -19,8 +19,10 @@ def pdf(x, tipo, params):
     return 0
 
 def valCrit(grados):
-    t = 1-2/(9*grados)+1.645*sqrt(2/(9*grados))
-    return grados*t*t*t
+    #t = 1-2/(9*grados)+1.28*sqrt(2/(9*grados))
+    #return grados*t*t*t
+    alpha = 0.05
+    return chi2.ppf(1-alpha, grados)
 
 def obtenerDistri(nombreArchivo):
     with open(nombreArchivo, 'r') as archivo:
@@ -46,8 +48,7 @@ def grafFrec(n, distri, nomMuestra):
     ax1.set_xlabel("Intervalos de datos")
     ax1.set_ylabel("Frecuencia absoluta")
     ax1.grid(axis='y', alpha=0.5)
-    weights = np.ones_like(distri)/n
-    ax2.hist(distri, bins=numBins, weights=weights, color='salmon', edgecolor='black', alpha=0.7)
+    ax2.hist(distri, bins=numBins, weights=np.ones_like(distri)/n, color='salmon', edgecolor='black', alpha=0.7)
     ax2.set_title(f"Histograma de Frec.Relativa\n{nomMuestra}")
     ax2.set_xlabel("Intervalos de datos")
     ax2.set_ylabel("Frecuencia relativa")
@@ -60,17 +61,16 @@ def grafComparativa(n, distri, nomMuestra, tipo, paramsEx):
     plt.figure(figsize=(10, 6))
     plt.hist(distri, bins=numBins, density=True, color='lightgreen', edgecolor='black', alpha=0.6, label='Datos Muestra')
     xmin, xmax = plt.xlim()
-    
     params = ""
     if tipo == 'n':
         x = np.linspace(xmin, xmax, 1000)
-        p = [pdf(val, tipo, paramsEx) for val in x]
+        p = [pf(val, tipo, paramsEx) for val in x]
         params = f"Normal (Media $\mu$={paramsEx[0]:.2f}, Desv $\sigma$={paramsEx[1]:.2f})"
         plt.plot(x, p, 'r', linewidth=3, label='Distribución Teórica')
         
     elif tipo == 'nb':
         x = np.arange(int(xmin), int(xmax) + 1)
-        p = [pdf(val, tipo, paramsEx) for val in x]
+        p = [pf(val, tipo, paramsEx) for val in x]
         params = f"Neg.Binom (n={paramsEx[0]:.2f}, p={paramsEx[1]:.4f})"
         plt.plot(x, p, 'ro--', linewidth=2, label='Distribución Teórica')
 
@@ -87,7 +87,7 @@ def pruebaChi(n, distri, tipo, params, muestra):
     distri = [x + uniform(-0.5, 0.5) for x in distri] if muestra == 'm3' else distri
     observados, bordes = np.histogram(distri, bins=numBins)
     esperados = [(cdf(bordes[i+1], tipo, params)-cdf(bordes[i], tipo, params))*n for i in range(len(observados))]
-    chi = sum((fo-fe)**2/fe for fo, fe in zip(observados, esperados) if fe)
+    chi = sum((fo-fe)*(fo-fe)/fe for fo, fe in zip(observados, esperados) if fe)
     crit = valCrit(len(observados)-1-len(params))
     print(f'Esperados: {[int(fe) for fe in esperados]}')
     print(f'Observados: {observados.tolist()}')
