@@ -183,16 +183,6 @@ def main():
                 r = (promedio*p)/(1-p)
                 params = (r, p)
                 ksCrit = 1.36
-            
-            elif tipo[op] == 'b':
-                L = min(distri)    
-                R = max(distri)-L
-                promedioB = (promedio-L)/R
-                varianzaB = (desvi*desvi)/(R * R)
-                a = promedioB*((promedioB*(1-promedioB)) / varianzaB-1)
-                b = a*(1-promedioB)/promedioB
-                params, spicyParams = (a, b), (L, R)
-                ksCrit = 1.36
 
             elif tipo[op] == 'ub':
                 umbral = 1.25
@@ -209,13 +199,25 @@ def main():
                 params, spicyParams = (w, a, b), (L, R)
                 ksCrit = 1.63
 
+            elif tipo[op] == 'b':
+                L = min(distri)    
+                R = max(distri)-L
+                promedioB = (promedio-L)/R
+                varianzaB = (desvi*desvi)/(R*R)
+                a = promedioB*((promedioB*(1-promedioB)) / varianzaB-1)
+                b = a*(1-promedioB)/promedioB
+                params, spicyParams = (a, b), (L, R)
+                ksCrit = 1.36
+
             bordes = int(1+3.322*log10(N)) if tipo[op] == 'ub' else [x-0.5 for x in range(int(min(distri)), int(max(distri))+2)]
+            bordesFrec = bordes if tipo[op] == 'nb' else int(sqrt(N))
+            bordesGraf = bordes if tipo[op] == 'n' or tipo[op] == 'nb' else int(sqrt(N))
             print(f"\n--- Muestra: {nomMuestras[op]} ---")
             print(f'Promedio: {promedio:.4f}')
             print(f'Varianza: {desvi*desvi:.4f}')
             print(f'Desviación estándar: {desvi:.4f}')
-            grafFrec(N, distri, nomMuestras[op], bordes)
-            grafComparativa(N, distri, nomMuestras[op], tipo[op], params, bordes, spicyParams)
+            grafFrec(N, distri, nomMuestras[op], bordesFrec)
+            grafComparativa(N, distri, nomMuestras[op], tipo[op], params, bordesGraf, spicyParams)
             pruebaChi(N, distri, tipo[op], params, muestras[op].split('/')[-1].split('.')[0], bordes, spicyParams)
             pruebaKS(N, distri, tipo[op], params, ksCrit, spicyParams)
 
