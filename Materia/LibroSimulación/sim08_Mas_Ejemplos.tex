@@ -1,0 +1,1655 @@
+\chapter{Más ejemplos y aplicaciones}
+\begin{verbatim}
+    
+  ___
+ ( _ )
+ / _ \
+| (_) |
+ \___/
+
+ __  __   __        _____  _                      _
+|  \/  | /_/_ ___  | ____|(_) ___ _ __ ___  _ __ | | ___  ___
+| |\/| |/ _` / __| |  _|  | |/ _ \ '_ ` _ \| '_ \| |/ _ \/ __|
+| |  | | (_| \__ \ | |___ | |  __/ | | | | | |_) | | (_) \__ \
+|_|  |_|\__,_|___/ |_____|/ |\___|_| |_| |_| .__/|_|\___/|___/
+                        |__/               |_|
+            _          _ _                _
+ _   _     / \   _ __ | (_) ___ __ _  ___(_) ___  _ __   ___  ___
+| | | |   / _ \ | '_ \| | |/ __/ _` |/ __| |/ _ \| '_ \ / _ \/ __|
+| |_| |  / ___ \| |_) | | | (_| (_| | (__| | (_) | | | |  __/\__ \
+ \__, | /_/   \_\ .__/|_|_|\___\__,_|\___|_|\___/|_| |_|\___||___/
+ |___/          |_|
+
+
+
+
+
+Contenido
+=========
+
+1. Introducción.
+2. Juegos de Lotería.
+3. Alquiler de Películas.
+4. La Parada de un Autobús.
+5. Un Sistema Financiero.
+6. Sistemas de Inventarios Múltiples.
+7. Simulación de Colas Múltiples.
+8. Resumen.
+9. Ejercicios.
+
+
+
+
+1. Introducción.
+================
+
+En este capítulo se continúan los ejemplos y las aplicaciones del capítulo anterior. En esta ocasión las aplicaciones que se presentan son más prácticas y orientadas hacia la toma de decisiones. Al igual que antes, donde se puede resolver el modelo mediante un proceso analítico se realiza primero este proceso y después el proceso de simulación.
+
+
+
+2. Juegos de Lotería.
+=====================
+
+El personal de la Junta de Protección Social acaba de diseñar una nueva lotería instantánea. Cada tarjeta consta de tres filas. En cada fila hay dos casillas, una de las cuales tiene un valor oculto de $1 y la otra de $5. El jugador raspa cualquier casilla de cada renglón para descubrir el valor asociado en dólares. Si los tres número ocultos son iguales el jugador gana esa cantidad. A continuación se muestra como luce el nuevo juego de lotería.
+
+
+ __________________________________
+|                      ___   ___   |
+|  Tarjeta      Fila1 |___| |___|  |
+|  de                  ___   ___   |
+|  Lotería      Fila2 |___| |___|  |
+|                      ___   ___   |
+|               Fila3 |___| |___|  |
+|                                  |
+|  Raspe una casilla en cada fila  |
+|__________________________________|
+
+
+
+Antes de comprometer al Estado en este juego e imprimir una gran cantidad de tarjetas se desea evaluar la factibilidad económica del juego. ¿Cuál es la cantidad mínima que se puede cobrar por cada tarjeta de lotería y obtener ganacias?
+
+
+() Solución Analítica.
+----------------------
+
+Por ser un problema sencillo se puede aplicar la teoría de las probabilidades para resolver este juego. La cantidad que se debe cobrar por la tarjeta de lotería deber ser igual o mayor que la ganancia esperada por tarjeta. 
+
+
+
+ganancia_esperada  =  $1 * p(ganar $1)
+                   +  $5 * p(ganar $5)
+
+
+
+Ahora se deben calcular la probabilidades de ganar $1 y $5.
+
+p(ganar $1) =  p(fila1 salga $1)
+            *  p(fila2 salga $1)
+            *  p(fila3 salga $1)
+
+p(ganar $1) = 1/2
+            * 1/2
+            * 1/2
+
+p(ganar $1) = 1/8
+
+
+
+De forma análoga, la probabilidad de ganar $5 dólares se calcula a continuación.
+
+p(ganar $5) =  p(fila1 salga $5)
+            *  p(fila2 salga $5)
+            *  p(fila3 salga $5)
+
+p(ganar $5) = 1/2
+            * 1/2
+            * 1/2
+
+p(ganar $5) = 1/8
+
+
+
+De esta forma la ganancia esperada estará dada por:
+
+
+ganancia_esperada  =  $1 * p(ganar $1)
+                   +  $5 * p(ganar $5)
+
+
+ganancia_esperada  =  $1 * 1/8
+                   +  $5 * 1/8
+
+
+ganancia_esperada  = $0.75
+
+
+Al cobrar $0.75 por tarjeta no se obtienen ganancias ni pérdidas en el largo plazo. Por supuesto que cualquier valor superior a $0.75 generará las ganancias respectivas.
+
+
+
+() Simulación de las Casillas de la Lotería.
+--------------------------------------------
+
+Los números que se encuentran en el billete de lotería se comportan de acuerdo a la siguiente distribución de probabilidad.
+
+-------------------
+  x    p(x)   P(x)
+-------------------
+ $1    0.50   0.50
+ $5    0.50   1.00
+-------------------
+
+
+Para la generación de los valores de las casillas se utiliza el método de la transformada inversa.
+
+
+-------------------------
+                     -1
+      r        x =  P (r)
+-------------------------
+[0.00 , 0.50[   $1
+[0.50 , 1.00[   $5
+-------------------------
+
+
+
+() Diseño de la Simulación
+--------------------------
+
+A continuación se muestra una simulación sencilla de los resultados que se obtendrían al jugar este juego en 5 ocasiones.
+
+
+------------------------------------------------
+    Fila1....   Fila2.....  Fila3....
+No. r1      v   r2      v   r3      v   Ganancia
+------------------------------------------------
+ 1  0.0952  $1  0.4778  $1  0.2808  $1  $1.00
+ 2  0.8942  $5  0.3326  $1  0.3557  $1  $0.00
+ 3  0.9372  $5  0.5207  $5  0.4499  $1  $0.00
+ 4  0.5244  $5  0.5409  $5  0.8020  $5  $5.00
+ 5  0.2871  $1  0.6394  $5  0.5350  $5  $0.00
+------------------------------------------------
+                                 Total  $6.00
+------------------------------------------------
+
+
+
+Finalmente para obtener el valor de la ganancia esperada se aplica la misma fórmula que en el caso analítico.
+
+
+ganancia_esperada  =  $1 * p(ganar $1)
+                   +  $5 * p(ganar $5)
+
+
+ganancia_esperada  =  $1 * 1/5
+                   +  $5 * 1/5
+
+
+ganancia_esperada  =  $1.20
+
+
+Evidentemente se requieren de muchas más simulaciones para obtener una mejor aproximación al valor real de la ganancia esperada.
+
+
+
+
+3. Alquiler de Películas.
+=========================
+
+FRV es un compañía que se dedica al alquiler de películas y videos. Compra videos de estreno a $25 cada uno, los renta en $3 al día y después de un mes recibe un reintegro de $5 por cada video, pues ya no se considera un video de estreno. Basándose en los datos de ventas anteriores, la tienda ha estimado las siguientes probabilidades de demanda diaria para cada película.
+
+------------------------
+Demanda
+Diaria     Probabilidad
+------------------------
+  0        0.15
+  1        0.25
+  2        0.45
+  3        0.10
+  4        0.05
+------------------------
+
+
+Se desea realizar una simulación para establecer cuántos videos de estreno se deben comprar 0,1,2,3 o 4, de forma tal que se maximicen las ganancias de la empresa.
+
+
+
+() Solución Analítica.
+----------------------
+
+Es posible aplicar la teoría de las probabilidades para obtener la respuesta al problema. La decisión óptima es la que produce como resultado la mayor ganancia esperada durante el mes que el video se considera de estreno. Suponga que se ordenan 3 videos, con esta decisión la ganancia esperada estaría dada por:
+
+
+ganancia esperada = (ingresos durante 1 mes)
+                  + (reintegro de 3 videos)
+                  - (precio de compra de 3 videos)
+
+
+ganancia esperada = (ingresos durante 30 días)
+                  + (3 * $5)
+                  - (3 * $25)
+
+
+Para calcular los ingresos durante 30 días se debe tomar en cuenta que solo se tienen 3 videos para alquilar, si un cuarto video es solicitado este no estará disponible y por lo tanto no se generarán ingresos por el mismo. Por lo tanto los ingresos durante 30 días se pueden calcular como:
+
+
+ingresos durante  1 día  =  $0 * (probabilidad de 0 en demanda)
+                         +  $3 * (probabilidad de 1 en demanda)
+                         +  $6 * (probabilidad de 2 en demanda)
+                         +  $9 * (probabilidad de 3 en demanda) 
+                         +  $9 * (probabilidad de 4 en demanda)
+
+
+ingresos durante  1 día  =  ($0 * 0.15)
+                         +  ($3 * 0.25)
+                         +  ($6 * 0.45)
+                         +  ($9 * 0.10)
+                         +  ($9 * 0.05)
+
+
+ingresos durante  1 día  = $4.80
+
+
+
+Para calcular los ingresos esperados durante 30 días basta con multiplicar los ingresos esperados por 1 día por 30.
+
+
+ingresos durante 30 días = 30 * (ingresos durante 1 día)
+
+ingresos durante 30 días = 30 * $4.80
+
+ingresos durante 30 días = 144
+
+
+Por lo tanto la ganancia esperada para 30 días estaría dada por:
+
+
+ganancia esperada = (ingresos durante 30 días)
+                  + (3 * $5)
+                  - (3 * $25)
+
+
+ganancia esperada = (30 * $4.80)
+                  + ( 3 * $5)
+                  - ( 3 * $25)
+
+
+ganancia esperada = $84
+
+
+Por lo tanto, si se compran 3 videos se esperaría que produzcan una ganancia de $84 al final del mes. Se debe realizar cálculos similares para todas las demás posibilidades de compra de videos. A continuación se presenta una tabla con los resultados.
+
+
+--------------------------------------------------------
+Cantidad  Ingreso  Ingreso  Re-      Costo      Ganancia
+Videos    Día      Mes      integro  de Compra  ($)
+--------------------------------------------------------
+   0      0.00       0.00     0        0         0.00
+   1      2.55      76.50     5       25        56.50
+   2      4.35     130.50    10       50        90.50
+   3      4.80     144.00    15       75        84.00
+   4      4.95     148.50    20      100        68.50
+--------------------------------------------------------
+
+
+
+El resultado sería entonces que al adquirir dos videos se obtiene la mayor ganancia esperada que es de $90.50
+
+
+
+() Solución Mediante Simulación.
+--------------------------------
+
+En el proceso de simulación se trata de imitar el comportamiento de los clientes durante un período de 30 días para luego efecturar los cálculos para determinar los ingresos asociados por último la ganancia total. A continuación se describe el proceso de simulación.
+
+
+Para generar la demanda diaria se deben utilizar la tabla de probabilidades, para ello se utilizará el método de la transformada inversa para una tabla.
+
+
+-----------------------------------
+Demanda  Probabilidad  Probabilidad
+Diaria                 Acumulada
+-----------------------------------
+  0      0.15          0.15
+  1      0.25          0.40
+  2      0.45          0.85
+  3      0.10          0.95
+  4      0.05          1.00
+-----------------------------------
+
+
+
+De esta forma el generador de números aleatorios estará dado por la fórmula:
+
+
+-------------------------
+                     -1
+      r        x =  P (r)
+-------------------------
+[0.00 , 0.15[    0
+[0.15 , 0.40[    1
+[0.40 , 0.85[    2
+[0.85 , 0.95[    3
+[0.95 , 1.00[    4
+-------------------------
+
+
+A continuación se muestra una simulación de 10 días para el problema, suponiendo que se han comprado 3 videos.
+
+
+-------------------------------
+Día   r      Demanda   Ingresos
+-------------------------------
+ 1   0.8562     3      9
+ 2   0.2026     1      3
+ 3   0.0910     0      0
+ 4   0.9902     4      9
+ 5   0.9263     3      9
+ 6   0.0906     0      0
+ 7   0.5194     2      6
+ 8   0.9881     4      9
+ 9   0.5160     2      6
+10   0.6291     2      6
+-------------------------------
+Total                $57
+-------------------------------
+
+
+
+Si suponemos que esta simulación es suficiente para estimar las ganancias, estas se calcularían mediante la fórmula:
+
+
+ganancia esperada = (ingresos durante 30 días)
+                  + (reintegro de 3 videos)
+                  - (precio de compra de 3 videos)
+
+
+ganancia esperada = ($57)
+                  + (3 * $5)
+                  - (3 * $25)
+
+
+ganancia esperada = -3
+
+
+Para obtener la respuesta final, se debe repetir la simulación para todas las posibles compras de video. A continuación se presenta una tabla con el resumen de esta información.
+
+
+-----------------------------------------------
+Cantidad  Ingreso  Re-      Costo      Ganancia
+Videos    Mensual  integro  de Compra  ($)
+-----------------------------------------------
+   0        0.00     0        0         0.00
+   1       88.00     5       25        58.00
+   2      155.00    10       50        95.00
+   3      179.00    15       75        89.00
+   4      205.00    20      100        85.00
+-----------------------------------------------
+
+
+
+Observe que el resultado es el de comprar 2 videos, sin embargo la ganancia esperada es de $95 cuando en realidad debería ser de $90.50. Esto se debe a que la simulación solamente provee una estimación del valor. Para que la estimación se acerque al valor real se deben realizar una mayor cantidad de simulaciones.
+
+
+
+
+4. La Parada de un Autobús.
+===========================
+
+El Ministerio de Transportes ha concedido una ruta de buses que viaja desde las zonas rurales hasta el centro de la ciudad. Se han recibido varias quejas relativas a que los clientes en una de las paradas tienen que esperar demasiado durante la hora pico de la mañana de 7:00am a 8:00am. Los usuarios también se quejan de que no hay suficientes asientos en la parada del autobús para esperar comodamente durante los meses de lluvia. Para responder a estas quejas, se está considerando aumentar la frecuencia en esa ruta del actual servicio de un autobús cada 20 minutos a un autobús cada 15 minutos. Se desea investigar el impacto de esta nueva política en el servicio a clientes midiendo la cantidad de tiempo promedio que un cliente tiene que esperar un autobús, el número promedio de clientes que esperan en la parada y el número máximo de clientes que esperan.
+
+Al estudiar la parada de autobuses se ha determinado que llegan aproximadamente 30 clientes por hora durante la hora pico de la mañana, es decir, llegan aproximadamente a una tasa de 1 cliente cada dos minutos. De igual manera se ha estimado que el tiempo entre la llegada de dos clientes está dada por una distribución exponencial con un promedio de 2 minutos. El estudio también revela que los autobuses por lo general llegan tarde a sus paradas programadas en una cantidad de tiempo que sigue una distribución normal con una media de 4 minutos y una desviación estándar de 1 minuto.
+
+Observe que este sistema de colas es diferente a los vistos anteriormente, ya que cuando llega el autobús se atiende de inmediato a una gran parte o a toda la población que está esperando. Por lo tanto no existe un modelo analítico para resolver este problema.
+
+
+() Generación de Clientes.
+--------------------------
+
+Para la generación de los tiempos entre los clientes que llegan al sistema se debe utilizar una distribución exponencial con una media de 0.50. Para la generación del tiempo de llegada entre los clientes se utiliza el método de la transformada inversa.
+
+-B * ln(1 - r)  =  x
+
+-2 * ln(1 - r)  =  x
+
+
+
+() Generación de la Llegada de los Buses.
+-----------------------------------------
+
+Los autobuses deben llegar cada 15 minutos, sin embargo, llegan tarde por una cantidad de tiempo que sigue una distribución normal con una media de 4 minutos y una desviación estándar de 1 minuto. Por lo tanto para generar la llegada tardía se utilizará un método especial para la normal.
+
+
+Se generan 12 números aleatorios entre [0,1] que se denominarán r1, r2, r3, ... , r12.
+
+
+Se encuentra el valor de x mediante la fórmula:
+                 
+                    __          
+                 /  \             \
+x  =   u  +  o  (   /_ r(i)  - 6   )
+                 \                /
+ 
+                    __          
+                 /  \             \
+x  =   4  +  1  (   /_ r(i)  - 6   )
+                 \                /
+
+
+El valor de "x" será casi siempre positivo, sin embargo, con una probabilidad baja puede ocurrir que se produzcan valores negativos. Un valor negativo indicaría que el bus llegó antes de lo esperado a la parada.
+
+
+
+() Diseño de la Simulación.
+---------------------------
+
+Observe que el estado del sistema cambia únicamente cuando ocurre uno de los eventos siguientes:
+Llega un cliente nuevo al sistema
+Llega un autobús
+
+
+De esta forma se debe avanzar el tiempo del sistema hacia el evento más inmediato que vaya a ocurrir. Es necesario registrar la condición del sistema únicamente en estos puntos. El resto del tiempo el sistema permanece inmutable. Observe la siguiente simulación, cuando se genera el tiempo de llegada del siguiente cliente se suma al tiempo del reloj. De igual manera con los autobuses, se toma 15 más el tiempo de retraso y esto se suma al tiempo del reloj.
+
+
+
+--------------------------------------------
+                              Sig.     Sig.
+ Tiempo   Evento   #Clientes  Cliente  Bus
+--------------------------------------------
+  0.00    na           0       4.49    18.57
+  4.49    cliente      1       5.37    18.57
+  5.37    cliente      2      10.91    18.57
+ 10.91    cliente      3      12.38    18.57
+ 12.38    cliente      4      13.58    18.57
+ 13.58    cliente      5      15.06    18.57
+ 15.06    cliente      6      16.62    18.57
+ 16.62    cliente      7      19.86    18.57
+ 18.57    bus          0      19.86    33.44
+ 19.86    cliente      1      21.90    33.44
+ 21.90    cliente      2      23.43    33.44
+ 23.43    cliente      3      26.42    33.44
+ 26.42    cliente      4      30.49    33.44
+ 30.49    cliente      5      32.00    33.44
+ 32.00    cliente      6      36.35    33.44
+ 33.44    bus          0      36.35    50.83
+ 36.35    cliente      1      39.29    50.83
+ 39.29    cliente      2      40.92    50.83
+ 40.92    cliente      3      40.98    50.83
+ 40.98    cliente      4      41.14    50.83
+ 41.14    cliente      5      42.45    50.83
+ 42.45    cliente      6      43.29    50.83
+ 43.29    cliente      7      45.95    50.83
+ 45.95    cliente      8      49.68    50.83
+ 49.68    cliente      9      51.82    50.83
+ 50.83    bus          0      51.82    64.23
+ 51.82    cliente      1      52.16    64.23
+ 52.16    cliente      2      52.22    64.23
+ 52.22    cliente      3      56.21    64.23
+ 56.21    cliente      4      58.06    64.23
+ 58.06    cliente      5      63.55    64.23
+ 63.55    cliente      6      67.42    64.23
+ 64.23    bus          0      67.42    80.43
+--------------------------------------------
+
+
+
+
+() Cálculo de los Tiempos de Espera.
+------------------------------------
+
+
+Para calcular el tiempo de espera promedio, se debe contablizar el tiempo que cada cliente estuvo en la fila hasta que llegó su respectivo autobús y luego dividir ese valor entre el total de clientes.
+
+
+Por ejemplo, el primer cliente ingresó en el tiempo 4.49 y su autobús llegó hasta el tiempo 18.57, por lo que estuvo en espera:
+
+18.57 - 4.49 = 14.08
+
+
+El segundo cliente ingresó en el tiempo 5.37 y su autobús llegó hasta el tiempo 18.57, lo que produce un tiempo de espera de:
+
+18.57 - 5.37 = 13.20
+
+
+En general se debe repetir este proceso con todos los clientes que se encuentran en la línea de espera y sumar todos estos tiempos. Finalmente se divide este valor entre el total de clientes que es de 28.   
+
+
+
+                            tiempo de espera total de los clientes
+tiempo de espera promedio = --------------------------------------
+                                       número de clientes
+
+
+                             226.8990
+tiempo de espera promedio = ----------  
+                                28
+
+
+tiempo de espera promedio = 8.1035
+
+
+Por lo tanto en promedio un cliente debe esperar 8.1035 minutos antes de que llegue el siguiente autobús.
+
+
+
+() Cálculo del número promedio de clientes en la parada.
+--------------------------------------------------------
+
+Para el cálculo del número promedio de clientes en la parada se debe calcular una esperanza dada por:
+
+
+número promedio = 0 * (probabilidad de 0 clientes)
+                + 1 * (probabilidad de 1 clientes)
+                + 2 * (probabilidad de 2 clientes)
+                + 3 * (probabilidad de 3 clientes)
+                + 4 * (probabilidad de 4 clientes)
+                + 5 * (probabilidad de 5 clientes)
+                + 6 * (probabilidad de 6 clientes)
+                + 7 * (probabilidad de 7 clientes)
+                + 8 * (probabilidad de 8 clientes)
+                + 9 * (probabilidad de 9 clientes)
+
+
+
+A continuación se muestra una tabla donde se realiza el cálculo respectivo.
+
+
+----------------------------------------
+Número     Tiempo   Prob       Esperanza
+Clientes   Total    TT/64.23   NC*Fr
+(NC)       (TT)     (Fr)
+----------------------------------------
+   0        9.68     0.1507    0.0000
+   1        6.20     0.0965    0.0965
+   2        8.76     0.1364    0.2728
+   3        8.51     0.1325    0.3975
+   4        7.28     0.1133    0.4534
+   5        9.79     0.1524    0.7621
+   6        4.52     0.0704    0.4222
+   7        4.61     0.0718    0.5024
+   8        3.73     0.0581    0.4646
+   9        1.15     0.0179    0.1611
+----------------------------------------
+ Total     64.23     1.0000    3.5326
+----------------------------------------
+
+
+
+Por lo tanto, el número promedio de clientes en el la parada del autobús es de 3.5326
+
+
+
+() Cálculo del número máximo de clientes.
+-----------------------------------------
+
+Durante la duración de la simulación se puede observar que el número máximo de clients que se alcanzó fue de 9 clientes que esperaban en la parada.
+
+
+
+
+5. Un Sistema Financiero.
+=========================
+
+Suponga que está a punto de comprar un bien y debe decidir de qué manera financiar su adquisición. Tiene dos opciones. Una es escoger un préstamo con un interés fijo del 8.00% durante 15 meses. La otra opción es un préstamo con un una tasa de interés inicial de 7.00% y una tasa máxima de 10% que varía cada 3 meses durante los próximos 15 meses. Por supuesto las tasas de interés futuras son desconocidas, sin embargo al estudiar los datos históricos se ha obtendido la siguiente distribución de probabilidad.
+
+
+------------------------
+Cantidad    Probabilidad
+de Cambio
+  (%)
+------------------------
+ + 2.00     0.05
+ + 1.50     0.05
+ + 1.00     0.15
+ + 0.50     0.15
+   0.00     0.20
+ - 0.50     0.15
+ - 1.00     0.15
+ - 1.50     0.05
+ - 2.00     0.05
+------------------------
+
+
+
+Se analizarán ambas opciones y se supondrá que se realiza un único pago al final de cada mes. Asímismo se supondrá que no hay ningún tipo de impuestos o acciones impositivas sobre el bien. Por lo tanto se analizará únicamente ambos planes de crédito. Finalmente se supondrá que el prestamo inicial es de $1000. Esto es un valor relativamente bajo, pero la cantidad es la misma en ambos casos de modo que la comparación puede realizarse sobre una base 1000. Es decir al aumentar la base aumentarán proporcionalmente todos los demás valores.
+
+
+
+() Solución para el caso de interés fijo
+----------------------------------------
+
+Se tienen los siguientes valores para el presente caso:
+
+Deuda principal, o principal 
+P = $1000
+
+Tasa de interés fija         
+i = 0.08
+
+Factor de valor presente
+r = 1 / (1 + i)
+r = 1 / (1 + 0.08)
+r = 1 / 1.08
+r = 0.9259
+
+
+El pago mensual para el préstamo de tasa fija se calcula mediante la fórmula:
+
+
+          P * i
+pago =  ---------
+         1 - r^n
+
+
+         1000 * 0.08
+pago =  --------------
+        1 - 0.92593^15
+
+
+pago =  $116.83
+
+
+
+() Primer mes.
+--------------
+
+De esta forma, para el primer mes se debe realizar un pago de $116.83. De esta cantidad una parte corresponde al pago de intereses y otra parte corresponde al pago del principal. 
+
+Para determinar el pago de intereses:
+interés = 1000 * 0.08
+interés = 80
+
+Para determinar cuanto menos nos queda del préstamo principal:
+pago al principal = 116.83 - 80 
+pago al principal = 36.83
+
+Luego quedan
+1000 - 36.83 = 963.17 de principal restante
+
+
+
+() Segundo mes.
+---------------
+
+De esta forma al iniciar el segundo mes, nos quedan pendientes de pago 963.17 y se debe repetir el proceso.
+
+Para determinar el pago de intereses:
+interés = 963.17* 0.08
+interés = 77.05
+
+Para determinar cuanto menos nos queda del préstamo principal:
+pago al principal = 116.83 - 77.05
+pago al principal = 39.78
+
+Luego quedan
+963.17 - 39.78 = 923.39 de principal restante
+
+
+() Tabla de los 15 meses.
+------------------------
+
+A continuación se presenta una tabla con los pagos de los 15 meses hasta completar el total del préstamo principal.
+
+
+------------------------------------------------------
+Mes  Principal  Pago     Interés  Pago al    Principal
+     Inicial    Total             Principal  Restante
+------------------------------------------------------
+ 1   1000.00    116.83   80.00    36.83      963.17
+ 2    963.17    116.83   77.05    39.78      923.39
+ 3    923.39    116.83   73.87    42.96      880.44
+
+ 4    880.44    116.83   70.43    46.40      834.04
+ 5    834.04    116.83   66.72    50.11      783.93
+ 6    783.93    116.83   62.71    54.12      729.82
+
+ 7    729.82    116.83   58.39    58.44      671.37
+ 8    671.37    116.83   53.71    63.12      608.25
+ 9    608.25    116.83   48.66    68.17      540.08
+
+10    540.08    116.83   43.21    73.62      466.46
+11    466.46    116.83   37.32    79.51      386.95
+12    386.95    116.83   30.96    85.87      301.07
+
+13    301.07    116.83   24.09    92.74      208.33
+14    208.33    116.83   16.67    100.16     108.16
+15    108.16    116.83    8.65    108.18      -0.02
+------------------------------------------------------
+Total         $1752.45
+------------------------------------------------------
+
+
+
+() Solución para el caso de interés variable.
+---------------------------------------------
+
+Para los tres primeros meses se debe realizar el mismo cálculo que se hizo en el problema anterior, pero con un interés de 0.07
+
+Se tienen los siguientes valores para el presente caso:
+
+Deuda principal, o principal 
+P = $1000
+
+Tasa de interés fija         
+i = 0.07
+
+Factor de valor presente
+r = 1 / (1 + i)
+r = 1 / (1 + 0.07)
+r = 1 / 1.07
+r = 0.93457
+
+
+El pago anual al final del año para la hipoteca de tasa fija se calcula mediante la fórmula:
+
+
+         P * i
+pago =  ---------
+         1 - r^n
+
+
+         1000 * 0.07
+pago =  --------------
+        1 - 0.93457^15
+
+
+pago =  $109.79
+
+
+
+Al inicio del mes 4 se debe establecer una nueva tasa de interés, para ello se debe utilizar las probabilidades descritas anteriormente. Se utiliza la técnica de la transformada inversa.
+
+----------------------------
+Cantidad    Prob   Prob
+de Cambio          Acumulada
+----------------------------
+ +2.00      0.05   0.05
+ +1.50      0.05   0.10
+ +1.00      0.15   0.25
+ +0.50      0.15   0.40
+  0.00      0.20   0.60
+ -0.50      0.15   0.75
+ -1.00      0.15   0.90
+ -1.50      0.05   0.95
+ -2.00      0.05   1.00
+----------------------------
+
+
+
+Con base en la técnica de la transformada inversa se obtiene el siguiente algoritmo de generación de números.
+
+
+-------------------------
+                     -1
+      r        x =  P (r)
+-------------------------
+[0.00 , 0.05[    + 2.00
+[0.05 , 0.10[    + 1.50
+[0.10 , 0.25[    + 1.00
+[0.25 , 0.40[    + 0.50
+[0.40 , 0.60[      0.00
+[0.60 , 0.75[    - 0.50
+[0.75 , 0.90[    - 1.00
+[0.90 , 0.95[    - 1.50
+[0.95 , 1.00[    - 2.00
+-------------------------
+
+
+Se supondrá que se genera un valor de x=0.10 por lo que la tasa de interés debe colocarse en un valor +1.00 sobre el anterior. De esta forma la nueva tasa de interés será de 0.08.
+
+La deuda principal al inicio del año 4 tendrá un monto de:
+P = $872.07
+
+Tasa de interés fija         
+i = 0.08
+
+Factor de valor presente
+r = 1 / (1 + i)
+r = 1 / (1 + 0.08)
+r = 1 / 1.08
+r = 0.92593
+
+
+El pago anual al final del año para la hipoteca de tasa fija se calcula mediante la fórmula:
+
+
+         P * i
+pago =  ---------
+         1 - r^n
+
+
+        872.07 * 0.08
+pago =  --------------
+        1 - 0.92593^12
+
+
+pago =  $115.72
+
+
+
+A continuación se presenta una tabla con el cálculo para los 15 años del préstamo.
+
+
+-----------------------------------------------------------------
+Año Principal  x       Tasa   Pago    Interés Pago al   Principal
+    Inicial            Int.   Total           Principal Restante
+-----------------------------------------------------------------
+1   1000.00           0.070  109.79  70.00    39.79    960.21
+2    960.21           0.070  109.79  67.21    42.58    917.63
+3    917.63           0.070  109.79  64.23    45.56    872.08
+
+4    872.08   +0.10   0.080  115.72  69.77    45.95    826.13
+5    826.13           0.080  115.72  66.09    49.63    776.50
+6    776.50           0.080  115.72  62.12    53.60    722.90
+
+7    722.90   +0.15   0.095  123.04  68.68    54.36    668.53
+8    668.53           0.095  123.04  63.51    59.53    609.00
+9    609.00           0.095  123.04  57.86    65.18    543.82
+
+10   543.82   -0.05   0.090  121.23  48.94    72.28    471.53
+11   471.53           0.090  121.23  42.44    78.79    392.74
+12   392.74           0.090  121.23  35.35    85.88    306.86
+
+13   306.86   -0.05   0.085  120.15  26.08    94.07    212.80
+14   212.80           0.085  120.15  18.09   102.06    110.74
+15   110.74           0.085  120.15   9.41   110.74      0.00
+-----------------------------------------------------------------
+Total                       $1769.78
+-----------------------------------------------------------------
+
+
+
+Es importante mencionar que este es solo un ejemplo y que para resolver por completo el problema se deben realizar una cantidad mucho mayor de simulaciones. Al realizar el proceso de manera sistemática se puede descubrir que el problema es altamente dependiente del valor inicial para establecer si es el sistema de interés fijo o el sistema de interés variable el mejor.
+
+
+
+
+6. Sistemas de Inventarios Múltiples.
+=====================================
+
+Entre otros productos, la Compañía de Bebidas San Juan (CBSJ) suministra leche a varios puntos de la zona norte. La compañía obtiene la leche de una cooperativa de granjeros locales a $1.50 el galón y la almacena en sus instalaciones centrales. De ahí la leche es distribuida a los clientes conforme se vaya necesitando a un precio de $2.00 por galón. Por lo tanto, por cada galón vendido se tiene una ganancia de $0.50.
+
+Un análisis estadístico de las ventas anteriores ha revelado que la demanda diaria en las instalaciones centrales puede ser aproximada con bastante precisión a través de una distribución normal con una media de 750 galones y una desviación estándar de 100 galones.
+
+El departamento de contabilidad ha negociado con la cooperativa un costo fijo de $100 por pedido para cubrir los cargos de entrega y procesamiento. La leche recibida no se paga hasta que se venda, por lo que para realizar la entrega solo se deben cancelar $100 cuando se hace la orden de reabastecimiento.
+
+La experiencia de CBSJ con la cooperativa revela que el 80% de las veces la orden de leche llega al principio del día siguiente, sin embargo en 20% de las veces el pedido es entregado la segunda mañana después de haberlo hecho.
+
+Se desea determinar una política de inventarios que maximice la ganancia diaria esperada, basándose en un costo de mantenimiento de inventario de 0.02 por galón por día. Al determinar esta política se debe tomar en cuenta que leche es un producto perecedero. Con ese hecho en mente, la política de la corporación indica que cualquier cantidad de leche que se encuentre en las instalaciones centrales más de siete días no puede ser distribuida a los expendios. En su lugar, es vendida para productos secundarios de alimento a $0.50 el galón.
+
+
+
+() Condiciones Iniciales.
+-------------------------
+
+
+Las condiciones iniciales de este problema pueden ser importantes, pues se requeriría de una gran cantidad de simulaciones para compensarlas. Se supondrá que se ha hecho una estimación para obtener las siguientes condiciones iniciales.
+
+
+-------------------------------------------
+   Días de                Inventario
+Almacenamiento  Notación  Inicial (galones)
+-------------------------------------------
+      0           L0            0
+      1           L1          500
+      2           L2          300
+      3           L3            0
+      4           L4            0
+      5           L5          100
+      6           L6          100
+-------------------------------------------
+
+
+
+
+
+() Generación del Tiempo de Espera de un Pedido.
+------------------------------------------------
+
+
+Cuando se realice un pedido este puede tardar 1 o dos días de acuerdo con la siguiente tabla.
+
+
+------------------
+Días  Probabilidad
+
+------------------
+ 1    0.80
+ 2    0.20
+------------------
+
+
+Para generar la variable aleatoria se utilizará una transformada inversa sobre la tabla.
+
+
+----------------------
+      r         Tiempo
+----------------------
+[0.00 , 0.80[     1
+[0.80 , 1.00[     2
+----------------------
+
+
+
+() Generación de la Demanda.
+----------------------------
+
+Para la generación de la demanda se debe construir un generador de números aleatorios normales con una media de 750 galones y una desviación estándar de 100 galones. Para ello se utiliza el siguiente algoritmo.
+
+Se generan 12 números aleatorios entre [0,1] que se denominarán r1, r2, r3, ... , r12.
+
+
+Se encuentra el valor de x mediante la fórmula:
+                
+                    __  
+                 /  \            \
+x  =   u  +  o  (   /_ r(i)  - 6  )
+                 \               /
+ 
+                 
+                    __  
+                 /  \            \
+x  = 750 + 100  (   /_ r(i)  - 6  )
+                 \               /
+
+
+
+
+
+Como siempre se utiliza una política de inventario de la forma (q,r) donde "q" es la cantidad a ser pedida y "r" es el punto de reorden. En nuestro caso se utilizarán las variables.
+
+q = 4000
+
+r =  900
+
+
+
+() Diseño de la Simulación.
+---------------------------
+
+Para la generación de la simulación se deben realizar los siguientes pasos.
+
+() Actualizar el Tiempo.
+
+() Revisión de Inventario.
+Al inicio de cada día se revisa la cantidad total de inventario. Si es igual o está por abajo del punto de reorden se debe hacer un pedido. El pedido NO puede superar la capacidad de almacenamiento, por lo tanto si se tienen 177 galones se deben pedir 3823 para obtener 4000 galones de inventario total.
+
+() Generación de demanda.
+Se genera una demanda diaria de acuerdo a una distribución normal de media 750 y desviación estándar de 100. 
+
+() Actualización del inventario.
+El inventario se va utilizando de la leche que tiene más días hasta la leche con menos días, esto garantiza tener leche fresca la mayor parte del tiempo posible. Por lo tanto primero se entrega la leche L6, luego la L5 y así sucesivamente. Al cambiar de día todos los inventarios deben aumentarse en 1 día su tiempo.
+
+() Cálculo de la ganancia diaria.
+Cada galón cuesta $1.50 y se vende a $2.00 a los expendios lo que produce una ganancia de $0.50. En caso que no se pueda vender se utiliza para productos secundarios por un costo de $0.50, al venderla para productos secundarios se tiene una pérdida de $1.00 por galón. De igual forma cualquier inventario que se mantenga al final del día debe pagar $0.02 de almacenamiento.
+
+
+
+A continuación se presenta una simulación para este problema de 20 días.
+
+-----------------------------------------------------------------
+Día  L0   L1   L2   L3   L4   L5   L6 Total  q?  t  Dem  Ganancia
+-----------------------------------------------------------------
+ 1    0  500  300    0    0  100  100  1000         823   407.96
+ 2    0    0  177    0    0    0    0   177  sí  1  560   -11.50
+ 3 3823    0    0    0    0    0    0  3823         607   239.18
+ 4    0 3216    0    0    0    0    0  3216         746   323.60
+ 5    0    0 2470    0    0    0    0  2470         710   319.80
+ 6    0    0    0 1760    0    0    0  1760         812   397.04
+ 7    0    0    0    0  948    0    0   948         851   423.56
+ 8    0    0    0    0    0   97    0    97  sí  1  772   -51.50
+ 9 3903    0    0    0    0    0    0  3903         650   259.94
+10    0 3253    0    0    0    0    0  3253         562   227.18
+11    0    0 2961    0    0    0    0  2961         859   392.86
+12    0    0    0 1832    0    0    0  1832         776   366.88
+13    0    0    0    0 1056    0    0  1056         902   447.92
+14    0    0    0    0    0  154    0   154  sí  1  786   -23.00
+15 3846    0    0    0    0    0    0  3846         927   405.12
+16    0 2919    0    0    0    0    0  2919         889   403.90
+17    0    0 2030    0    0    0    0  2030         731   339.52
+18    0    0    0 1299    0    0    0  1299         789   384.30
+19    0    0    0    0  510    0    0   510  sí  1  868   155.00
+20 3490    0    0    0    0    0    0  3490         857   375.84
+-----------------------------------------------------------------
+                                                Total    5783.60
+                                                Promedio  289.18
+-----------------------------------------------------------------
+
+
+
+
+Observe como se realiza el cálculo de la ganancia para el primer día día.
+
+
+ganancia_neta = (ganancia de leche vendida)
+              - (pérdida de leche vendida para productos secundarios)
+              - (costo de almacenamiento)
+              - (costo de hacer un pedido)
+
+
+
+ganancia_neta = (823 * $0.50)
+              - (  0 * $1.00)
+              - (177 * $0.02)
+              - (  0 * $100)
+
+
+ganancia_neta = $407.96
+
+
+
+Para el segundo día se tienen los siguientes costos:
+
+
+ganancia_neta = (ganancia de leche vendida)
+              - (pérdida de leche vendida para productos secundarios)
+              - (costo de almacenamiento)
+              - (costo de hacer un pedido)
+
+
+
+ganancia_neta = (177 * $0.50)
+              - (  0 * $1.00)
+              - (  0 * $0.02)
+              - (  1 * $100)
+
+
+ganancia_neta = - $11.50
+
+
+
+Para el tercer día se tienen los siguientes costos:
+
+ganancia_neta = (ganancia de leche vendida)
+              - (pérdida de leche vendida para productos secundarios)
+              - (costo de almacenamiento)
+              - (costo de hacer un pedido)
+
+
+
+ganancia_neta = ( 607 * $0.50)
+              - (   0 * $1.00)
+              - (3216 * $0.02)
+              - (   0 * $100)
+
+
+ganancia_neta = $239.18
+
+
+
+Al continuar este proceso para los 20 días de la simulación se obtendrá una ganancia total de $5783.60 lo que produce un promedio diario de $289.18. Evidentemente 20 simulaciones no son suficientes para obtener el valor verdadero de esta política y se requiere de un número mucho mayor.
+
+
+
+
+7. Simulación de Colas Múltiples.
+=================================
+
+La Comisión NJ es un organismo encargado del mantenimiento y cobro del peaje de una autopista de gran tránsito y desea mejorar el flujo de vehículos a través de sus casetas de cobro. Uno de los administradores ha sugerido que se favorezca el paso de vehículos al tener un servicio de casetas especiales para los automóviles que lleven dos o más personas abordo. A estas casetas especiales se les llama casetas rápidas. Se desea determinar el impacto en el flujo de tráfico actual que tendría el hecho de convertir una de las tres casetas existentes en una caseta de carril rápido. A continuación se muestra un gráfico de la conversión que se desea realizar. La caseta 0 será la caseta del carril rápido y las casetas 1 y 2 las casetas generales.
+
+
+
+--------------------------------------.
+                             |caseta0 |
+--------------------------------------'
+               ______        ______
+              /|_||_\\___   /|_||_\\___
+             (   _    _ _\ (   _    _ _\
+              `-(_)--(_)-'  `-(_)--(_)-'
+
+--------------------------------------.
+                             |caseta1 |
+--------------------------------------'
+               ______        ______
+              /|_||_\\___   /|_||_\\___
+             (   _    _ _\ (   _    _ _\
+              `-(_)--(_)-'  `-(_)--(_)-'
+
+--------------------------------------.
+                             |caseta2 |
+--------------------------------------'
+  ______        ______        ______
+ /|_||_\\___   /|_||_\\___   /|_||_\\___
+(   _    _ _\ (   _    _ _\ (   _    _ _\
+ `-(_)--(_)-'  `-(_)--(_)-'  `-(_)--(_)-'
+
+
+
+A través del estudio de datos la comisión ha determinado que la caseta de cobro seleccionada atiende actualmente 20 vehículos por minuto durante las horas pico. De estos vehículos, solamente un tercio tienen dos o más pasajeros. Los datos también muestran que el tiempo entre dos vehículos que llegan puede ser aproximado por una distribución exponencial con una tasa promedio de 20 vehículos por minuto o lo que es equivalente con un tiempo promedio de 3 segundos entre cada automóvil.
+
+Los datos registrados anteriormente indican que las casetas que atienden el tráfico en general requieren un tiempo de procesamiento por vehículo que obedece a la siguiente distribución.
+
+------------------------
+  Tiempo
+(segundos)  Probabilidad
+------------------------
+ [ 3 ,  8[     0.60
+ [ 8 , 13[     0.30
+ [13 , 18[     0.10
+------------------------
+
+
+No existen datos similares para la caseta rápida propuesta. No se espera que el tiempo de servicio en ésta siga la distribución anterior porque dicha distribución pertenece a autos, camiones y todos los demás vehículos, mientras que la caseta rápida es solamente para automóviles. De la experiencia con casetas rápidas en otras carreteras, se cree que el tiempo de servicio puede ser aproximado bastante bien con una distribución exponencial con una media de 10 autos por minuto.
+
+Cabe mencionar que se ha visto que el comportamiento de los conductores es escoger la caseta rápida, si cumplen las condiciones. De lo contrario escogerán la caseta general con la cola más pequeña. Si ambas casetas generales tienen una cola de igual tamaño se favorece la caseta del centro.
+
+
+Al final de la simulación se desean obtener los siguientes resultados.
+() Tiempo de espera estimado para un vehículo en cada caseta.
+() Número promedio de vehículos en cada fila.
+() El uso promedio de cada caseta, es decir, la fracción de tiempo que está en utilización cada caseta.
+
+
+
+() Generación de los Vehículos que Llegan.
+------------------------------------------
+
+Las entradas o llegadas a están dadas por una distribución exponencial con una tasa promedio de 20 vehículos por minuto, o lo que es equivalente con un tiempo promedio de 3 segundos entre vehículos. Al modelar esta entrada como una distribución exponencial se utilizará el método de la transformada inversa. Por lo tanto el tiempo entre llegadas estará dado por:
+
+x  =  - (1/20) * 60 * ln (1 - r)
+
+x  =  - 3 * ln (1 - r)
+
+
+
+
+() Generación del Tipo de Vehículo que Llega.
+---------------------------------------------
+
+Los vehículos que llegan pueden seguir hacia la caseta rápida o hacia la caseta general. De los automóviles que llegan, solamente un tercio de ellos tienen dos pasajeros o más, por lo que pueden dirigirse hacia la caseta rápida. De esta forma la distribución de automóviles que va hacia la caseta rápida está dada por la siguiente tabla.
+
+-----------------------
+No.        Probabilidad
+Pasajeros
+-----------------------
+1          0.6667
+2 o más    0.3333
+-----------------------
+
+
+Si se utiliza el método de la transformada inversa se obtiene el siguiente generador de números aleatorios.
+
+
+-------------------------------------------
+  r                  x
+-------------------------------------------
+[0.0000 , 0.6667[   1 fila general (G)
+[0.6667 , 1.0000[   2 o más fila rápica (R)
+-------------------------------------------
+
+
+
+() Generación del Tiempo de Servicio de Una Caseta Rápida.
+----------------------------------------------------------
+
+Se supone que la cantidad de tiempo necesaria para atender un automóvil en una caseta rápida sigue una distribución exponencial con una tasa media de 10 autos por minuto, o lo que es equivalente con un tiempo promedio de 6 segundos entre dos automóviles consecutivos. De esta forma se puede utilizar una distribución exponencial y un proceso de transformada inversa para generar los tiempos de atención.
+
+x  =  - (1/10) * 60 * ln(1 - r)
+
+x  =  - 6 * ln(1 - r)
+
+
+
+
+() Generación del Tiempo de Servicio de Una Caseta  General.
+------------------------------------------------------------
+
+La cantidad de tiempo necesario para atender un vehículo en una caseta general tiene la siguente la distribución .
+
+
+--------------------------------------
+  Tiempo    Probabilidad   Probablidad
+(segundos)                 Acumulada
+--------------------------------------
+ [ 3 ,  8[      0.60       0.60
+ [ 8 , 13[      0.30       0.90
+ [13 , 18[      0.10       1.00
+--------------------------------------
+
+
+
+Al utilizar el método de la transformada inversa se presenta el problema que el valor de "x" corresponde a un intervalo. Se puede suponer que dentro de cada intervalo se tiene un comportamiento lineal, o de forma equivalente suponer que se trata de una función continua de la cual se conocen solamente una cantidad límitada de puntos. De esta forma la probabilidad acumulada se comportaría de la siguiente manera.
+
+
+
+  F(x)
+    |
+    |
+1.00|                                    . . . .
+    |                                 .  |
+    |                              .     |
+0.90|                           .        |
+    |                         . |        |
+    |                       .   |        |
+    |                     .     |        |
+    |                   .       |        |
+    |                 .         |        |
+0.60|               .           |        |
+    |              .|           |        |
+    |             . |           |        |
+    |            .  |           |        |
+    |           .   |           |        |
+    |          .    |           |        |
+    |         .     |           |        |
+    |        .      |           |        |
+    |       .       |           |        |
+    |      .        |           |        |
+0.00|_____._________|_________ _|________|______ x
+    0     3         8          13       18
+
+
+
+Para utilizar el método de la transformada inversa se debe conocer la fórmula de la recta para cada sección de la función y luego obtener el valor invertido. De esta forma se obtiene el siguiente generador de números aleatorios.
+
+
+Para encontrar el valor de "x" se debe seleccionar un número aleatorio "r" uniforme dentro del intervalo [0,1[ y determinar en cual de los intervalos cae. Luego se utiliza la fórmula inversa de la recta.
+
+
+
+Si 0.00 <= r <= 0.60 entonces
+
+               /     r    \
+x  =  3 + 5 * (  --------  )
+               \   0.60   /
+
+
+
+Si 0.60 <= r <= 0.90 entonces
+
+               / r - 0.60 \
+x  =  8 + 5 * (  --------  )
+               \   0.30   /
+
+
+
+Si 0.90 <= r <= 1.00 entonces
+
+               / r - 0.90 \
+x  = 13 + 5 * (  --------  )
+               \   0.10   /
+
+
+
+
+Por ejemplo si r = 0.7424
+
+               / r - 0.60 \
+x  =  8 + 5 * (  --------  )
+               \   0.30   /
+
+
+
+               / 0.7424 - 0.60 \
+x  =  8 + 5 * (  -------------  )
+               \      0.30     /
+
+
+
+x  =  10.3733 segundos
+
+
+
+
+
+() Diseño de la Simulación.
+---------------------------
+
+El desarrollo de un sistema de simulación puede ser algo largo. Para ejemplificar el funcionamiento del presente sistema se supondrán las siguientes condiciones iniciales. La caseta rápida está vacía, hay un auto al que se inicia el servicio de atención en cada una de las casetas generales y hay dos coches esperando en una de las casetas generales y tres en la otra. 
+
+Para obtener los resultados deseados se necesita conocer el estado del sistema en cada punto del tiempo. Se deben contabilizar los vehículos en la filas de cada caseta y los tiempos de servicio de los mismos. 
+
+En muchos de los ejemplo anteriores el sistema cambia solamente a intervalos regulares de tiempo. Para el presente problema, sin embargo, el estado cambia a intervalos de tiempo variables. El estado cambia cuando ocurre uno de los siguientes eventos, un vehículo nuevo llega o bien un vehículo paga en la caseta y sale del sistema. Es necesario registrar el estado del sistema solamente en estos puntos en el tiempo. Se debe determinar cuál de los procesos se presentará a continuación y cuándo. 
+
+Se presenta una simulación del presente sistema. La primera columna indica el tiempo general del sistema, en segundos. La segunda columna indica el tipo de evento que ocurre. Bajo los servidores se pone la hora en que terminará el servicio, en la fila se indica el número de clientes que esperan ser atendidos además del cliente que se encuentra recibiendo el servicio. Finalmente las útlimas columnas indican cuándo ocurrirá la siguiente llegada y hacia cuál de las casetas, la rápida o la general debe ir.
+
+
+-----------------------------------------------------------
+                ...Servidores...     ..Fila..   Sig.
+Tiempo Evento   R      G1     G2     R  G1 G2   Tiempo Tipo
+-----------------------------------------------------------
+00.00  x        x      09.49  04.02  0  2  3    00.49  R
+00.49  Llegada  32.60  09.49  04.02  0  2  3    03.08  G
+03.08  Llegada  32.60  09.49  04.02  0  3  3    09.82  R
+04.02  Salida   32.60  09.49  09.99  0  3  2    09.82  R
+09.49  Salida   32.60  24.35  09.99  0  2  2    09.82  R
+09.82  Llegada  32.60  24.35  09.99  1  2  2    12.03  G
+09.99  Salida   32.60  24.35  17.36  1  2  1    12.03  G
+12.03  LLegada  32.60  24.35  17.36  1  2  2    14.36  G
+14.36  Llegada  32.60  24.35  17.36  1  3  2    15.38  G
+15.38  Llegada  32.60  24.35  17.36  1  3  3    17.68  G
+17.36  Salida   32.60  24.35  29.85  1  3  2    17.68  G
+17.68  Llegada  32.60  24.35  29.85  1  3  3    19.94  G
+19.94  Llegada  32.60  24.35  29.85  1  4  3    30.09  G
+24.35  Salida   32.60  31.99  29.85  1  3  3    30.09  G
+29.85  Salida   32.60  31.99  33.09  1  3  2    30.09  G
+30.09  Llegada  32.60  31.99  33.09  1  3  3    30.33  G
+30.33  Salida   32.60  31.99  33.09  1  4  3    31.60  G
+31.60  Llegada  32.60  31.99  33.09  1  4  4    37.20  G
+31.99  Salida   32.60  39.90  33.09  1  3  4    37.20  G
+32.60  Salida   33.62  39.90  33.09  0  3  4    37.20  G
+33.09  Salida   33.62  39.90  36.34  0  3  3    37.20  G
+33.62  Salida   x      39.90  36.34  0  3  3    37.20  G
+36.34  Salida   x      39.90  48.73  0  3  2    37.20  G
+37.20  Llegada  x      39.90  48.73  0  3  3    39.98  G
+39.90  Salida   x      44.67  48.73  0  2  3    39.98  G
+39.98  Llegada  x      44.67  48.73  0  3  3    43.07  G
+43.07  Llegada  x      44.67  48.73  0  4  3    50.59  G
+44.67  Salida   x      53.56  48.73  0  3  3    50.59  G
+48.73  Salida   x      53.56  55.13  0  3  2    50.59  G
+50.59  Llegada  x      53.56  55.13  0  3  3    56.99  G
+53.56  Salida   x      61.31  55.13  0  2  3    56.99  G
+55.13  Salida   x      61.31  72.01  0  2  2    56.99  G
+56.99  Llegada  x      61.31  72.01  0  3  2    59.00  R
+59.00  Llegada  60.81  61.31  72.01  0  3  2    63.76  G
+-----------------------------------------------------------
+
+
+
+() Cálculo del Tiempo de Espera en Cada Caseta.
+-----------------------------------------------
+
+
+Considere la primera caseta general. El tiempo de espera promedio en esa caseta se calcula mediante la fórmula.
+
+
+                            Tiempo de espera total de todos
+                              los vehículos en esta fila
+Tiempo de espera promedio = -------------------------------
+                               Número total de vehículos
+                               atendidos en esta caseta
+
+
+
+Para obtener el número total de vehículos atendidos en esta caseta se deben contar el número de cambios que ocurrió en la columna de servidores G1. El tiempo de espera total es un poco más complicado de calcular. 
+
+Del tiempo 0.00 al tiempo 3.08 hay dos vehículos en fila, así que su tiempo será de: 2 * 3.08 = 6.16 segs
+
+Del tiempo 3.08 al tiempo 9.49 hay tres vehículos en fila, así que su tiempo será de: 3 * (9.49 - 3.08) = 19.23 segs
+
+Al continuar este proceso de cálculo para todos los intervalos de tiempo correspondientes se obtiene un total de 176.22 segs
+
+Por lo tanto:
+
+
+                              
+                              176.22 seg
+Tiempo de espera promedio = ----------------
+                              7 vehículos
+
+
+Tiempo de espera promedio = 25.17 segs
+
+
+
+Al realizar este proceso para las otras casetas se obtienen los siguientes tiempos.
+
+------------------------
+Caseta  Tiempo de Espera
+        (segundos)
+------------------------
+  R      7.59
+  G1    25.17
+  G2    19.99
+------------------------
+
+
+
+() Cálculo del Número Promedio de Vehículos en Cada Caseta.
+-----------------------------------------------------------
+
+De nuevo se mostrará el cálculo con la primera caseta general. Como se muestra en la simulación durante un total de 60 segundos en número de vehículos varía de 2 hasta un máximo de 4.
+
+La longitud de la fila es 2 durante un total de 11.4684 segundos:
+
+(3.08 - 0) + (14.36-9.49) + (39.98-39.90) + (56.99 - 53.56) = 11.4684
+
+que es 11.4684/60 = 0.1911 del tiempo total. La longitud de la fila es 3 durante un total de 40.8563 segundos que es 40.8563/60 = 0.6809 del tiempo total. La longitud es de 4 durante un total de 7.6753 segundos que es 7.6753/60 = 0.1279 del tiempo total. A continuación se presenta el tiempo de duración para cada cantida de clientes que se presentó en la fila.
+
+
+--------------------------------------
+Cantidad      Tiempo   Probabilidad
+en la fila    Total    Tiempo Total/60
+--------------------------------------
+   0          0.0000     0.0000
+   1          0.0000     0.0000
+   2         11.4684     0.1911
+   3         40.8563     0.6809
+   4          7.6753     0.1279
+--------------------------------------
+
+
+Con estos valores es posible calcular la longitud promedio de la fila, la cual estará dada por.
+
+
+Longitud promedio = 0 * (probabilidad de longitud 0)
+                  + 1 * (probabilidad de longitud 1)
+                  + 2 * (probabilidad de longitud 2)
+                  + 3 * (probabilidad de longitud 3)
+                  + 4 * (probabilidad de longitud 4)
+
+
+Longitud promedio = 0 * 0.0000
+                  + 1 * 0.0000
+                  + 2 * 0.1911
+                  + 3 * 0.6809
+                  + 4 * 0.1279
+
+
+Longitud promedio = 2.9365
+
+
+
+De esta forma en la primera caseta general el número promedio de vehículos que esperan en la fila durante los 60 segundos es de aproximadamente 3. Al realizar cálculos similares para las filas de las otras dos casetas se obtienen los siguientes resultados.
+
+
+------------------------
+Caseta   Número promedio
+         de vehículos
+------------------------
+  R      0.3796
+  G1     2.9365
+  G2     2.6656
+------------------------
+
+
+
+() Cálculo de la Utilización Promedio de Cada Caseta.
+-----------------------------------------------------
+
+Considere la caseta rápida. La utilización de esta caseta es la fracción de tiempo dada por la fórmula:
+
+
+                cantidad de tiempo que caseta está ocupada
+Utilización  =  ------------------------------------------
+                              tiempo total
+
+
+El valor del numerador se debe obtener de la simulación identificando los intervalos de tiempo durante los cuales la caseta está ocupada. Del tiempo 0.00 al tiempo 0.49 la caseta está desocupada. Del tiempo 0.49 al tiempo 33.62 la caseta está ocupada durante 33.62 - 0.49 = 33.13 segundos. Luego vuelve a ocuparse del tiempo 59 al tiempo 60. Por lo tanto la cantidad de tiempo que la caseta está ocupada está dada por 33.13 + 1 = 34.13
+
+
+                34.13
+Utilización  =  -----
+                60.00
+
+
+Utilización  =  0.5688
+
+
+De esta forma se puede estimar que la caseta rápida se encuentra en uso un 57.88% del tiempo. Al realizar un cálculo similar para las otras casetas se obtienen los siguientes resultados.
+
+
+--------------------
+Caseta   Utilización
+--------------------
+  R      0.5688
+  G1     1.0000
+  G2     1.0000
+--------------------
+
+
+
+() Consideraciones Adicionales.
+-------------------------------
+
+Es importante resaltar que las estadísticas específicas han sido obtenidas con respecto a las condiciones iniciales que se dieron. Cuando las simulaciones son muy pequeñas las condiciones iniciales tienen un efecto significativo sobre las condiciones finales. Sin embargo, si la simulación se realiza sobre un período de tiempo los suficientemente largo, entonces la simulación podrá llegar a un estado estable y las condiciones iniciales no serán de importancia.
+
+Una vez que se han obtenido las estadísticas finales se puede evaluar el nuevo sistema de utilizar una caseta rápida. Al examinar los tiempos de espera promedio se puede tomar la decisión si las casetas proporcionan un nivel de servicio aceptable. Al evaluar esta condición con los largos de fila promedio se puede tomar la decisión de probar otras simulaciones con más casetas generales. Finalmente el nivel de utilización muestra que las casetas generales se utilizan el 100% del tiempo, lo cual puede tener problemas con el cansancio del personal y otros elementos de recursos humanos.
+
+
+
+8. Resumen.
+===========
+
+En el presente capítulo se han presentado simulaciones que buscan maximizar las ganancias o minimizar costos. Para ello se consideran diferentes alternativas y se debe de seleccionar entre ellas la que mejor logre el objetivo propuesto. A diferencia del capítulo anterior, donde se hizo énfasis en las partes teóricas de la simulación en este capítulo se ha trabajado con elementos más prácticos y apegados a la vida real.
+
+Una vez más se muestra que aún con elementos prácticos, es muy difícil construir una solución analítica por lo que la simulación se convierte en una excelente ayuda para la toma de decisiones.
+
+
+
+ 
+
+9. Ejercicios
+=============
+
+
+() Ejercicio 1
+
+La Junta de Protección Social, encargada de la Lotería, está considerando una modificación del juego de lotería instantánea. Se desea creer una lotería en la que cada tarjeta de juego tenga tres filas de seis casillas cada una. En cada fila, una de esas 6 casillas cubre un dibujo una X, 2 casillas tienen la letra M y 1 casilla tiene la letra G. El jugador raspa una casilla en cada fila y se determina el premio con base en las siguientes condiciones. Si aparece una X en cualquier momento pierde. Si aparecen por lo menos 2 letras M gana $1. Si aparece dos letras G gana $5.
+
+(a) Aplique la teoría de las probabilidades para determinar la ganancia esperada del nuevo juego.
+
+(b) Realice 10 simulaciones manuales para determinar como funciona el juego anterior.
+
+(c) Mediante una simulación por computadora obtenga el valor del juego y determine el número de simulaciones mínimo para que concuerde con el valor real.
+
+
+() Ejercicio 2
+
+El gerente de una tienda de videos desea construir un modelo más realista de simulación para su tienda. Desea agregar como cambia la demanda durante los fines de semana e incluir el hecho que algunos de los videos no son devueltos al día siguiente. A continuación se presenta la demanda de cintas durante el fin de semana que incluye los días viernes, sábado y domingo. 
+
+-------------------------
+Demanda
+Fin Semana  Probabilidad
+-------------------------
+  0         0.05
+  1         0.10
+  2         0.20
+  3         0.40
+  4         0.25
+-------------------------
+
+
+Asímismo algunos de los clientes no devuelven las cintas en los días indicados, a continuación se presenta una tabla con la distribución de los atrasos en la devolución de videos.
+
+----------------------------
+Días de atraso  Probabilidad
+en devolución
+----------------------------
+  0             0.55
+  1             0.20
+  2             0.15
+  3             0.10
+----------------------------
+
+
+Para cualquier cinta no devuelta a tiempo se cobran $2 adicionales por cada día de atraso. 
+
+(a) Se puede resolver el problema anterior de forma analítica.
+(b) Construya un modelo de simulación.
+(c) Realice 10 simulaciones usando los números aleatorios del apéndice.
+
+
+
+() Ejercicio 3
+
+La gerencia de Hexxon Oil Company ha identificado 10 sitios prometedores para perforar pozos petroleros en un área de la vertiente norte de Alaska. Mediante extensos estudios, los geólogos estiman un 20% de probabilidades de que durante su vida activa uno de los pozos produzca entre 0 y 1 millón de barriles de petróleo, 50% de que produzca entre 1 y 2 millones de barriles y 30% de que genere entre 2 y 3 millones de barriles. Como los geólogos no pueden ser más precisos, la gerencia asume que la producción real dentro de cada intervalo es igualmente probable. Suponga que la perforación y operación de un pozo cuesta $1.4 millones durante su vida activa y que el precio de venta promedio de cada barril es de $20. 
+
+(a) Utilice la teoría de probabilidades para calcular la ganacia esperada de cada pozo y la ganacia total de los 10 pozos. Sugerencia: el precio promedio de barriles de un pozo se calcula sumando los resultados de multiplicar el número promedio de barriles en cada uno de los tres intervalos por las probabilidades esperadas.
+
+(b) Efectue 10 simulaciones para calcular la ganacia esperada del pozo. Use los números aleatorios uniformes [0,1] del apéndice iniciando en la posición A-5 y siguiendo los números por columnas. ¿Cuál es su estimación de la ganancia esperada de los 10 pozos?
+
+
+
+() Ejercicio 4
+
+El gerente de Lácteos CRU necesita reemplazar la unidad de refrigeración para almacenar mantequilla. Debe escoger entre una unidad capaz de almacenar 1000 libras o una unidad capaz de almacenar 1100 libras. Para decidir si la unidad más grande es necesaria, se desea saber que tan seguido puede ocurrir una escasez de producto de manera que la demanda supere la cantidad que se tiene almacenada. El análisis estadístico ha revelado que la demanda de mantequilla sigue una distribución normal con una media de 100 libras al día y una desviación estándar de 10 libras. Cada lunes en la mañana se coloca un pedido por la cantidad que sea necesaria para llenar la unidad. Ese pedido es satisfecho el miércoles por la mañana. Por ejemplo, suponga que hay 250 libras de mantequilla en el congelador el lunes en la mañana. Con el refrigerador de 1000 libras se coloca un pedido de 750 libras. Con el congelador de 1100 libras se coloca un pedido de 850 libras.
+
+(a) Determine todas las variables de entrada y número aleatorios que necesita para realizar una simulación de este sistema.
+
+(b) Efectúe una simulación para un período de 52 semanas. Inicie la simulación con las condiciones iniciales que se tienen 250 libras de mantequilla almacenada. Determine cuál de las dos opciones anteriores produce menos faltante de inventario.
+
+
+
+
+() Ejercicio 5
+
+En la ciudad de Orlando se está considerando construir otro aeropuerto para vuelos dentro de Estados Unidos, con una pista de despeguq y aterrizaje. La pista operará durante las horas de 6:00am hasta la media noche o sea las 12pm. Se espera que las aeronaves aterricen durante este horario de acuerdo con un proceso Poisson a una tasa promedio de 30 por hora. Se supone que el tiempo transcurrido entre las salidas de las aeronaves sigue una distribución exponencial con una media de 1 minuto. El análisis de datos de operaciones similares indica que el tiempo requerido para aterrizar o despegar y salir de la pista hacia los puentes de descarga se distribuye normalmente con una media de 90 segundos y una desviación estándar de 30 segundos. Se desea saber cúal es el tiempo promedio que tarda un avión que llega en esperar pista y la misma estadística para un vuelo que sale. Suponga que las aeronaves usan la pista sobre la base de que el primero en llegar es el primero en atenderse, sin importar el que la nave esté despegando o aterrizando. Suponga también que la simulación inicia sin ninguna aeronave en el sistema. 
+
+(a) Formule un modelo de simulación adecuado para determinar como manejar la cola de aviones que llegan y salen. Puede trabajar el tiempo en minutos o fracciones de minutos.
+
+(b) Construya un sistema de simulación para el problema anterior y determine el largo promedio de la cola general, número promedio de despegues y aterrizajes y el tiempo promedio que tarda un avión en despegar o en aterrizar.
+
+
+() Ejercicio 6
+
+En la sala de Emergencias del Hopital Vista de la Montaña, las víctimas que requieren servicios operatorios inmediatos se dividen actualmente en dos grupos. Los pacientes de la clase 1 son aquellos que, en general, requieren menos tiempo quirúrgico pero que deben atenderese lo más pronto posible y a quienes se les otorga la más alta prioridad para una sala de operaciones. Los pacientes de la clase 2 son aquellos que se espera que se recuperen completamente tan pronto como reciban una operación en una cantidad de tiempo razonable y por tanto se les da una prioridad menor. El análisis de datos ha revelado que en las tardes más ocupadas, de viernes y sábados, los pacientes que requieren operaciones llegan de acuerdo con un proceso Poisson en una proporción aproximada de 2 por hora. Hay aproximadamente 3 veces más pacientes de clase 2 que de clase 1. Los datos pasados también indican que la cantidad de tiempo necesaria para operar estos pacientes y preparar la sala de operaciones para el siguiente paciente sigue una distribución exponencial con una media de 30 minutos para la clase 1 y 60 minutos para la clase 2. Se desea estimar la cantidad promedio de tiempo que los pacientes de clase 1 y clase 2 tienen que esperar antes de entrar a una sala de operaciones. Suponga que la sala de operaciones está vacía y que no espera ningún paciente al inicio de la simulación.
+
+(a) Indique todos lo elementos que deben ser tomados en cuenta para realizar una simulación. Es mejor una simulación de tiempo fijo o de tiempo variable para este problema.
+
+(b) Construya una simulación manual del problema y calcule la cantidad de tiempo promedio (en horas) que un paciente clase 1 y clase 2 tiene que esperar antes de que esté disponible una sala de operaciones.
+
+
+
+() Ejercicio 7
+
+La empresa Comidas Rápidas S.A. desea determinar el impacto de convertir su ventana de servicio para vehículos en dos secciones. Una ventana de pedidos donde los clientes solicitan la comida y la pagan y una ventana de entregas, donde a los clientes se les entrega la comida. El camino de entrada a la ventana de pedidos está diseñada para un máximo de 10 carros, después de los cuales los carros que llegan deben retirarse. Los carros llegan de acuerdo con un proceso Poisson a la tasa promedio de 180 por hora durante el período de almuerzo de 12:00 mediodía a 2:00pm. El camino de entrada a la ventana de recepción admite tres carros. El tiempo promedio para hacer un pedido, pagar y recibir el cambio sigue una distribución normal con una media de 25 segundos y una desviación estándar de 12 segundos. La cantidad de tiempo que toma recibir la comida también varía de acuerdo a una distribución normal. En promedio, un pedido se surte en 30 segundos con una desviación estándar de 15 segundos. Se desea conocer la cantidad de tiempo que una persona debe pasar en todo el proceso. Construya un sistema de simulación que le permita calcular los siguientes datos
+(a) Tiempo de espera promedio en el sistema.
+(b) Tiempo de espera promedio en la ventanilla de pedidos.
+(c) Tiempo de espera promedio de la ventanilla de pedidos a la ventanilla de entrega.
+(d) Largo promedio de la fila antes de llegar a la ventanilla de pedidos.
+(e) Largo promedio de la fila Total.
+
+
+
+() Ejercicio 8
+
+La División de Control de Tráfico está planeando poner un semáforo en una intersección de dos calles de un solo sentido. El análisis de datos ha revelado que el tráfico de horas pico llega de acuerdo con un proceso Poisson a una tasa promedio de un carro cada 5 segundos en la dirección Norte-Sur y un carro cada 10 segundos en la dirección Este-Oeste. La experiencia anterior también indica que el número máximo de carros que pueden pasar por la intersección en la dirección Norte-Sur puede aproximarse con precisión mediante una distribución normal con un promedio de 15 carros y una desviación estándar de 5 carros. El gerente de operaciones desea evaluar el efecto de establecer una duración de 30 segundos para la luz verde en la dirección Norte-Sur y 15 segundos en la dirección Este-Oeste. Específicamente, se desea saber respecto de para ambas carreteras el tiempo promedio que un auto debe esperar en la intersección. 
+
+(a) Diseñe un sistema de simulación y brinde la respuesta a este problema.
+
+(b) Busque un semáforo concurrido y observe el comportamiento de los carros. Observe que cuando el primer carro se mueve, el segundo sufre un atraso por culpa del primero, y el tercero sufre un atraso por culpa del primero y el segundo. ¿Cómo de puede modelar este atraso esto en un sistema de simulación?
+
+
+
+() Ejercicio 9
+
+Una línea de ensamblaje en una fábrica consiste en 10 estaciones de trabajo serial. Cada 2 minutos, un armazón para el producto entra en la primera estación de trabajo y debe pasar entonces a través de las 10 estaciones de trabajo, cada una de las cuales le añade un componente. Antes de la operación de ensamblado en cada estación de trabajo se realiza una inspección que requiere una cantidad aleatoria de tiempo que, basándose en datos anteriores, se distribuye uniformente entre 0.25 y 0.5 minutos. Generalmente, el 5% de los armazones se rechazan en cada estación. Un armazón rechazado en cualquier estación de trabajo se devuelve a la anterior estación para su reelaboración. Los armazones rechazados en la estación 1, sin embargo se descartan. Los datos pasados muestran que el tiempo de ensamblado en cada estación se distribuye normalmente con una media de 1.5 minutos y una desviación estándar de 0.3 minutos. Asímismo, toma 2 minutos transferir el armazón de una estación a otra.
+
+(a) Construya una simulación para establecer el tiempo promedio que lleva un ensamblaje de principio a fin.
+
+(b) Suponga que el tiempo promedio de un ensamblaje de principio a fin tarda 50 minutos con una desviación estándar de 10 minutos. Establezca un intervalo de confianza del 95% para la estimación del tiempo promedio a fin de que el armazón recorra las 10 estaciones de trabajo.
+
+
+
+() Ejercicio 10
+
+Cada lunes por la mañana, una farmacia recibe 115 galones de una medicina que tiene una caducidad de 1 semana. Cualquier cantidad no vendida para el siguiente domingo se devuelve al proveedor para su desecho. Se ha observado una disminución en el número de clientes. Estos compran la medicina en cualquier otro lado debido al déficit de la tienda. Para estimar la frecuencia con la que ocurren tales déficits, la operación semanal de la tienda se ha simulado con la siguiente distribución de probabilidad de la demanda diaria.
+
+---------------------
+Demanda  Probabilidad
+---------------------
+[10,12[  0.10
+[12,14[  0.20
+[14,16[  0.30
+[16,18[  0.20
+[18,20[  0.20
+---------------------
+
+
+(a) Realice una simulación para establecer el déficit promedio.
+
+(b) Al ejecutar el problema durante 50 semanas se observó un déficit en 6 semanas. Obtenga un intervalo de confianza del 95% para este resultado.
+
+
+
+\end{verbatim}

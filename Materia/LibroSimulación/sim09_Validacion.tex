@@ -1,0 +1,791 @@
+\chapter{Validación y Estabilización}
+\begin{verbatim}
+    
+  ___
+ / _ \
+| (_) |
+ \__, |
+   /_/
+
+__     __    _ _     _            _   __
+\ \   / /_ _| (_) __| | __ _  ___(_) /_/  _ __    _   _
+ \ \ / / _` | | |/ _` |/ _` |/ __| |/ _ \| '_ \  | | | |
+  \ V / (_| | | | (_| | (_| | (__| | (_) | | | | | |_| |
+   \_/ \__,_|_|_|\__,_|\__,_|\___|_|\___/|_| |_|  \__, |
+                                                  |___/
+ _____     _        _     _ _ _               _   __
+| ____|___| |_ __ _| |__ (_) (_)______ _  ___(_) /_/  _ __
+|  _| / __| __/ _` | '_ \| | | |_  / _` |/ __| |/ _ \| '_ \
+| |___\__ \ || (_| | |_) | | | |/ / (_| | (__| | (_) | | | |
+|_____|___/\__\__,_|_.__/|_|_|_/___\__,_|\___|_|\___/|_| |_|
+
+
+
+
+Contenido
+=========
+
+1. Introducción.
+2. Cálculo del Número de Corridas.
+3. Intervalos de Confianza.
+4. Reducción de la Variancia.
+5. Técnicas de Monte Carlo.
+6. Validación de Resultados.
+7. Análisis de Sensibilidad.
+8. Monitoreo.
+9. Resumen.
+10. Ejercicios.
+
+
+
+
+1. Introducción.
+================
+
+El principal objetivo al construir un sistema de simulación es que el modelo desarrollado produzca resultados estadísticos iguales a los del sistema real. Uno de los factores que afecta en forma directa esos resultados es el tiempo de ejecución del programa. Cada ejecución del programa de simulación recibe el nombre de réplica. Al realizar una réplica el resultado promedio de las variables tiene un período de inestabilidad y conforme transcurre el tiempo esas variables tienden hacia un estado estable y es entonces cuando los valores de las variables son confiables.
+
+Existen varias formas para intentar estabilizar el modelo se simulación lo antes posible. La primera forma consiste en utilizar réplicas lo suficientemente largas para que los datos del período de transición resulten insignificantes. Sin embargo existen sistemas cuyos períodos de inestabilidad son muy prolongados, como segunda forma, se pueden utilizar condiciones iniciales favorables que contribuyan hacia el estado estable. Desafortunadamente, no siempre es sencillo encontrar dichos valores iniciales. Una tercera opción consiste en tratar de determinar en qué momento se ha llegado al estado estable en función de los resultados obtenidos. Una de las formas más usuales es graficando el valor de las variables más significativas y cuando están tengan una variancia pequeña significa entonces que se ha llegado al estado estable.
+
+
+
+
+2. Cálculo del Número de Corridas.
+==================================
+
+El tamaño de una corrida o réplica de un sistema de simulación depende principalmente de la clase de distribuciones que se intenta simular, de la bondad de ajueste del generador de números aleatorios uniforme que son la base para producir las otras distribuciones y de las condiciones iniciales del sistema.
+
+En forma general, por medio del Teorema de Tchebysheff nos permite establecer una número para determinar el número de veces que se debe ejecutar una simulación.
+
+
+           1 
+n  =  ----------
+      alfa * k^2
+
+
+donde:
+
+alfa : nivel del valor alfa, 1 - alfa es el nivel de confianza de la
+       prueba estadística.
+
+k    : número de desviaciones estándar permitido sobre la media
+       de la variable que se desea simular.
+
+
+
+Si se conoce que las distribuciones de las variables que se desean simular siguen una distribución aproximadamente normal, entonces el número óptimo de repeticiones se puede establecer mediante la fórmula:
+
+
+              __ 2
+       __2     /
+      (_)  *  /_
+                alfa/2
+n  =  -----------
+            2
+           k
+
+
+donde:
+
+o^2   : variancia de la distribución
+
+Z    : es el estadístico de la distribución normal estándar.
+
+k    : número de desviaciones estándar permitido sobre la media
+       de la variable que se desea simular.
+
+
+
+Cuando los datos de la distribución a simular se obtuvieron de una población de menos de 30 observaciones, entonces para el cálculo óptimo de las repeticiones se debe utilizar la distribución de t-student.
+
+
+             _|_ 2
+       __2    |
+      (_)  *  |_
+                (m-1, alfa/2)
+n  =  ---------------
+            2
+           k
+
+
+donde:
+
+o^2  : variancia de la distribución
+
+t    : es el estadístico de la distribución t-student
+
+m-1  : total de observaciones menos una, con las cuales se calcularon 
+       los estadísticos
+
+k    : número de desviaciones estándar permitido sobre la media
+       de la variable que se desea simular.
+
+
+
+Esta segunda fórmula se emplea para calcular el valor de n óptimo basándose en una réplica de tamaño m. Como el valor de m es menor que 30, esta corrida de pequeño tamaño se suele conocer como una prueba piloto y su función es calcular rápidamente un valor de n.
+
+
+
+Ejemplo:
+--------
+
+Se desea encontrar el número de repeticiones que se debe realizar en una simulación. Para este caso se desea que el valor producito no difiera en más de 0.166 desviaciones estándar de su valor real, con un nivel de confianza del 95%.
+
+
+Si utilizamos la fórmula general de Tchebysheff se tiene que:
+
+
+           1 
+n  =  --------- 
+      alfa * k^2
+
+
+
+           1 
+n  =  --------------
+      0.05 * 0.166^2
+
+
+
+n  =  725.7947  
+n  =  726 repeticiones
+
+
+
+
+
+Si usamos la fórmula la aproximación normal se tiene que:
+
+
+              __ 2
+       __2     /
+      (_)  *  /_
+                alfa/2
+n  =  -----------
+            2
+           k
+
+
+
+
+             
+      1^2 * 1.96^2
+n  =  ------------
+        0.166^2
+
+
+
+
+
+n  =  139.4107
+n  =  140 repeticiones.
+
+
+
+
+Como podemos observar los dos valores anteriores son dados a priori. Es decir se establecen antes de realizar la simulación. De esta forma si las condiciones iniciales son inadecuadas o si las etapas de estabilización duran más de lo planeado puede que el número calculado sea insuficiente. 
+
+
+Una forma más segura de determinar el momento en que el sistema entra en estado estable se consigue al graficar a través del tiempo el comportamiento de los valores promedio que se desean obtener. La forma típica de este comportamiento es una función que se va estrechando hacia la derecha. A continuación se presenta un ejemplo de este comportamiento.
+
+
+
+_
+x|          x1
+ |          .
+ |         . .                 x3
+ |        .   .                 .
+ |       .     .              .   .
+ |      .       .           .      .         x5
+ |     .         .        .          .      .
+ |_ _ ._ _ _ _ _ _._ _ _._ _ _ _ _ _ _._ _._ _._ _ _ 
+ |   .             .  .                 .       .
+ |  .               .                  x4        x6
+ | .               x2
+ |.
+ |
+ |____________________________________________________
+                                                      n
+
+
+
+
+3. Intervalos de Confianza.
+===========================
+
+Uno de los métodos más usados son los intervalos de confianza típicos de las pruebas estadísticas. Para la determinación de estos intervalos de confianza se utiliza el Teorema del Límite Central, el cual establece que la suma de "n" variables aleatorias independientes, obtenidas de una población con una media "u" y una desviación estándar de "o" es aproximadamente normal con las siguientes caractarísticas:
+
+Media =  u
+
+Variancia =  o^2 / n
+
+Desviación Estándar = o / sqrt(n)
+
+
+
+Suponga que se han realizado "n" repeticiones de un experimento de simulación. Para cada una de esas repeticiones se han encontrado los siguientes valores para la variable "x".
+
+x = { x1 , x2 , ... , xn }
+
+
+Por lo tanto, se puede deducir también a partir del Teorema del Límite Central que la variable aleatoria que se presenta a continuación también cumple con las caractarísticas anteriormente descritas.
+
+
+
+ _     x1 + x2 + ... + xn
+ x  =  ------------------
+               n
+
+
+
+Por lo tanto para convertir esta distribución normal en una distribución normal estándar, N(0,1), se utiliza el proceso de transformación:
+
+        _
+        x  -  u
+z  =  -----------
+      o / sqrt(n)
+ 
+
+
+
+Si se utiliza un valor de alfa igual "a" se puede establecer el siguiente intervalo de confianza dado por 1  a.
+
+
+                  _                     
+   /              x  -  u                \  
+P ( -z(a/2) <=  -----------   <=  z(a/2)  )  =  1 - a
+   \             o/sqrt(n)               /
+           
+
+
+
+   / _     o * z(a/2)              _     o * z(a/2) \
+P (  x  -  ----------   <=  u  <=  x  +  ----------  )  =  1 - a
+   \         sqrt(n)                       sqrt(n)  /
+
+
+
+
+
+Es importante resaltar dos cualidades importantes de esta fórmula, la primera implica que conforme mayor sea el valor de "n" más cerca va a estar el promedio muestral del promedio poblacional. Es decir:
+
+          
+            / o * z(a/2) \
+ Límite    (  ----------  ) =  0
+ n -> +oo   \   sqrt(n)  /
+                           
+
+
+
+La segunda cualidad indica que si se desea reducir el error de cálculo a la mitad, se debe aumentar el tamaño de "n" en una proporción de 4 veces, puesto que:
+
+
+ /   1    o * z(a/2)  \        /    o * z(a/2)  \
+(   --- * ----------   )  =   (    -----------   )
+ \   2      sqrt(n)   /        \    sqrt(4*n)   /
+
+
+
+
+Ejemplo:
+--------
+
+Suponga que la simulación de un proyecto de inversión arrojó los siguientes resultados:
+
+n = 100.00
+_
+x =  13.37
+
+s =   6.71
+
+
+Utilizando los resultados presentados se desea construir un intervalo con un 95% de confianza para establecer el verdadero valor del promedio.
+
+
+   / _     o * z(a/2)              _     o * z(a/2) \
+P (  x  -  ----------   <=  u  <=  x  +  ----------  )  =  1 - a
+   \         sqrt(n)                       sqrt(n)  /
+
+
+
+
+   /           6.71 * 1.96                        6.71 * 1.96 \
+P (  13.37  -  -----------   <=  u  <=  13.37  +  -----------  )  =  0.95
+   \            sqrt(100)                          sqrt(100)  /
+
+
+
+   /                                            \
+P (  13.37 -  1.3152  <=  u  <= 13.37 +  1.3152  )  =  0.95
+   \                                            /
+
+
+
+   /                             \
+P (  12.0548  <=  u  <=  14.6852  )  =  0.95
+   \                             /
+
+
+
+
+Por lo tanto se puede concluir con un 95% de confianza que el verdadero valor de la variable que nos interesa se encuentra en el intervalo [12.0548 , 14.6852 ].
+
+
+Asímismo para disminuir el largo del intervalo a la mitad sería necesario aumentar el valor de "n" en una proporción de 4 veces por lo que se necesitaría un nuevo valor con n=400.
+
+
+
+
+4. Reducción de la Variancia.
+=============================
+
+Cuando se construye un modelo de simulación una gran parte del tiempo se emplea en la etapa de recolección de datos, análisis y desarrollo y en la programación del mismo. Sin embargo suele dejarse poco tiempo para probar que el sistema funciona correctamenta. Dado que la información de entrada es una variable aleatoria, entonces de igual forma la información de salida es una variable aleatoria. Así un programa de simulación solo puede producir un estadístico que estima la respuesta correcta del sistema.
+
+Para que el resultado de una simulación sea estadísticamente preciso, se deben especificar claramente la longitud de cada corrida, el número de réplicas y como se identificó el período estable. Existen unas técnicas conocidas como métodos para la reducción de la variancia que ayudan a disminuir el tamaño de los intervalos finales de confianza. 
+
+Estas diferentes técnicas de reducción de variancia ocasionan una reducción en el tiempo total de la simulación mediante la disminución del tamaño de una corrida y por lo tanto dismuyen el tiempo computacional que se utiliza. Básicamente se pretende introducir distorsiones del modelo original para producir simulaciones de bajo costo computacional.
+
+
+
+() Números Aleatorios Complementarios.
+--------------------------------------
+
+Se busca introducir una correlación negativa entre los números aleatorios utilizados para generar las réplicas. A este método se le suele llamar tambíen técnica de reducción de la variancia de Monte Carlo.
+
+Una primera forma de generar las correlaciones negativas consiste en generar un número aleatorio r(i) y en la siguiente ocasión en lugar de generar un núevo número se utiliza el valor de 1 - r(i). Como en simulaciones complejas puede ser difícil llevar el control de los números y sus complementos se suele utilizar también una segunda técnica.
+
+La segunda forma de generar correlaciones negativas consiste en correr el modelo, primero con números aleatorios r(i), se obtiene un estimador y(1) del parámetro estudiado y después se vuelve a correr el modelo utilizando una secuencia de números de la forma 1 - r(i) para obtener un estimador y(2) del modelo. El valor deseado se obtiene del promedio de y(1) y y(2).
+
+
+
+() Números Aleatorios Históricos.
+---------------------------------
+
+Una práctica útil cuando se desarrolla un modelo de simulación consiste en la utilización de datos históricos, los cuales pueden ser archivados y utilizados posteriormente. Son especialmente útiles cuando se desean comparar dos o más alternativas.
+
+
+() Muestreo Clasificado.
+------------------------
+
+Se observa un resultado parcial de la corrida, si los datos producidos son "interesantes" se continua con esta corrida en caso contrario se descarta.
+
+
+() Muestreo Estratificado.
+-------------------------
+
+Se trata de dividir un modelo complejo en modelos más pequeños y controlables para luego unir las variables de todos los modelos.
+
+
+() Muestreo Sesgado.
+--------------------
+
+Se distorsionan las probabilidades del modelo para que los eventos de interés ocurran de modo más frecuente. Los resultados obtenidos presentarán también una distorsión, la cual puede ser corregible o no. Sin embargo este método sirve para revisar el funcionamiento del modelo.
+
+
+() Control Analítico.
+---------------------
+
+Se trata de reducir el modelo de simulación al incluir resultados analíticos. Por ejemplo si se trata de un sistema de colas y se puede eliminar una de ellas el modelo se reduce en complejidad.
+
+
+
+5. Técnicas de Monte Carlo.
+===========================
+
+A continuación se presenta un ejemplo de la técnica de reducción de la variancia de Monte Carlo. Suponga que se tiene una distribución exponencial con parámetro de B=1.
+
+
+
+         /  (1/B) * e^(-x/B)   si x >= 0
+f(x) =  (
+         \  0                  si x <  0
+
+
+
+
+         /  e^(-x)  si x >= 0
+f(x) =  (
+         \  0       si x <  0
+
+
+
+
+Como se ha demostrado, la distribución acumulada de esta distribución está dada por:
+
+
+          /  0             si  x < 0
+F(x)  =  (
+          \  1 - e^(-x/B)  si  x >= 0
+
+
+
+          /  0           si  x < 0
+F(x)  =  (
+          \  1 - e^(-x)  si  x >= 0
+
+
+
+
+Y al aplicar la técnica de la distribución inversa se pueden obtener valores por medio de la siguiente fórmula.
+
+x  =  -B * ln(1 - r)
+
+x  =  -1 * ln(1 - r)
+
+x =   - ln(1 - r)
+
+
+
+Además sabemos que tanto la media como la variancia y la desviación estándar son igualea a lambda, que en este caso vale 1.
+
+E(x)  = B  =  1
+
+V(x)  = B^2  =  1
+
+de(x) = B  =  1
+
+
+
+Para el presente ejercicio supondremos que se desconoce el valor de la esperanza de la distribución y queremos encontrarlo por medio de simulación. Para ello se generan 10 observaciones aleatorias y se obtiene el valor promedio.
+
+
+--------------------
+ i    r(i)     x(i)
+--------------------
+ 1   0.7427   1.3574
+ 2   0.9189   2.5124
+ 3   0.0276   0.0280
+ 4   0.2257   0.2557
+ 5   0.4569   0.6105
+ 6   0.4275   0.5577
+ 7   0.4434   0.5859
+ 8   0.0455   0.0466
+ 9   0.4310   0.5638
+10   0.8126   1.6744
+--------------------
+       E(x) = 0.8192
+--------------------
+
+
+
+Al utilizar ahora la técnica de Monte Carlo se obtienen las siguientes observaciones.
+
+
+----------------------------------------
+ i    r(i)     x(i)      1-r(i)    x(i)
+----------------------------------------
+ 1   0.7427   1.3574     0.2573   0.2975
+ 2   0.9189   2.5124     0.0811   0.0845
+ 3   0.0276   0.0280     0.9724   3.5901
+ 4   0.2257   0.2557     0.7743   1.4887
+ 5   0.4569   0.6105     0.5431   0.7833
+ 6   0.4275   0.5577     0.5725   0.8499
+ 7   0.4434   0.5859     0.5566   0.8132
+ 8   0.0455   0.0466     0.9545   3.0892
+ 9   0.4310   0.5638     0.5690   0.8417
+10   0.8126   1.6744     0.1874   0.2075
+----------------------------------------
+       E(x) = 0.8192       E(x) = 1.2046
+----------------------------------------
+
+
+
+
+Ahora al combinar las dos simulaciones se tiene que:
+
+
+       0.8192 + 1.2046
+E(x) = ---------------
+              2
+
+
+
+E(x) = 1.0119
+
+
+
+Que está mucho más cerca de 1 que es el valor real de este proceso.
+
+
+
+
+
+6. Validación de Resultados.
+============================
+
+Al usar un sistema de simulación para estudiar un sistema complejo encontramos frecuentemente los siguientes errores:
+() Errores en los datos utilizados.
+() Errores de diseño.
+() Errores de programación.
+() Errores en el uso del modelo.
+() Errores en la interpretación de los resultados.
+
+Evaluar un modelo significa desarrollar un nivel de confianza aceptable de modo que las inferencias obtenidas a través del modelo sean aplicables al modelo real. Para ello se deben desarrollar las tareas de validación y verificación.
+
+
+() Verificación del modelo computacional.
+-----------------------------------------
+
+Al igual que cualquier programa computacional se deben aplicar las técnicas clásicas de validación, revisión y corrección.
+
+
+() Validación del modelo contra el mundo real.
+----------------------------------------------
+
+Para ello se suelen utilizar las siguientes pruebas estadísticas.
+
+Pruebas de estimaciones de parámetros de la población conocidas como pruegas F, t-student y normales.
+
+Pruebas de estimaciones de parámetros de una población conocidas como pruebas de medias de Mann-Whitney.
+
+Pruebas de ajuste de ji-cuadrado y Kolmogorov-Smirnov para las variables de entrada y los resultados conocidos.
+
+
+
+
+7. Análisis de Sensibilidad.
+============================
+
+Se trata de experimentar con cada una de las variables aleatorias para determinar que cambios producen sobre el modelo al realizar cambios sobre el comportamiento de las mismas. Se trata de identificar que tan sensible es el modelo simulado ante cambios de las variables aleatorias. En este caso se deben diferenciar las variables controladas sobre las variables de ambiente. Las variables controladas son aquellas sobre las que el modelo real tiene algún nivel de control. Sobre las variables de ambiente existe muy poco control.
+
+
+
+8. Monitoreo.
+=============
+
+Los sistemas reales son dinámicos por ello es importante llevar un control estricto de los cambios que ocurren en ellos para implementarlos inmediatamente en el modelo de simulación.
+
+
+
+9. Resumen.
+===========
+
+Todo modelo de simulación pasa por una etapa de inestabilidad en la cual los resultado producidos no son estadísticamente significativos. Se debe de tratar de construir modelos que pasen a una etapa estable lo más rápido posible. Para ello es importante determinar a partir de cuando es que se está en una etapa estable.
+
+Una vez que se ha producido los resultados puntuales del modelo estos es importante construir un intervalo de confianza estadístico para determinar que tan cerca estamos de una solución real. Entre mayor sea la variancia del modelo de mayor tamaño serán los intervalos.
+
+Para tratar de reducir la variancia del modelo para obtener valores estadísticos de forma rápida y confiable. Para ello se suelen usar las siguientes técnicas:
+
+() Números Aleatorios Complementarios.
+() Números Aleatorios Históricos.
+() Muestreo Clasificado.
+() Muestreo Estratificado.
+() Muestreo Sesgado.
+() Control Analítico.
+
+Finalemte se debe realizar una validación de resultados para tener cierto nivel de confianza que el comportamiento del modelo se acerca al comportamiento de la realidad.
+
+El análisis de sensibilidad nos indica que variables son las producen los mayores cambios en el modelo y el monitoreo del modelo real nos permite introducir nuevos cambios al modelo computacional.
+
+
+ 
+10. Ejercicios.
+==============
+
+
+
+() Ejercicio 1
+
+Al correr un programa de simulación 100 veces se obtuvieron los siguientes resultados para una variable de importancia. Determine un intervalo de confianza del 95% para esta variable
+
+
+
+-----------------------------------------------
+30,6933   29,0595   32,3850   28,7309   25,7753
+34,5834   34,2752   31,3562   30,0277   26,8245
+35,6341   35,1178   38,0857   32,2751   30,2866
+23,0467   30,0020   31,7695   19,8243   30,8458
+26,6574   36,8105   23,9946   35,5460   26,1369
+26,4297   27,0984   33,8164   35,3181   31,5138
+30,8352   27,5527   26,9094   29,1123   19,3274
+36,7421   30,1805   24,5066   21,8671   38,4638
+30,7349   32,2082   35,9370   32,6596   35,4755
+27,0041   20,1198   23,7446   30,7491   26,7075
+
+31,0055   24,7715   29,8361   37,8295   34,1502
+29,4597   32,2603   35,9092   34,6298   30,9091
+29,8252   22,3716   37,0095   26,5305   29,7746
+30,8042   25,5394   26,1444   30,0935   21,0170
+26,3136   26,8277   31,5989   29,4283   27,6852
+29,2987   29,7200   32,1896   29,2512   28,5687
+29,4137   34,5939   31,7882   34,3491   28,9162
+35,0928   25,9367   25,3774   33,7042   29,4217
+31,9898   30,2341   24,5318   24,2084   26,7281
+27,7196   36,3965   39,4927   28,6606   35,0026
+-----------------------------------------------
+
+
+
+
+
+
+() Ejercicio 2
+
+Al ejecutar un experimento 100 veces, se obtuvieron los siguientes resultados. Construya un intervalo de confianza del 95%.
+
+n = 100.00
+_
+x =  18.88
+
+s =   2.71
+
+
+
+() Ejercicio 3
+
+Se tiene un modelo computacional en el cual, de 100 simulaciones realizadas en 30 ocasiones ocurrió una interferencia. Si se supone que es un modelo binomial determine un intervalo de confianza del 95% para este experimento.
+
+
+
+() Ejercicio 4
+
+Se tiene un sistema de simulación de colas. Al ejecutar este sistema se obtuvieron los siguientes tiempos de espera para los clientes del sistema. Para los tiempos de espera en la cola mostrados a continuación, determine un intervalo de confianza del 95% para el tiempo de espera promedio E(w).
+
+-----------------------------------------------
+Cliente Espera   Ciente Espera   Cliente Espera
+     1   0          11   0           21  15
+     2  10          12  15           22  20
+     3  12          13   0           23   0
+     4   8          14   0           24  10
+     5   0          15  18           25  18
+     6   0          16  14           26   0
+     7  19          17   0           27   0
+     8  24          18  19           28  15
+     9  30          19  23           29  18
+    10  28          20  25           30   0
+_______________________________________________
+
+
+
+
+() Ejercicio 5
+
+A continuación se muestra el largo de una cola durante 30 lapsos de tiempo. Determine un intervalo de confianza del 95% para el largo promedio de la cola.
+
+------------------------------
+ No   w     No   w     No   w
+  1   2     11   6     21   6
+  2   3     12   4     22   8
+  3   4     13   0     23  10
+  4   4     14   3     24  11
+  5   3     15   6     25  12
+  6   0     16   8     26   9
+  7   5     17   8     27   8
+  8   6     18   9     28   6
+  9   7     19   5     29   3
+ 10   6     20   0     30   0
+------------------------------
+
+
+
+
+() Ejercicio 6
+
+Suponga en el ejercicio anterior que cada vez que la cola llega a 0 inicia un nuevo proceso de simulación. 
+
+a. Para cada micro-simulación que encuentre en el modelo calcule el largo promedio de cola. Luego calcule el largo promedio total del sistema.
+
+b. Utilizando la distribución normal calcule un intervalo de confianza del 95%.
+
+c. Compare estos resultados con los resultados del ejercicio anterior y formule sus comentarios.
+
+
+
+
+() Ejercicio 7
+
+A continuación se muestra una distribución exponencial de parámetro de B = 1.
+
+
+         _
+        |     1      -x/B
+        |    ---  * e         si x >= 0
+        |     B
+f(x) =  |
+        |
+        |     
+        |_    0               si x <  0
+
+
+
+Tal como se mostró se sabe que:
+
+E(x)  = 1
+
+V(x)  = 1
+
+de(x) = 1
+
+
+a. Realice un nuevo ejercicio, pero en este caso utilice 30 valores aleatorios en el caso simple y 60 valores con la técnica de Monte Carlo para calcular el valor del promedio.
+
+b. Con base en los datos y tablas dadas anteriormente calcule el valor de la variancia y la desviación estándar.
+
+
+
+
+() Ejercicio 8
+
+Se tiene la siguiente distribución de probabilidad:
+
+        _
+       |
+       |  1 + x   si -1 <= x <= 0
+f(x) = |
+       |  1 - x   si  0 <= x <= 1
+       |_
+
+
+a. Calcule la esperanza, la variancia y la desviación estándar de esta distribución de probabilidad.
+
+b. Utilizando la técnica de reducción de la variancia de Monte Carlo, utilice 30 números aleatorios y sus respectivos complementos para encontrar el valor del promedio.
+
+
+
+
+() Ejercicio 9
+
+Se tiene la siguiente distribución de probabilidad:
+
+         _
+        |
+        |   1
+        |  ---     si 1 <= x <= +oo
+        |    2
+        |   x
+f(x) =  |
+        |
+        |   0      en otro caso
+        |
+        |_
+
+
+a. Calcule la esperanza, la variancia y la desviación estándar de esta distribución de probabilidad.
+
+b. Utilizando la técnica de reducción de la variancia de Monte Carlo, utilice 30 números aleatorios y sus respectivos complementos para encontrar el valor del promedio.
+
+
+
+
+
+() Ejercicio 10
+
+Se está usando un sistema de simulación para estudiar un sistema cuya medida de rendimiento X estará parcialmente determinada por el resultado de cierto factor externo. Ese factor tiene tres resultados posibles: favorable, neutro y desfavorable. Cada uno de ellos puede ocurrir con una probabilidad de 1/3. 
+
+------------------------
+Resultado
+del factor     Valores
+externo        de X
+------------------------
+Favorable      1,3,4,7,9
+Neutro         2,4
+Desfavorable   2
+------------------------
+
+
+a. Desarrolle un modelo de simulación y reducción de la variancia Monte Carlo que utilice 30 valores aleatorios, y sus respectivos valores complementarios, para estimar la esperanza E(x) de esta distribución. 
+
+b. Desarrolle un modelo de simulación y reducción de la variancia Monte Carlo que utilice 30 valores aleatorios, y sus respectivos valores complementarios, para estimar la esperanza de E(x * x) de esta distribución.
+
+
+
+\end{verbatim}

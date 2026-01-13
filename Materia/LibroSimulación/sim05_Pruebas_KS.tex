@@ -1,0 +1,1101 @@
+\chapter{Pruebas de Kolmogorov-Smirnov}
+\begin{verbatim}
+ ____
+| ___|
+|___ \
+ ___) |
+|____/
+
+ ____                  _                     _
+|  _ \ _ __ _   _  ___| |__   __ _ ___    __| | ___
+| |_) | '__| | | |/ _ \ '_ \ / _` / __|  / _` |/ _ \
+|  __/| |  | |_| |  __/ |_) | (_| \__ \ | (_| |  __/
+|_|   |_|   \__,_|\___|_.__/ \__,_|___/  \__,_|\___|
+
+ _  __     _
+| |/ /___ | |_ __ ___   ___   __ _  ___  _ __ _____   __
+| ' // _ \| | '_ ` _ \ / _ \ / _` |/ _ \| '__/ _ \ \ / /
+| . \ (_) | | | | | | | (_) | (_| | (_) | | | (_) \ V /
+|_|\_\___/|_|_| |_| |_|\___/ \__, |\___/|_|  \___/ \_/
+                             |___/
+ ____            _
+/ ___| _ __ ___ (_)_ __ _ __   _____   __
+\___ \| '_ ` _ \| | '__| '_ \ / _ \ \ / /
+ ___) | | | | | | | |  | | | | (_) \ V /
+|____/|_| |_| |_|_|_|  |_| |_|\___/ \_/
+
+
+
+
+Contenido
+=========
+
+1. Introducción.
+2. Descripción de la Prueba.
+3. KS para una Distribución Poisson.
+4. KS para una Distribución Uniforme.
+5. KS para un Generador Aleatorio.
+6. KS para una Distribución Exponencial.
+7. Resumen.
+8. Ejercicios.
+
+
+
+
+1. Introducción.
+================
+
+Además de las pruebas de Ji cuadrado existen otro tipo de pruebas de bondad de ajuste conocidas como las pruebas de Kolmogorov-Smirnov, o simplemente pruebas KS. La diferencia fundamental entre estas dos pruebas es que la última trabaja con la probabilidad acumulada.
+
+Al trabajar con la probabilidad acumulada también se acumula el margen de error, por lo que se suele considerar que las pruebas de Kolmogorov-Smirnov son más rigurosas que las pruebas de Ji cuadrado.
+
+
+
+2.Descripción de la Prueba.
+===========================
+
+La metodología es la siguiente:
+
+() Se escriben las hipótesis del problema.
+H0: Esta es una distribución f(x) con sus parámetros
+H1: Esta NO es una distribución f(x) con sus parámetros
+
+() Se colocan los datos en una tabla de frecuencias, si la distribución es discreta se cuentan las repeticiones de los números, si la distribución es continua se suele utilizar la raíz cudadrada de "n" como el número de intervalos. 
+
+() Para cada intervalo se coloca la frecuecia observada fo.
+
+() Se construye la frecuencia observada acumulada foa.
+
+() Al dividir foa entre el valor de n se obtiene la probabilidad observada acumulada poa.
+
+() Se debe construir la probabilidad esperada de la distribución pe.
+
+() Se obtiene la probabilidad esperada acumulada pea.
+
+() Se calcula el valor absoluto de la diferencia entre poa y pea, la mayor diferencia se denominará d.
+
+() El valor de d se comparará con el valor límite d(alfa,n) de la tabla de Kolmogorov-Smirnov, para ello se requiere un valor alfa de rechazo o bien un valor de 1-alfa de confiabilidad. Si d <= d(alfa,n) se acepta la hipótesis nula de que los números corresponden a una distribución uniforme.
+
+
+
+3. KS para una Distribución Poisson.
+====================================
+
+Las distribuciones de Poisson son muy utilizadas para contabilizar el número de llegadas que ocurren a un sistema de colas, o a cualquier sistema en general.
+
+A continuación se presentan un conjunto de datos de los cuales se sospecha corresponden a una distribución de este tipo. En un hospital de la capital se han recolectado datos del número de pacientes que llega cada hora. Este tipo de fenómeno suele representarse mediante una distribución Poisson. A continuación se presenta una tabla con las frecuencias observadas:
+
+-----------------
+x      Frecuencia
+       Observada
+-----------------
+0          25
+1          55
+2          65
+3          35
+4          20
+5          10
+-----------------
+Total     210
+-----------------
+
+
+
+Las frecuencias observadas se pueden representar mediante el siguiente gráfico.
+
+
+
+70|
+  |      __
+60|     |  |
+  |   __|  |
+50|  |  |  |
+  |  |  |  |
+40|  |  |  |
+  |  |  |  |__
+30|  |  |  |  |
+  |__|  |  |  |
+20|  |  |  |  |__
+  |  |  |  |  |  |
+10|  |  |  |  |  |__
+  |  |  |  |  |  |  |
+ 0|__|__|__|__|__|__|___
+    0  1  2  3  4  5
+
+
+
+La distribución Poisson tiene las siguientes características:
+
+
+                    \
+          \ x     - /\
+          /\  *  e
+p(x)  =  --------------     para x = 0,1,2,3,...
+              x!
+
+
+         \
+E(x)  =  /\
+
+
+         \
+V(x)  =  /\
+
+
+
+La distribución Poisson tiene como parámetro el valor de lambda. A continuación se procede a calcular este valor.
+
+         __
+         \
+E(x)  =  /_ x * p(x)
+
+
+
+          /      25 \     /      55 \     /      65 \ 
+E(x)  =  (  0 * ---  ) + (  1 * ---  ) + (  2 * ---  )
+          \     210 /     \     210 /     \     210 / 
+
+ 
+          /      35 \     /      20 \     /      10 \ 
+      +  (  3 * ---  ) + (  4 * ---  ) + (  5 * ---  )
+          \     210 /     \     210 /     \     210 / 
+
+
+                                        
+          /  1  \     /                                         \ 
+      =  (  ---  ) * (  0*25 + 1*55 + 2*65 + 3*35 + 4*20 + 5*10  )
+          \ 210 /     \                                         / 
+
+
+
+          /  1  \     /                                        \ 
+      =  (  ---  ) * (  0   +  55  +  130 +  105 +  80  +  50   )
+          \ 210 /     \                                        / 
+
+
+
+          /  1  \     /     \ 
+      =  (  ---  ) * (  420  )
+          \ 210 /     \     / 
+
+
+
+         420
+      =  ----
+         210
+
+
+     =    2
+
+
+
+Para la prueba de hipótesis se va a utilizar un valor de lambda de 2. Se generarán las hipótesis usuales y se utilizará un nivel de confianza del 95%, o equivalentemente un valor de rechazo del 5%.
+
+
+H0: Esta es una distribución poisson
+    con parámetros de lambda = 2
+
+
+H1: La anterior no es una buena descripción
+    de la distribución
+
+
+
+
+Con los datos proporcionados se puede construir la siguiente tabla:
+
+
+-------------------------
+  x     fo   foa    poa
+-------------------------
+  0     25    25   0.1190
+  1     55    80   0.3810
+  2     65   145   0.6905
+  3     35   180   0.8571
+  4     20   200   0.9524
+  5     10   210   1.0000
+-------------------------
+
+
+
+Para calcular las frecuencias esperadas de la distribución se utilizan los parámetros encontrados. 
+
+
+          / 2^x * e^(-2) \
+p(x)  =  (  ------------  )   para x = 0,1,2,3,...
+          \     x!       /
+
+
+
+          / 2^0 * e^(-2) \     /        \
+p(0)  =  (  ------------  ) = (  e^(-2)  )  =  0.1353
+          \     0!       /     \        /
+
+
+
+          / 2^1 * e^(-2) \     /            \ 
+p(1)  =  (  ------------  ) = (  2 * e^(-2)  ) =  0.2707
+          \     1!       /     \            / 
+
+
+
+
+          / 2^2 * e^(-2) \     / 4 * e^(-2) \     /            \ 
+p(2)  =  (  ------------  ) = (  ----------  ) = (  2 * e^(-2)  )  =  0.2707
+          \     2!       /     \   2        /     \            / 
+
+
+
+
+          / 2^3 * e^(-2) \     / 8 * e^(-2) \     /  4           \ 
+p(3)  =  (  ------------  ) = (  ----------  ) = (  --- * e^(-2)  ) =  0.1804
+          \     3!       /     \   6        /     \  3           / 
+
+
+
+
+          / 2^4 * e^(-2) \     / 16 * e^(-2) \     /  2           \ 
+p(4)  =  (  ------------  ) = (  -----------  ) = (  --- * e^(-2)  ) =  0.0902
+          \     4!       /     \   24        /     \  3           / 
+
+
+
+          / 2^5 * e^(-2) \     / 32 * e^(-2) \     /  4           \ 
+p(5)  =  (  ------------  ) = (  -----------  ) = (  --- * e^(-2)  ) =  0.0361
+          \     5!       /     \   120       /     \  5           / 
+
+
+
+
+
+Las anteriores constituyen las probabilidades de la distribución, pero debemos convertirlas en probabilidades acumuladas.
+
+
+---------------------
+  x    pe       pea
+---------------------
+  0   0.1353   0.1353
+  1   0.2707   0.4060
+  2   0.2707   0.6767
+  3   0.1840   0.8607
+  4   0.0902   0.9509
+  5   0.0361   0.9870
+---------------------
+
+
+
+Todo el proceso anterior se puede resumir en la siguiente tabla.
+
+--------------------------------------------------------
+  x     fo   foa    poa      pe       pea     |poa-pea|
+--------------------------------------------------------
+  0     25    25   0.1190   0.1353   0.1353   0.0163
+  1     55    80   0.3810   0.2707   0.4060   0.0250 <--d
+  2     65   145   0.6905   0.2707   0.6767   0.0138
+  3     35   180   0.8571   0.1840   0.8607   0.0036
+  4     20   200   0.9524   0.0902   0.9509   0.0015
+  5     10   210   1.0000   0.0361   0.9870   0.0130
+--------------------------------------------------------
+                                              0.0250 = d
+--------------------------------------------------------
+                                              
+                                              
+                                              
+Para realizar la prueba se utiliza un nivel de confianza de 0.95 o lo que es equivalente un valor de rechazo alfa de  0.05. Al utilizar la tabla de Kolmogorov-Smirnov se obtiene que el valor límite está dado por:
+
+                       ____
+d(0.05,210) = 1.36 / \/ 210  = 0.0938
+
+d(0.05,210) = 1.36 / sqrt(210) = 0.0938
+
+
+Como 
+d = 0.0250 
+d(0.05,210) = 0.0938
+
+El valor de d <= d(alfa,n) se acepta la hipótesis de H0 como verdadera.
+
+
+
+
+4. KS para una Distribución Uniforme.
+=====================================
+
+A continuación se presenta un ejemplo de esta prueba. Supongamos que se generan datos de una distribución continua [0,1] para reproducir el comportamiento de un dato. Para construimos 6 intervalos de igual tamaño.
+
+
+-------------------------------
+Intervalos    Dado   Frecuencia
+                     Observada
+-------------------------------
+[  0 , 1/6[     1       6
+[1/6 , 2/6[     2       6
+[2/6 , 3/6[     3       5
+[3/6 , 4/6[     4       7
+[4/6 , 5/6[     5       7
+[5/6 , 6/6[     6       5
+-------------------------------
+Total                  36
+-------------------------------
+
+
+
+Se puede observar a simple vista que el comportamiento del generador aleatorio es bastante simétrico.
+
+
+ 8|
+ 7|             __ __
+ 6|    __ __   |  |  |   
+ 5|   |  |  |__|  |  |__
+ 4|   |  |  |  |  |  |  |
+ 3|   |  |  |  |  |  |  |
+ 2|   |  |  |  |  |  |  |
+ 1|   |  |  |  |  |  |  |
+ 0|___|__|__|__|__|__|__|___
+       1  2  3  4  5  6  
+
+
+
+Se calcularán primero las probabilidades acumuladas, para luego construir la tabla con todos los datos. Se podría suponer que es una distribución uniforme discreta. De esta forma al distribuir las obeservaciones entre los intervalos se obtiene una frecuencia esperada de:
+      
+fe = 36/6
+fe = 6.00
+
+
+De igual forma la probabilidad esperada sería equivalente a:
+
+pe = 6/36
+pe = 1/6
+pe = 0.1667
+
+
+
+Otra forma de construir las probabilidades esperadas es utilizando la distribución acumulada:
+ 
+        /  1  si 0 <= x <= 1
+f(x) = (
+        \  0  en cualquier otro caso
+
+
+
+Por lo que la distribución acumulada de probabilidad se expresa mediante la fórmula:
+
+          / 0    si x <= 0
+         /  
+F(x) =  (   x    si 0 <= x <= 1
+         \   
+          \ 1    si x >= 1
+
+
+
+Representada gráficamente como:
+
+
+  f(x)
+    |
+    |
+    |
+  1 |..............
+    |             .
+    |             .
+    |             .
+    |             .
+    |             .
+    |_____________.______ x
+    0             1
+
+
+
+Gráficamente se representan como:
+
+
+  F(x)
+    |
+    |
+    |
+  1 |            .  .  .  .
+    |          .
+    |        .
+    |      .
+    |    .
+    |  .
+    |._____________________
+                 1
+
+
+
+Con esta distribución se pueden calcular las probabilidades acumuladas para cada uno de los intervalos:
+
+F(1/6) =  1/6 = 0.1667
+
+F(2/6) =  2/6 = 0.3334
+
+F(3/6) =  3/6 = 0.5001
+
+F(4/6) =  4/6 = 0.6668
+
+F(5/6) =  5/6 = 0.8335
+
+F(6/6) =  6/6 = 1.0000
+
+
+
+Con esta información se debe construir la siguiente tabla,
+
+--------------------------------------------------------
+Intervalos  fo  foa   poa     pe      pea    |poa - pea|
+--------------------------------------------------------
+   1         6    6  0.1667  0.1667  0.1667  0.0000
+   2         6   12  0.3333  0.1667  0.3334  0.0001
+   3         5   17  0.4722  0.1667  0.5001  0.0279
+   4         7   24  0.6667  0.1667  0.6668  0.0001
+   5         7   31  0.8611  0.1667  0.8335  0.0276
+   6         5   36  1.0000  0.1667  1.0000  0.0000
+--------------------------------------------------------
+                                             0.0557 = d
+--------------------------------------------------------
+
+
+Utizando la tabla de Kolmogorov-Smirnov se busca el punto de corte. Para ello se va a utilizar un valor de alfa de 0.05 como primer parámetro y el número de observaciones como segundo parámetro. El valor del corte está dado por:
+
+                       ____
+d(0.05,41) =  1.36 / \/ 36  = 0.2267
+
+d(0.05,41) = 1.36 / sqrt(36) = 0.2267
+
+Tenemos
+d = 0.0557
+d(0.05,41) = 0.2267
+
+Como d <= d(alfa,n) se acepta la hipótesis de H0, por lo que se supondrá que los datos que se han obtenido corresponden a una distribución uniforme discreta, o equivalentemente a un dado bien balanceado.
+
+
+
+
+5. KS para un Generador Aleatorio.
+==================================
+
+El algoritmo anterior puede simplificarse para el caso de un generador de números pseudoaleatorios. La aplicación simplificada puede ser descrita mediante los siguientes pasos.
+
+
+() Se escriben las hipótesis del problema.
+H0: Esta es una distribución uniforme
+H1: Esta NO es una distribución uniforme
+ 
+() Generar "n" números pseudoaleatorios uniformes.
+
+() Ordenar los números en orden ascendente.
+
+() Calcular la distribución acumulada de los números generados con la siguiente expresión, donde i es la posición que ocupa el número x(i) en el ordenamiento.
+
+           i
+f(x(i)) = ---
+           n
+
+
+f(x(i)) = i/n
+
+
+
+() Calcular el estadístico de Komogorov-Smirnov de la siguiente forma.
+
+         |                |
+d = max  | x(i) - f(x(i)) |
+         |                |
+
+
+() Calcular el valor de d(alfa,n). Si d < d(alfa,n) entonces los números generados provienen de una distribución uniforme, o lo que es equivalente se acepta la hipótesis H0.
+
+
+
+A continuación se presenta un ejemplo, supongamos que se han generado 20 números pseudoaleatorios.
+
+---------------------------------
+0.8189   0.6314   0.9446   0.5310
+0.9763   0.7381   0.2081   0.0978
+0.3233   0.5458   0.7283   0.2463
+0.9221   0.4106   0.1228   0.6070
+0.4147   0.4384   0.9098   0.5470
+---------------------------------
+
+
+
+La siguiente tabla resume el proceso que se debe llevar a cabo para calcular el valor de d.
+
+
+--------------------------------------
+ i    x(i)    i/n    | x(i) - (i/n) |
+--------------------------------------
+ 1   0.0978   0.05   0.0478
+ 2   0.1228   0.10   0.0228
+ 3   0.2081   0.15   0.0581
+ 4   0.2463   0.20   0.0463
+ 5   0.3233   0.25   0.0733
+ 6   0.4106   0.30   0.1106  <-- d
+ 7   0.4147   0.35   0.0647
+ 8   0.4384   0.40   0.0384
+ 9   0.5310   0.45   0.0810
+10   0.5458   0.50   0.0458
+11   0.5470   0.55   0.0031
+12   0.6070   0.60   0.0070
+13   0.6314   0.65   0.0186
+14   0.7283   0.70   0.0283
+15   0.7381   0.75   0.0119
+16   0.8189   0.80   0.0189
+17   0.9098   0.85   0.0598
+18   0.9221   0.90   0.0221
+19   0.9446   0.95   0.0054
+20   0.9763   1.00   0.0237
+--------------------------------------
+                     0.1106 = d
+--------------------------------------
+
+
+
+Supongamos que se usa un valor de alfa de 0.05 de esta forma se obtiene el punto límite dado por:
+
+d(0.05,20) = 0.294
+
+
+Tenemos:
+d = 0.1106
+d(0.05,20) = 0.294
+
+Como d <= d(alfa,n), pues 0.1106 <= 0.294 se acepta la hipótesis H0 y asumimos que los números han generados corresponden a una distribución uniforme.
+
+
+
+
+6. KS para una Distribución Exponencial.
+========================================
+
+Se tiene una muestra de 47 elementos, n = 47. Al procesar estos 47 elementos se ha obtenido que la media es de 5 y la variancia es de 25. Asímismo se han generado 7 intervalos ya que la raíz cuadrada de 47 es aproximadamente igual a 7.
+
+  ____
+\/ 47   =  6.8557... 
+
+
+sqrt(47) = 6.8557...
+
+
+
+A continuación se muestra la tabla con la información pertinente.
+
+--------------------
+ No.  Intervalo   fo
+--------------------
+  1   [  0,  3[   20
+  2   [  3,  6[   12
+  3   [  6,  9[    7
+  4   [  9, 12[    4
+  5   [ 12, 15[    2
+  6   [ 15, 18[    1
+  7   [ 18, 21[    1
+--------------------
+Total             47
+--------------------
+
+
+
+Esta información se puede representar gráficamente de la siguiente manera.
+
+
+  |
+20|__
+  |  |
+  |  |
+  |  |
+15|  |
+  |  |
+  |  |__
+  |  |  |
+10|  |  |
+  |  |  |
+  |  |  |__
+  |  |  |  |
+ 5|  |  |  |
+  |  |  |  |__
+  |  |  |  |  |__
+ 0|__|__|__|__|__|_________
+    1  2  3  4  5  6  7
+
+
+
+Con la información anterior se realizará una prueba de Komogorov-Smirnov. Como siempre planteamos de primero nuestras hipótesis.
+
+H0: Los valores corresponden a una distribución exponencial 
+    con un valor de beta de 5.
+
+H1: Los valores no corresponden a una distribución exponencial 
+    con un valor de beta de 5.
+
+
+
+Con la información suministrada se pueden calcular los siguientes valores:
+
+-----------------------------------
+ No.  Intervalo   fo   foa    poa  
+-----------------------------------
+  1   [  0,  3[   20    20   0.4255
+  2   [  3,  6[   12    32   0.6809
+  3   [  6,  9[    7    39   0.8298
+  4   [  9, 12[    4    43   0.9149
+  5   [ 12, 15[    2    45   0.9574
+  6   [ 15, 18[    1    46   0.9787
+  7   [ 18, 21[    1    47   1.0000
+-----------------------------------
+
+
+
+Para estimar la probabilidad esperada acumulada se debe construir la distribución acumulada. Para ello se realiza el siguiente cálculo. La distribución exponencial se describe como:
+
+                                  
+         
+          /            -x/B
+         /    (1/B) * e       si x >= 0   
+f(x) =  (
+         \   
+          \    0              si x <  0
+
+
+
+E(x) = B
+
+
+V(x) = B^2
+
+
+de(x) = B
+
+
+
+Se representa mediante el siguiente gráfico.
+
+
+
+f(x)
+   |
+   |
+   |
+1/B.
+   | .
+   |
+   |    .
+   |      .
+   |         .
+   |            .
+   |               .
+   |                    .
+   |___________________________._________
+0.0
+
+
+
+
+Y su distribución acumulada está dada por:
+
+             _
+            | )x
+            |      1      -t/B
+F(x)  =     |     ---  * e      dt
+            |      B
+          (_|  0
+
+
+
+                    _
+                   | )x
+           1       |      -t/B
+F(x)  =   ---  *   |     e      dt
+           B       |
+                 (_|  0
+
+
+
+
+      Se realiza el cambio de variable dado por:
+
+      u  =   -t / B
+
+      du = -dt / B
+
+      -B * du = dt
+
+
+                    _
+                   | )x
+           1       |      u
+F(x)  =   ---  *   |     e  * -B du
+           B       |
+                 (_|  0
+
+
+                    _
+                   | )x
+          -B       |      u
+F(x)  =   ---  *   |     e   du
+           B       |
+                 (_|  0
+
+
+                   _
+                  | )x
+                  |      u
+F(x)  =  -1  *    |     e   du
+                  |
+                (_|  0
+
+
+
+                |      |x
+                |   u  |
+F(x)  =  -1  *  |  e   |
+                |      |0
+
+
+
+                |         |x
+                |   -t/B  |
+F(x)  =  -1  *  |  e      |
+                |         |0
+
+
+
+                 /  -x/B      0/B  \
+F(x)  =  -1  *  (  e     -   e      )
+                 \                 /
+
+
+
+
+          /  0/B      -x/B \
+F(x)  =  (  e    -   e      )
+          \                /
+
+
+
+          /         -x/B \ 
+F(x)  =  (   1  -  e      ) 
+          \              / 
+
+
+
+
+Que en nuestro caso con B=5 se convierte en:
+
+             -x/5
+F(x)  =  1 - e
+
+
+
+De esta manera la distribución acumulada se puede expresar de la siguiente forma:
+
+         |
+           /  0           si  x < 0
+          /
+F(x)  =  (
+          \        -x/B   si  x >= 0
+           \  1 - e
+ 
+
+
+
+Que puede graficarse como:
+
+
+F(x)
+   |
+   |
+   |
+1.0|                                   .
+   |                            .
+   |                       .
+   |                  .
+   |              .
+0.5|          .
+   |       .
+   |    .
+   |  .
+   |.____________________________________
+0.0
+
+
+
+
+Por lo tanto, las probabilidades esperadas están dadas por:
+
+
+F( x)  =  1 - e^(-x/5)
+
+
+
+Y calculamos las probabilidades respectivas:
+
+F( 3)  =  1 - e^(-3/5)    =  0.4512
+
+F( 6)  =  1 - e^(-6/5)    =  0.6988
+
+F( 9)  =  1 - e^(-9/5)    =  0.8347
+
+F(12)  =  1 - e^(-12/5)   =  0.9093
+
+F(15)  =  1 - e^(-15/5)   =  0.9502
+
+F(18)  =  1 - e^(18/5)    =  0.9727
+
+F(21)  =  1 - e^(-21/5)   =  0.9850
+
+
+
+Con los valores anteriores procedemos a construir la siguiente tabla.
+
+-------------------------------------------------------------
+ No.  Intervalo   fo   foa    poa      pea     |poa-pea|
+-------------------------------------------------------------
+  1   [  0,  3[   20    20   0.4255   0.4512   0.0257 <-- d
+  2   [  3,  6[   12    32   0.6809   0.6988   0.0180
+  3   [  6,  9[    7    39   0.8298   0.8347   0.0049
+  4   [  9, 12[    4    43   0.9149   0.9093   0.0056
+  5   [ 12, 15[    2    45   0.9574   0.9502   0.0072
+  6   [ 15, 18[    1    46   0.9787   0.9727   0.0060
+  7   [ 18, 21[    1    47   1.0000   0.9850   0.0150
+-------------------------------------------------------------
+                                               0.0257 = d
+-------------------------------------------------------------
+
+
+Construimos ahora el valor de d(alfa,n) y utilizamos un valor de alfa de 0.05 que según nuestra tabla va a estar dado por:
+
+                      ____
+d(0.05,47) = 1.36 / \/ 47   = 0.1984
+
+d(0.05,47) = 1.36 / sqrt(47) = 0.1984
+
+
+Tenemos:
+d = 0.0257
+d(0.05,47) = 0.1984
+
+Como el valor de d <= d(alfa,n), se acepta la hipótesis H0 y se concluye que los números generados corresponden a una distribución exponencial.
+
+
+
+7. Resumen.
+===========
+
+Al igual que las pruebas de ji cuadrado, las pruebas de Kolmogorov-Smirnov sirven para determinar la bondad de ajuste.  Por lo tanto nos permiten dado un conjunto de datos preguntarnos que distribución es la más apropiada, y cuáles son los parámetros de esta distribución.
+
+Cuando se efectuan pruebas para distribuciones uniformes, se puede suponer que se trata de una distribución uniforme continua o bien, una distribución discreta. En el caso de asumir que se trata de una distribución discreta se puede utilizar el método resumido que ordena los valores aleatorios y determina la diferencia d de acuerdo a la posición relativa que ocupan.
+
+
+ 
+8. Ejercicios.
+==============
+
+
+() Ejercicio 1
+
+Se lanzó un dado 600 veces, con los siguientes resultados.
+
+-------------------
+Valor    Frecuencia
+Dado     Observada
+-------------------
+  1          89
+  2         113
+  3          98
+  4         104
+  5         117
+  6          79
+-------------------
+Total       600
+-------------------
+
+
+Determine si el dado está balanceado, es decir, se trata de un dado legal. Para ello utilice un nivel de alfa de 0.05 y una prueba de KS
+
+
+
+() Ejercicio 2
+
+A continuación se presentan 20 números que se cree provienen de una distribución aleatoria uniforme. Utilice una prueba de KS para determinar si esta afirmación es falsa o cierta, utilice un valor de alfa de 0.01.
+
+
+---------------------------------
+0.6090   0.6085   0.4664   0.3306
+0.8114   0.9982   0.4704   0.3359
+0.4853   0.3749   0.3313   0.6303
+0.7378   0.6529   0.4350   0.8745
+0.3621   0.5217   0.0030   0.1746
+---------------------------------
+
+
+
+
+() Ejercicio 3
+
+A continuación se presentan 50 valores de 0 y 1. 1 significa que se ha concluido con éxito una tarea y 0 que no se ha concluido con éxito.
+
+-------------------------------------
+1   0   0   1   0   0   0   0   0   1
+0   0   0   1   1   0   1   1   1   0
+0   1   1   1   0   0   0   0   1   1
+0   0   1   0   0   0   0   0   1   0
+1   0   0   0   1   0   0   0   0   0
+-------------------------------------
+
+a. Determine si el evento de éxito sigue una distribución de Bernoulli con un valor de p=0.35. Utilice un valor de alfa de 0.05
+
+b. Determine si el valor de p es correcto y realice de nuevo la prueba.
+
+
+
+() Ejercicio 4
+
+Se han estado recolectando datos con respecto al número de defectos por lámina que se registran en cierta proceso constructivo. Se han obtenido los siguientes datos.
+
+-------------------------------------
+3   2   3   4   2   3   3   3   3   1
+4   2   1   2   4   3   3   2   3   3
+3   2   4   5   2   3   2   2   2   3
+3   3   3   5   3   1   0   2   4   2
+2   0   4   3   3   2   4   5   2   4
+-------------------------------------
+
+
+a. A partir de estos 50 datos demuestre si se trata de una distribución binomial con un valor de p=0.20. Utilice un valor de alfa de 0.10.
+
+b. Si la prueba anterior fue negativa indique qué distribución de probabilidad es la más adecuada para modelar el número de defectos. Pruebe su sugerencia con una prueba de bondad de ajuste y utilice un alfa de 0.10.
+
+
+
+() Ejercicio 5
+
+Utilizando un valor de alfa de 0.05, realice una prueba de KS para determinar si los datos que se presentan corresponden a una distribución Poisson con un valor de lambda de 3.
+
+------------------
+Llegadas   Número
+por        de días
+------------------
+0             6
+1            18
+2            30
+3            24
+4            11
+5             2
+6 o más       9
+------------------
+
+
+
+() Ejercicio 6
+
+Un vendedor de software debe visitar 7 clientes por semana. Se considera que las ventas pueden ser descritas con una distribución binomial, con una probabilidad de éxito de vender de 0.45. Para corroborar esta teoría se han recolectado los siguientes datos. Realice una prueba de KS y utilice un valor de alfa de 0.05
+
+------------------
+Ventas  Frecuencia
+por     de
+semana  ventas
+------------------
+0       25
+1       32
+2       61
+3       47
+4       39
+5       21
+6       18
+7       12
+------------------
+
+
+
+
+() Ejercicio 7
+
+A continuación se presenta el tiempo, medido en segundos, que tardan en atender una orden en un taller de repuestos. 
+
+
+------------------------------------------
+ 80.13     8.64   108.00    39.73    46.06
+120.50    33.80    77.08     7.08    55.67
+ 45.41   151.9     17.53    32.93     3.20
+ 20.87     3.20   120.30    20.90    29.57
+ 35.72    17.72     3.03    33.35    34.56
+
+ 45.22    93.11     0.74    43.45    32.37
+ 56.14    12.78    18.60     2.87     5.50
+ 28.94    17.51     8.75    19.06    14.86
+  6.44   103.90     0.62    47.26    33.31
+ 16.93    10.02    20.81    55.91     9.94
+------------------------------------------
+
+a. Se sospecha que es una distribución exponencial. Realice una prueba de KS para determinar si es cierto o no, utilice una media de 40 segundos.
+
+b. Realice de nuevo una prueba de KS, pero esta vez determine el valor de la media.
+
+
+
+() Ejercicio 8
+
+A continuación se presenta una tabla de datos que se cree corresponden a una distribución normal. 
+
+----------------------
+Intervalo     fo    fe
+----------------------
+[ 50, 60[     30    40
+[ 60, 70[    100   170
+[ 70, 80[    440   500
+[ 80, 90[    500   390
+[ 90,100[    130   100
+----------------------
+
+
+a. Construya una prueba de KS y utilice un nivel de alfa de 0.10 con los datos suministrados.
+
+b. En caso que no se contara con las frecuencias esperadas se podrían calcular los parámetros de la distribución y construir las probabilidades esperadas. En caso afirmativo constrúyalas y realice una prueba.
+
+
+
+
+() Ejercicio 9
+
+A continuación se presenta una tabla que se cree pertenece a una distribución normal con una media de 2.44 y un variancia de 0.4
+
+----------------------
+Intervalo          fo
+----------------------
+[  -oo , 1.840[    53
+[1.840 , 2.240[   186
+[2.240 , 2.640[   354
+[2.640 , 3.040[   238
+[3.040 , +oo  [    69
+----------------------
+
+a. Calcule la probabilidad de caer en cada clase.
+b. Calcule el valor de d de KS.
+c. Utilizando alfa de 0.15, corresponden estos datos a la distribución normal sugerida.
+
+
+
+() Ejercicio 10
+
+Un administrador de una red observó el número de mensajes llevaban algún tipo de "attachment" en una red. Y construyó la siguiente tabla.
+
+----------
+No      fo
+__________
+0       25
+1       45
+2       67
+3       43
+4       20
+----------
+Total  200
+----------
+
+a. Utilizando un nivel de alfa de 0.05, puede el administrador concluir con suficiente seguridad que este fenómeno sigue una distribución Poisson con lambda de 1.
+
+b. Calcule el valor de lambda de acuerdo a la distribución y realice otra prueba de KS.
+
+
+\end{verbatim}

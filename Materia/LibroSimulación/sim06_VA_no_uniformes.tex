@@ -1,0 +1,1936 @@
+\chapter{Variables Aleatorias No Uniformes}
+\begin{verbatim}
+  __
+ / /_
+| '_ \
+| (_) |
+ \___/
+
+__     __         _       _     _
+\ \   / /_ _ _ __(_) __ _| |__ | | ___  ___
+ \ \ / / _` | '__| |/ _` | '_ \| |/ _ \/ __|
+  \ V / (_| | |  | | (_| | |_) | |  __/\__ \
+   \_/ \__,_|_|  |_|\__,_|_.__/|_|\___||___/
+
+    _    _            _             _
+   / \  | | ___  __ _| |_ ___  _ __(_) __ _ ___
+  / _ \ | |/ _ \/ _` | __/ _ \| '__| |/ _` / __|
+ / ___ \| |  __/ (_| | || (_) | |  | | (_| \__ \
+/_/   \_\_|\___|\__,_|\__\___/|_|  |_|\__,_|___/
+
+ _   _         _   _       _  __
+| \ | | ___   | | | |_ __ (_)/ _| ___  _ __ _ __ ___   ___  ___
+|  \| |/ _ \  | | | | '_ \| | |_ / _ \| '__| '_ ` _ \ / _ \/ __|
+| |\  | (_) | | |_| | | | | |  _| (_) | |  | | | | | |  __/\__ \
+|_| \_|\___/   \___/|_| |_|_|_|  \___/|_|  |_| |_| |_|\___||___/
+
+
+
+
+
+Contenido
+=========
+
+1. Introducción.
+2. Método de la Transformada Inversa.
+3. Método de Aceptación y Rechazo.
+4. Método de Descomposición e Integración.
+5. Métodos Especiales.
+6. Resumen.
+7. Ejercicios
+
+
+
+
+1. Introducción.
+================
+
+En todo sistema de simulación existen un conjunto de variables aleatorias que interactuan entre sí. Es usual que estas variables sigan distribuciones de probabilidad diferentes a la distribución uniforme. Para simular estas otras variables es necesario contar con un generador de números uniformes y un algoritmo o procedimiento que transforme los números aleatorios en números provenientes de la distribución deseada. 
+
+En el presente capítulo se exploran algunas técnicas para conseguir esta transformación. Generar números provenientes de una distribución uniforme en números de otras distribuciones.
+
+
+
+
+2. Método de la Transformada Inversa.
+=====================================
+
+
+Este método utiliza la distribución acumulada F(x) para generar los números correspondientes. Puesto que los valores que produce F(x) están en el rango de [0,1] se genera un número uniforme r y se determina su contraparte al buscarlos en la inversa de F(x).
+
+
+A continuación se muestra de forma gráfica el proceso que utiliza el método de la transformada inversa.
+
+
+
+F(x)
+  |
+  |                                                       
+1 |                                           .     
+  |                                      .    
+  |                                  .
+  |                               .
+  |                             .
+r |---------------------------.
+  |                         . |
+  |                       .   |
+  |                     .     |
+  |                   .       |
+  |                 .         |
+  |              .            |
+  |          .                |
+  |     .                     |
+  |___________________________|______________________
+                                -1
+                           x = F (r)
+
+
+
+Como es evidente, el principal problema que presenta este método es que debe poder calcular el valor de la distribución acumulada F(x) y que debe existir la función inversa de esta distribución acumulada. Una vez establecidas estas condiciones resulta un método muy sencillo y fácil de utilizar. En esencia se tiene que:
+
+                           -1
+F(x) = r   entonces   x = F (r)
+
+
+
+
+() Ejemplo: Una distribución discreta.
+--------------------------------------
+
+
+Se desea generar un conjunto de números al azar que cumplan con la distribución de probabilidad que se presenta a continuación. En este caso se presenta tanto la distribución de probabilidad como la distribución acumulada.
+
+---------------
+x   p(x)   P(x)
+---------------
+1   0.10   0.10
+2   0.20   0.30
+3   0.30   0.60
+4   0.20   0.80
+5   0.10   0.90
+6   0.10   1.00
+---------------
+
+
+De forma gráfica se pueden ver ambas distribuciones de la siguiente forma:
+
+
+
+ p(x)                               P(x)
+   |                                  |                  __
+1.0|                               1.0|               __|  |
+   |                                  |            __|  |  |
+   |                                  |           |  |  |  |
+   |                                  |         __|  |  |  |
+   |                                  |        |  |  |  |  |
+0.5|                               0.5|        |  |  |  |  |
+   |         __                       |      __|  |  |  |  |
+   |      __|  |__                    |     |  |  |  |  |  |
+   |   __|  |  |  |__ __              |   __|  |  |  |  |  |
+   |__|__|__|__|__|__|__|____         |__|__|__|__|__|__|__|___
+       1  2  3  4  5  6                   1  2  3  4  5  6
+
+
+
+En este caso la función inversa debe extraerse directamente de la tabla, por lo que se construiría de la siguiente forma:
+
+
+---------------
+x   p(x)   P(x)
+---------------
+1   0.10   0.10
+2   0.20   0.30
+3   0.30   0.60
+4   0.20   0.80
+5   0.10   0.90
+6   0.10   1.00
+---------------
+
+
+Si r está en [0.00 , 0.10[  entonces x=1
+Si r está en [0.10 , 0.30[  entonces x=2
+Si r está en [0.30 , 0.60[  entonces x=3
+Si r está en [0.60 , 0.80[  entonces x=4
+Si r está en [0.80 , 0.90[  entonces x=5
+Si r está en [0.90 , 1.00[  entonces x=6
+
+
+
+Que se puede presentar en forma tabular de la siguiente manera:
+
+-------------------------
+                     -1
+      r        x =  P (r)
+-------------------------
+[0.00 , 0.10[    1
+[0.10 , 0.30[    2
+[0.30 , 0.60[    3
+[0.60 , 0.80[    4
+[0.80 , 0.90[    5
+[0.90 , 1.00[    6
+-------------------------
+
+
+
+Ejemplo.
+--------
+
+Suponga que se genera un número r uniforme tal que r = 0.44. De acuerdo con la tabla acumulada P(2)=0.30 y P(3)=0.60. como se puede observar:
+
+0.30 <=  r   < 0.60
+
+0.30 <= 0.44 < 0.60
+
+Por lo tanto el número que corresponde a esta probabilidad será el valor de x=3.
+
+
+
+
+
+
+() Ejemplo: Distribución Poisson.
+---------------------------------
+
+
+Se desea generar un conjunto de números que cumplan con la siguiente distribución de Poisson.
+
+          5^x * e^(-5)
+p(x)  =   ------------     para x = 0,1,2,...
+              x!
+
+
+Se procede de igual forma que con una distribución discreta cualquiera. Primero debemos calcular las probabilidades de la distribución y posteriormente las probabilidades acumuladas.
+
+
+----------------------
+  x    p(x)     P(x)
+----------------------
+  0   0.0067   0.0067
+  1   0.0337   0.0404
+  2   0.0842   0.1247
+  3   0.1404   0.2650
+  4   0.1755   0.4405
+  5   0.1755   0.6160
+  6   0.1462   0.7622
+  7   0.1044   0.8666
+  8   0.0653   0.9319
+  9   0.0363   0.9682
+ 10   0.0181   0.9863
+ 11   0.0082   0.9945
+ 12   0.0034   0.9980
+ 13   0.0013   0.9993
+ 14   0.0005   0.9998
+ 15   0.0002   0.9999
+----------------------
+
+
+
+
+De esta forma la función inversa estará dada por el siguiente método.
+
+
+
+-----------------------------
+                         -1
+      r            x =  P (r)
+-----------------------------
+[0.0000 , 0.0067[    0
+[0.0067 , 0.0404[    1
+[0.0404 , 0.1247[    2
+[0.1247 , 0.2650[    3
+[0.2650 , 0.4405[    4
+[0.4405 , 0.6160[    5
+[0.6160 , 0.7622[    6
+[0.7622 , 0.8666[    7
+[0.8666 , 0.9319[    8
+[0.9319 , 0.9682[    9
+[0.9682 , 0.9863[   10
+[0.9863 , 0.9945[   11
+[0.9945 , 0.9980[   12
+[0.9980 , 0.9993[   13
+[0.9993 , 0.9998[   14
+[0.9998 , 0.9999[   15
+-----------------------------
+
+
+
+
+Ejemplo.
+--------
+
+Suponga que se genera un valor de r=0.83 como
+
+0.7622 <= r <= 0.8666
+
+Entonces x=7
+
+
+
+
+() Ejemplo: Distribución exponencial.
+-------------------------------------
+
+
+Se desean generar un conjunto de números al azar que tengan la siguiente distribución de probabilidad.
+
+                      -x/B
+         /   (1/B) * e         si x >= 0     
+f(x) =  (
+         \   0               si x <  0
+
+
+
+
+Que se puede ver gráficamente de la siguiente manera:
+
+
+ f(x)
+   |
+   |
+   |
+1/B.
+   | .
+   |
+   |    .
+   |      .
+   |         .
+   |            .
+   |               .
+   |                    .
+   |___________________________._________
+0.0
+
+
+
+La distribución acumulada de esta distribución está dada por:
+
+             _
+            | )x
+            |      1      -t/B
+F(x)  =     |     ---  * e      dt
+            |      B
+          (_|  0
+
+         
+
+                   -x/B
+      =     1  -  e
+
+
+
+
+Por lo tanto F(x) puede expresarse como:
+
+
+           /    0         si  x < 0
+          /
+F(x)  =  (
+          \        -x/B   si  x >= 0
+           \  1 - e
+
+
+
+
+Que se puede ver gráficamente como:
+
+
+ F(x)
+   |
+   |
+   |
+1.0|                                   .
+   |                            .
+   |                       .
+   |                  .
+   |              .
+0.5|          .
+   |       .
+   |    .
+   |  .
+   |.____________________________________
+0.0
+
+
+
+
+Utilizando el método descrito procedemos a despejar el valor de x:
+
+
+r  =  1 - e^(-x/B)
+
+
+r - 1  =  - e^(-x/B)
+
+
+1 - r  =  e^(-x/B)
+
+
+ln(1 - r) = -x/B
+
+
+-B * ln(1 - r)  =  x
+
+
+x = -B * ln(1-r)
+
+
+
+
+Ejemplo.
+--------
+
+Suponga que se genera r = 0.25, para una exponencial con B=5
+
+x = -B * ln(1 - r) 
+
+x = -5 * ln(1 - 0.25)
+
+x = -5 * ln(0.75)
+
+x = -5 * -0.2877
+
+x = 1.4385
+
+
+
+
+() Ejemplo: Distribución Continua Arbitraria.
+---------------------------------------------
+
+
+A continuación se muestra un ejemplo del proceso general que se debe llevar a cabo para generar números aleatorios de una distribución de probabilidad cualquiera.
+
+
+          /  x    si 0 <= x <= 1
+f(x)  =  (
+          \ 1/2   si 1 <  x <= 2
+
+
+
+A continuación se muestra el gráfico de la función.
+
+
+
+ f(x)
+   |
+   |
+1.0|               .
+   |                
+   |            .
+   |
+   |         .
+   |
+0.5|      .        o . . . . . . . .
+   |
+   |   .
+   |
+   |._______________________________
+0.0               1.0             2.0
+
+
+
+
+Al calcular la distribución acumulada de probabilidad se debe tener cuidado pues la función presenta una discontinuidad en el punto 1.0, por lo que para su cálculo se debe realizar en dos etapas. En la primera se calcula F(x) cuando 0 <= x < 1. 
+
+            _
+           | )x
+F(x)  =    |     t  dt
+         (_|  0
+
+
+
+         |  t^2  |x
+F(x)  =  |  ---  |
+         |   2   |0
+
+
+
+         x^2     0^2
+F(x)  =  ---  -  ---
+          2       2
+
+
+
+         x^2
+F(x)  =  ---
+          2
+
+
+
+
+
+Para la segunda parte, se calcula F(x) cuando 1 <= x <= 2.
+
+
+                          _    
+          /  1  \        | )x   1
+F(x)  =  (  ---  )  +    |     ---  dt
+          \  2  /      (_|  1   2
+
+
+
+ 
+          /  1  \      |   t   |x
+F(x)  =  (  ---  )  +  |  ---  |
+          \  2  /      |   2   |1
+ 
+
+
+
+             1            x         1
+F(x)  =     ---     +    ---   -   ---
+             2            2         2
+
+
+
+             x
+F(x)  =     ---
+             2
+
+
+
+
+Por lo tanto la distribución acumulada F(x) se describe como:
+
+              
+            /  0        si  x < 0
+           /       
+          /    (x^2)/2  si  0 <= x <= 1      
+F(x)  =  (
+          \     x/2     si  1 <= x <= 2
+           \
+            \   1       si   x > 2
+
+
+
+
+A continuación se muestra el gráfico de F(x).
+
+
+
+F(x)                                      .  .  .  .
+   |                                  .   
+   |                              .       
+   |                          .           
+   |                      .               
+   |                     .                
+0.5|                    .                 
+   |                  .                   
+   |               .                      
+   |           .                          
+   |      .                               
+   |._________________________________________________
+0.0                      1.0             2.0
+
+
+
+
+Ahora que se tiene la distribución acumulada procedemos a calcular la función inversa.
+
+
+
+Si 0 <= r < 1/2 entonces
+
+r  =  (x^2)/2
+
+2*r = x^2
+
+sqrt(2*r) = x
+
+x = sqrt(2*r)
+
+
+
+Si 1/2 <= r < 1 entonces
+
+r = x/2 
+
+2*r = x
+
+x = 2*r
+ 
+ 
+
+ 
+Ejemplo.
+--------
+
+Suponga que se genera r = 0.34 como r < 0.50 se utiliza la fórmula:
+
+x = sqrt(2 * r)
+
+x = sqrt(2 * 0.34)
+
+x = 0.8247
+
+
+
+
+Suponga que se genera r = 0.67, como r >= 0.50 se utiliza la fórmula:
+
+x = 2*r
+
+x = 2 * 0.67
+
+x = 1.34
+
+ 
+
+
+3. Método de Aceptación y Rechazo.
+==================================
+
+Este método genera un valor aleatorio y luego se prueba si dicho valor corresponde o no a la distribución para la cual se quieren generar números.
+
+Las condiciones necesarias y suficientes para que este método funcione es que la distribución de probabilidad debe estar acotada y tener un rango finito. Esto significa que el valor de x debe estar delimitado por otros valores, a <= x <= b, además la distribución no puede tender indefinidamente hacia inifito es decir debe tener un valor máximo al que llamaremos m.
+
+A continuación se muestra una distribución que cumple con estas condiciones.
+
+
+  |
+  |
+m |                           . ' .
+  |                         .       .
+  |                       .           .
+  |                     .               .
+  |                   .                   .
+  |                .                         .
+  |            .                                 .
+  |       .                                           .
+  |___.___________________________________________________._____
+      |                                                  |
+      a                                                  b
+
+
+A continuación se esboza el algoritmo para utilizar el método de aceptación y rechazo.
+
+
+() Generar dos números uniformes r1 y r2.
+
+
+() Convertir el valor de r1 al rango de [a,b], es decir, debemos determinar el valor de x de acuerdo a la fórmula:
+
+   x  =  a + (b-a) r1
+
+
+() Evaluar la función de probabilidad en el punto x.
+
+
+() Si  m * r2 <= f(x)  o equivalentemente r2 <= f(x)/m entonces, utilizamos el valor de x en otro caso, se deben repetir los todos pasos.
+
+
+
+
+() Ejemplo: Distribución Discreta.
+----------------------------------
+
+
+Se tiene una distribución binomial con un valor "n" de 5 y un valor de "p" de 0.40. Se desean generar números que utilicen esta distribución.
+
+
+          / 5 \    
+p(x)  =  (     )  0.4^x  (1 - 0.4)^(5-x)    para x =0,1,2,3,4,5
+          \ x /
+
+
+
+Al escribir directamente los valores de la binomial se puede descubrir que su punto máximo es p(2)=0.3456.
+
+
+-----------
+ x    p(x)
+-----------
+ 0   0.0778
+ 1   0.2592
+ 2   0.3456
+ 3   0.2304
+ 4   0.0768
+ 5   0.0102
+-----------
+
+
+
+De forma gráfica también se puede verificar la posición del máximo.
+
+
+
+
+  p(x)
+    |
+0.50|
+    |
+    |
+    |         __
+    |        |  |
+0.25|      __|  |__
+    |     |  |  |  |
+    |     |  |  |  |
+    |   __|  |  |  |__
+    |__|__|__|__|__|__|______
+        0  1  2  3  4  5
+
+
+
+El algoritmo para generar estos números aleatorios está dado por:
+
+() Generar dos números uniformes r1 y r2.
+
+() Convertir el valor de r1 al rango de [0,6[. Asímismo por ser una distribución discreta y para darle a cada número la misma probabilidad de ser elegido se debe tomar la parte entera del resultado.
+
+   x  =  0 + (6-0) r1
+   x  =  6 * r1 
+   x  =  truncar (6 * r1)
+
+() Evaluar la función de probabilidad en el punto x.
+
+
+() Si   0.3456 * r2 <= p(x)
+   entonces,     utilizamos el valor de x 
+   en otro caso, se deben repetir los todos pasos.
+
+
+
+Ejemplo.
+--------
+
+
+Al aplicar el algoritmo de aceptación y rechazo tenemos el siguiente proceso:
+
+Sea r1 = 0.60
+     x = a + (b - a) r1
+     x = 0 + (6 - 0) 0.60
+     x = 6(0.60)
+     x = 3.6
+     x = 3
+
+
+Tenemos
+     f(x) = f(3) = 0.2304
+
+
+Sea r2 = 0.27
+         m * r2   <= f(x)
+    0.3456 * 0.27 <= 0.2304
+           0.0933 <= 0.2304
+
+
+Por lo tanto se acepta el valor de x=3
+
+
+
+
+() Ejemplo: Distribución Continua Arbitraria.
+---------------------------------------------
+
+
+Considere la siguiente distribución. Se desean generar números que cumplan con dicha distribución.
+
+          /   2*x    si 0 <= x <= 1
+f(x)  =  (
+          \    0    en otro caso
+
+
+Tal como lo muestra el gráfico siguiente, el punto máximo de la distribución está dado por m = 2.
+
+
+
+f(x)
+  |
+2 |                  .
+  |
+  |               .
+  |
+  |            .
+  |
+  |         .
+  |
+  |      .
+  |
+  |   .
+  |
+  |.______________________
+   0                 1
+
+
+
+Al utilizar el método de aceptación y rechazo se utilizarían los siguientes pasos:
+
+() Generar dos números uniformes r1 y r2.
+
+() Convertir el valor de r1 al rango de [0,1], es decir, debemos determinar el valor de x de acuerdo a la fórmula:
+
+   x  =  0 + (1-0) r1  = r1
+
+() Evaluar la función de probabilidad en el punto x.
+
+() Si  2* r2 <= f(x)
+   entonces, utilizamos el valor de "x" 
+   en otro caso, se deben repetir los todos pasos.
+
+
+
+Ejemplo.
+--------
+
+Veamos un ejemplo con números de como funciona el algoritmo descrito anteriormente:
+
+
+Sea r1 = 0.50
+     x = a + (b - a) r1
+     x = 0 + (1 - 0) 0.50
+     x = 0.50
+
+
+Tenemos
+     f(x) = f(0.50) = 2 * 0.50 = 1
+
+
+Sea r2 = 0.40
+    m * r2   <= f(x)
+    2 * 0.40 <= 1
+        0.80 <= 1
+
+
+Entonces se acepta el valor de x de 0.50.
+
+
+
+
+
+() Ejemplo: Distribución triangular entre [0,2].
+------------------------------------------------
+
+
+Considere la siguiente distribución triangular. Se desean generar números que cumplan con dicha distribución.
+
+          /   x       si 0 <= x <= 1
+f(x)  =  (
+          \   2 - x   si 1 <= x <= 2
+
+
+
+Tal como lo muestra el gráfico siguiente, el punto máximo de la distribución está dado por m = 1.
+
+
+
+f(x)
+  |
+  |
+1 |                        .
+  |                     .     .
+  |                  .           .
+  |               .                 .
+  |            .                       .
+  |         .                             .
+  |      .                                   .
+  |   .                                         .
+  |._______________________________________________.____
+   0                       1                       2
+
+
+
+Al utilizar el método de aceptación y rechazo se utilizarían los siguientes pasos:
+
+() Generar dos números uniformes r1 y r2.
+
+() Convertir el valor de r1 al rango de [0,2], es decir, debemos determinar el valor de x de acuerdo a la fórmula:
+
+   x  =  0 + (2-0) r1  = 2 r1
+
+() Evaluar la función de probabilidad en el punto x.
+
+() Si  1 * r2 <= f(x)
+   entonces,     utilizamos el valor de x 
+   en otro caso, se deben repetir los todos pasos.
+
+
+
+Ejemplo.
+--------
+
+Veamos un ejemplo con números de como funciona el algoritmo descrito anteriormente:
+
+
+Sea r1 = 0.75
+     x = a + (b - a) r1
+     x = 0 + (2 - 0) r1
+     x = 2 * r1 
+     x = 2 * 0.75 
+     x = 1.50
+
+
+Tenemos
+    f(x) = f(1.50) = 2 - 1.50 = 0.50
+
+Sea r2 = 0.25
+    m * r2  <= f(x)
+    1 * 0.25 <= 0.50
+        0.25 <= 0.50
+
+
+Entonces se acepta el valor de x de 1.50.
+
+
+
+() Ejemplo: Distribución Polinomial.
+------------------------------------
+
+
+Considere la siguiente distribución. Se desean generar números que se comporten de acuerdo a la curva indicada.
+
+          /  6*x - 6*x^2     si 0 <= x <= 1
+f(x)  =  (
+          \  0               en otro caso
+        
+
+
+Tal como lo muestra el gráfico siguiente, el punto máximo de la distribución está dado por m = 1.50.
+
+
+
+f(x)
+   |
+   |                        
+1.5|                  .     '     .
+   |             .                     .
+   |         .                             .
+   |      .                                   .
+   |    .                                       .
+   |   .                                         .
+   |  .                                           .
+   | .                                             .
+   |._______________________________________________.____
+    0                      0.5                      1
+
+
+
+
+Es necesario encontrar el punto máximo de la función. Para encontrar este punto de forma exacta se debe proceder a utilizar las derivadas de la función.
+
+
+d'f(x)  = 6 - 12*x
+
+
+Cuando d'f(x) = 0  se obtendrá un punto máximo o mínimo, lo cual se puede constatar con la segunda derivada.
+
+
+6 - 12x = 0
+  - 12x = -6
+    12x = 6
+      x = 6/12
+      x = 1/2    
+
+
+La segunda derivada indica la concavidad de la función ya sea convexa o concava.
+
+d''f(x) = -12
+
+
+Que para el intervalo de x en [0,1] se tiene que es negativa lo que indica que es cóncava y por lo tanto el punto encontrado corresponde a un máximo.
+
+
+El valor de "m" estará dado por:
+
+f(x) = 6*x - 6*x^2
+
+f(1/2) = 6*(1/2) - 6*(1/2)^2
+
+f(1/2) = 6/2 - 6/4
+
+f(1/2) = 3 - 3/2
+
+f(1/2) = 3/2
+
+f(0.50) = 1.50
+
+
+
+Al utilizar el método de aceptación y rechazo se utilizarían los siguientes pasos:
+
+() Generar dos números uniformes r1 y r2.
+
+() Convertir el valor de r1 al rango de [0,1], es decir, debemos determinar el valor de x de acuerdo a la fórmula:
+
+x  =  0 + (1-0) r1  = r1
+
+() Evaluar la función de probabilidad en el punto x.
+
+() Si  1.5 * r2 <= f(x)
+   entonces,     utilizamos el valor de x 
+   en otro caso, se deben repetir los todos pasos.
+
+
+
+Ejemplo.
+--------
+
+Veamos un ejemplo con números de como funciona el algoritmo descrito anteriormente:
+
+
+Sea r1 = 0.60
+     x = a + (b - a) r1
+     x = 0 + (1 - 0) r1
+     x = 1 * r1 
+     x = 1 * 0.60
+     x = 0.60
+
+
+Tenemos
+                                        
+    f(x) = f(0.60) = 6 * 0.60 - 6 * 0.60^2  = 1.44
+
+
+Sea r2 = 0.30
+       m * r2   <= f(x)
+    1.50 * 0.30 <= 1.44
+           0.45 <= 1.44
+
+
+Entonces se acepta el valor de x de 0.60.
+
+
+
+
+4. Método de Descomposición e Integración.
+==========================================
+
+Existen algunas funciones de difícil tratamiento para las cuales no existe una distribución acumulada fácil de calcular o bien los otros procedimientos pueden ser computacionalmente muy ineficientes.
+
+En estos casos se utiliza el llamado método de descomposición e integración cuyo principal interés es mejorar la eficiencia computacional del cálculo de las variables.
+
+Este método se puede definir de la siguiente manera.
+
+() Dividir en secciones pequeñas la distribución original.
+
+() Calcular el área de cada una de estas secciones, es usual que se utilice con funciones para las cuales no exista un método de integración por lo que se deberá recurrir a un método de integración numérica.
+
+() Obtener la distribución acumulada generada en el punto anterior y utilizar el método de la función acumulada inversa para calcular los valores aleatorios.
+
+
+
+Gráficamente lo que se desea es partir el área de una distribución f(x) lo cual no es integrable en n secciones de igual tamaño y calcular el área de cada una de esas porciones. A continuación se muestra gráficamente esta idea.
+
+
+|
+|                           
+|                         . ' .
+|                       . __ __ .
+|                     .__|  |  |__.
+|                   . |  |  |  |  | .
+|                 . __|  |  |  |  |__ .
+|              . __|  |  |  |  |  |  |__ .
+|          .  __|  |  |  |  |  |  |  |  |__  .
+|     . __ __|  |  |  |  |  |  |  |  |  |  |__ __ .
+|______|__|__|__|__|__|__|__|__|__|__|__|__|__|__|______
+        a1 a2 a3 a4 a5 a6       . . .          an
+
+
+
+Posteriormente se construye una distribución acumulada utilizando cada una de estas porciones. Básicamente una función continua se ha vuelto una función discreta al partirla en una gran cantidad de pedazos.
+
+
+   |
+an |............................._____
+   |                            |     |
+ . |                            |     |
+ . |                            |     |
+ . |                            |     |
+   |                            |     |
+a3 |..............._____        |     |
+   |              |     |       |     |
+   |              |     |       |     |
+a2 |........ _____|     |       |     |
+   |        |     |     |       |     |
+   |        |     |     |       |     |
+a1 |.. _____|     |     |       |     |
+   |  |     |     |     |       |     |
+   |__|_____|_____|_____|_______|_____|____
+       F1(x) F2(x) F3(x)  . . .  Fn(x)
+
+
+
+
+() Ejemplo: Una Distribución Arbitraria.
+----------------------------------------
+
+A continuación se presenta una distribución arbitraria para ejemplificar el método descrito. Aunque esta distribución es integrable supondremos que no es así y que por lo tanto no existe forma de calcular el área debajo de la curva por medio de integrales convencionales. En esta caso se utilizará un método geométrico para calcular las áreas, sin embargo es usual utilizar la regla de integración de simpson para esto. Esta regla de integración se puede encontrar en los apéndices del libro.
+
+
+          /  (2*x)/3       si 0 <= x <= 1
+f(x)  =  ( 
+          \  (6 - 2*x)/6   si 1 <= x <= 3
+          
+
+
+
+A continuación se representa de forma gráfica f(x) y los cortes que se van a realizar sobre la función.
+
+
+
+ f(x)
+   |
+   |
+2/3|            .
+   |          . |   .
+   |        .   |       .
+   |      .     |     |     .
+   |    . |     |     |     |   .
+   |  .   |     |     |     |     | .
+   |._____|_____|_____|_____|_____|_____._____
+  0.0   0.5    1.0   1.5   2.0   2.5   3.0
+
+
+
+
+Ahora se debe calcular el área que existe en cada intervalo. El supuesto es que no se pueden usar integrales por lo cual se debe recurrir a un método geométrico o bien a un proceso de integración numérica. Al realizar este proceso descubrimos que las áreas para las distintas superficies están dadas por los siguientes valores.
+
+
+------------------------------
+Intervalo    Area_f(x)    F(x)
+------------------------------
+[0.0 , 0.5[     2/24      2/24
+[0.5 , 1.0[     6/24      8/24
+[1.0 , 1.5[     7/24     15/24
+[1.5 , 2.0[     5/24     20/24
+[2.0 , 2.5[     3/24     23/24
+[2.5 , 3.0[     1/24     24/24
+------------------------------
+
+
+
+Al tener esta tabla se puede utilizar el método de la función inversa para calcular los valores de la probabilidad. Por lo tanto el algoritmo consiste en generar un número aleatorio uniforme r y usar la fórmula.
+
+
+
+F(x) = r
+
+
+      -1
+x  = F (r)
+
+
+
+Como en este caso el valor de r corresponderá a un intervalor se tomará el valor medio del mismo como el valor respectivo de x. Entre menor sea el tamaño del intervalo más cercano estará este valor medio de los límites. De esta forma la tabla que resulta se muestra a continuación.
+
+-----------------------------
+                         -1
+       r           x =  P (r)
+-----------------------------
+[     0 ,  2/24 [    0.25
+[  2/24 ,  8/24 [    0.75
+[  8/24 , 15/24 [    1.25
+[ 15/24 , 20/24 [    1.75
+[ 20/24 , 23/24 [    2.25
+[ 23/24 , 24/24 [    2.75
+-----------------------------
+
+
+
+Ejemplo.
+--------
+
+Suponga que se genera el número r = 7/24 = 0.2917 como:
+
+2/24 <=  r   < 8/24
+
+2/24 <= 7/24 < 8/24
+
+Se tiene que x=0.75
+
+
+
+ 
+
+5. Métodos Especiales.
+======================
+
+Existen algunas distribuciones para las cuales aplicar los métodos anteriores resulta demasiado complicado o imposible. En estos casos se tratan de utilizar algunas de sus propiedades para lograr generar números adecuados.
+
+A continuación se explican algunos de estos procedimientos que se han denominado métodos especiales.
+
+
+
+
+() Distribución Uniforme General.
+---------------------------------
+
+
+La distribución uniforme general se define como:
+
+        _
+       |     1
+       |  -------   si a <= x <= b
+       |   a - b
+f(x) = |
+       |
+       |
+       |  0 en cualquier otro caso
+       |_
+
+
+Si r es un valor uniforme sobre el intervalo [0,1] para generar un valor uniforme u sobre el intervalo [a,b] se puede utilizar la siguiente operación.
+
+
+u =  a  +  (b - a) * r
+
+
+
+Ejemplo.
+--------
+
+Suponga que se desea generar un valor de una función uniforme en el intervalo [10,20]. 
+
+Se genera un valor en [0,1] por ejemplo r=0.75
+
+u = 10 + (20 - 10) * 0.75
+
+u = 10 + 10 * 0.75
+
+u = 10 + 7.50
+
+u = 17.50
+
+
+
+
+() Distribución Binomial.
+-------------------------
+
+
+La distribución binomial se representa como:
+
+        _   _
+       |  n  |   x        n-x
+p(x) = |     |  p  (1 - p)      x = 0,1,2,...,n
+       |_ x _|
+
+
+
+Para generar números  de esta distribución se utiliza el siguiente algoritmo:
+
+1. Generar n números uniformes entre [0,1]
+
+2. Contar cuántos números son menores que p.
+
+3. El valor anterior representará x.
+
+
+
+Ejemplo.
+--------
+
+Se desea generar un valor binomial, con parámetros n=5 y p= 0.40
+
+() Se generarn 5 valores en el intervalo [0,1]
+r1 = 0.24
+r2 = 0.56
+r3 = 0.11
+r4 = 0.77
+r5 = 0.38
+
+() Existen tres valores menores que 0.40
+r1 < 0.40
+r3 < 0.40
+r5 < 0.40
+
+() Por lo tanto x=3
+
+
+
+
+
+() Distribución Exponencial.
+----------------------------
+
+
+
+La distribución exponencial se había estudiado anteriormente. Para esta función definida como:
+
+         _
+        |     1      -x/B
+        |    ---  * e         si x >= 0
+        |     B
+f(x) =  |
+        |
+        |     
+        |_    0               si x <  0
+
+
+Mediante la utilización de la transformada inversa se podían generar números con distribución exponencial cuya media sea igual a lambda.
+
+
+x = -B * ln(1-r)
+
+
+
+Ejemplo.
+--------
+
+Se desea generar un valor exponencial, con un valor de B=8
+
+Se genera r=0.28
+
+x = -B * ln(1-r)
+
+x = -8 * ln(1-0.28)
+
+x = -8 * ln(0.72)
+
+x = -8 * -0.3285
+
+x = 2.6280
+
+
+
+
+() Distribución Normal por convolusión.
+---------------------------------------
+
+
+La distribución normal se representa como:
+
+
+               _    _   _        _ 2
+              |   1  | |  x - u   |
+              | - -  |*|  ------  |
+            _ |_  2 _| |_   o    _|
+           |_|
+           |_
+f(x)  =   ------------------------      -oo <= x <= +oo
+                         _______
+                        /    __
+                o  *  \/ 2 * ||
+
+
+Es importatne destacar que la distribución normal no es integrable, por lo que no se puede utilizar el método de la transformada inversa. En lugar de esto se utilizará el teorema del límite central, el cual establece que la suma de n variables aleatorias independientes se aproxima a una distribución normal para un valor de n suficientemente grande.
+
+
+
+() Distribución Normal Mediante Teorema del Límite Central.
+
+Lo anterior expresado en forma de teorema indica que si se tiene que si se generan n números aleatorios entre [0,1] deben cumplir las siguientes condiciones.
+
+
+Sean r(1), r(2), ..., r(n) un conjunto de valores uniformes en el intervalo [0,1]. Se sabe que para estas variables
+
+
+u    = 1/2
+
+
+ 2
+o    = 1/12
+
+
+       ____
+      /
+o = \/ 1/12
+
+
+
+Ahora z se definirá como:
+
+
+_     r(1) + r(2) + ... + r(n)
+r  =  ------------------------
+                n
+
+
+De acuerdo con el teorema del límite central se tiene:
+
+  _
+E(r)  = 1/2
+
+
+  _      2  
+V(r)  = o /  n  
+
+             
+      = 1/12  / n
+
+
+   _          ___
+De(r) = o / \/ n
+
+          _____     ___
+      = \/1/12  / \/ n
+ 
+
+
+Ahora bien, para obtener un valor normal estándar de una variable x distribuida normalmente se sabe que:
+
+      _
+      r - u
+z  =  -----
+        o_
+         r 
+
+
+            
+x  =   u  +  o * z
+
+
+
+                 _  __               _
+                |   \                 |
+                |   /_ r(i)      1    |
+                |   -------  -  ---   |
+                |      n         2    |
+x  =   u  +  o  |  -----------------  |
+                |     ____       ___  |
+                |   \/1/12  /  \/ n   |
+                |_                   _|
+
+
+                 _                  _
+                |   __               |
+                |   \                |
+                |   /_ r(i)  -  n/2  |
+                |                    |
+x  =   u  +  o  |   ---------------  |
+                |         _____      |
+                |        /           |
+                |_     \/  n/12     _|
+
+
+
+
+
+
+
+Finalmente si se utiliza un valor de n=12 la expresión anterior se puede simplificar significativamente y el valor x corresponderá a una distribución normal de media u y desviación estándar o.
+
+
+                 _                  _
+                |   __               |
+                |   \                |
+                |   /_ r(i)  - 12/2  |
+                |                    |
+x  =   u  +  o  |   ---------------  |
+                |         _____      |
+                |        /           |
+                |_     \/ 12/12     _|
+
+
+
+                 _                  _
+                |   __               |
+                |   \                |
+                |   /_ r(i)  -   6   |
+                |                    |
+x  =   u  +  o  |   ---------------  |
+                |         _____      |
+                |        /           |
+                |_     \/   1       _|
+
+
+
+
+                 _              _
+                |   __           |
+                |   \            |
+x  =   u  +  o  |   /_ ri  - 6   |
+                |_              _|
+
+
+
+
+Ejemplo.
+--------
+
+Supongamos que se desea generar un valor normal con media de 50 y desviación estándar de 10.
+
+() Se generan 12 valores uniformes en [0,1]
+r01 = 0.5876 
+r02 = 0.8638 
+r03 = 0.0341 
+r04 = 0.6434 
+r05 = 0.1577 
+r06 = 0.1818 
+r07 = 0.7987 
+r08 = 0.1326 
+r09 = 0.8893 
+r10 = 0.0366 
+r11 = 0.8439 
+r12 = 0.1643
+
+
+() Se suman r01,...,r12
+
+r01 + r02  + ... + r12 = 5.3338
+
+
+
+() Se aplica la fórmula:
+
+                _              _
+               |   __           |
+               |   \            |
+x =   u  +  o  |   /_ ri  - 6   |
+               |_              _|
+                
+                
+x =  50 + 10 * (5.3338 - 6)
+
+x =  50 + 10 * -0.6662
+
+x =  50 + -6.6620
+
+x =  43.3380               
+
+
+
+
+
+() Distribución Normal por el Método Directo.
+---------------------------------------------
+
+Un método muy interesante para generar números normales se debe a Box y Muller [Box,Muller,1958]. Los valores r1 y r2 son números uniformes en [0,1] y los valores de z1 y z2 son dos números normales estándar, con media 0 y desviación estándar de 1.
+
+       __
+ t = 2 || r1
+
+
+ e = -ln(r2)
+
+       _____
+ w = \/ 2 e
+
+
+
+ Luego
+
+ z1 = w * cos(t)
+
+ z2 = w * sin(t)
+
+
+Para obtener valores normales para una media y una desviación estándar cualquiera se puede calcular:
+
+x1 = u + o z1
+
+x2 = u + o z2
+
+
+
+Si se desea evitar el uso de senos y cosenos se puede utilizar la fórmula modificada Marsaglia y Bray [Marsaglia,Bray,1964].
+
+
+v1 = 2 r1 - 1
+
+
+v2 = 2 r2 - 1
+
+
+      2     2
+s = v1  + v2
+
+
+Si el valor de s >= 1 se repite el proceso anterior, de lo contrario se calcula el valor de z1 y z2 como:
+         ___________
+        / -2 ln(s)
+a = \  /  --------
+     \/      s
+
+
+Luego
+
+z1 = a * v1
+
+z2 = a * v2
+
+
+
+
+Finalmente para obtener los valores normales deseados:
+
+x1 = u + o z1
+
+x2 = u + o z2
+
+
+
+
+() Distribución Normal por una pseudo Inversa.
+----------------------------------------------
+
+Brophy propone un método muy interesante [Brophy,1985], tal como se ha dicho la distribución normal no puede integrarse, sin embargo, se puede construir una función pseudo inversa para estimar los valores de la normal. Este método  es muy rápido y posee un error máximo absoluto de 0.00035 para la distribución normal estándar.
+
+
+Sea r1 un valor aleatorio de una distribución uniforme [0,1].
+
+Si r1 > 0.5 entonces r2 = 1 - r1
+en otro caso         r2 = r1
+
+
+Si r2 < 1E-20 (muy cercano a cero) entonces z = 10
+en otro caso 
+
+      _____________
+a = \/ -2 * ln(r2) 
+             
+
+
+            ((7.45551*a + 450.636)*a + 1271.059)
+z  =  a  -  ------------------------------------------
+            (((a + 110.4212)*a + 750.365)*a + 500.756)
+
+
+
+Si r1 > 0.5 poner z = -1 * z
+en caso contrario dejar z con el signo que tiene.
+
+
+Finalmente para obtener los valores normales deseados:
+
+x = u + o z
+
+
+
+
+() Distribución Ji Cuadrado.
+----------------------------
+
+Para la distribución de ji cuadrado se utiliza el método de la convolución, el cual se genera a partir de un conjunto de variables con distribución normal.
+
+
+Sean z(1), z(2), ... z(k) un conjunto de números con una distribución normal estándar. Es decir una distribución con una media de 0 y una desviación estándar de 1.
+
+
+Entonces para generar un valor proveniente de una distribución ji cuadrado con n grados de libertad se utiliza la fórmula:
+
+
+           n
+   2      ___
+ \/       \        2
+ /\   =   /__  z(i)
+
+          i=1
+
+
+
+
+
+6. Resumen.
+===========
+
+Se han presentado los principales algoritmos para la generación de variables aleatorias que cumplan con distribuciones de probabilidad diferentes a la distribución uniforme.
+
+El método de la transformada inversa es el método más eficiente, sin embargo no toda distribución possee una función acumulada fácil de calcular. Además se necesita que dicha distribución tenga una función inversa.
+
+El método de aceptación y rechazo se puede utilizar con cualquier distribución que tenga un valor máximo y cuyos límites sean finitos. Sin embargo puede ser algo ineficiente en el cálculo de valores cercanos a cero.
+
+El método de la composición busca destruir una función en pequeñas partes para luego volver a unirlas en una aproximación a una distribución acumulada. Este método se puede aplicar a una gran variedad de funciones pero requiere de un alto diseño computacional.
+
+Finalmente existen algunos métodos especiales para calcular valores de unas cuantas funciones. El de mayor importancia en esta sección es el procedimiento para la generación de números que cumplan con una distribución normal.
+
+ 
+7. Ejercicios
+=============
+
+
+() Ejercicio 1
+
+
+Se tiene ahora una distribución triangular entre dos puntos cualesquiera [a,b,c], con un punto máximo en b se puede graficar de la siguiente manera:
+
+
+
+f(x)
+  |
+  |
+ m|                  .
+  |                . |   .
+  |              .   |       .
+  |            .     |           .
+  |          .       |               .
+  |        .         |                    .
+  |______.___________|_______________________.___
+         a           b                       c
+
+
+
+Su densidad de probabilidad se define como:
+
+          _
+         |
+         |    2(x-a)
+         |  ----------    si a <= x <= b
+         |  (c-a)(b-a)
+         |
+f(x)  =  |
+         |   -2(x-c)
+         |  ----------    si b <= x <= c
+         |  (c-a)(c-b)
+         |_
+
+
+
+Asímismo el punto máximo de la distribución se encuentra en en el punto b y tendrá el valor de:
+
+         2
+m  =  -------
+      c  -  a
+
+
+
+
+Finalmente la distribución acumulada va a estar dada por:
+
+
+          _
+         |          2
+         |     (x-a)
+         |  -----------         si a <= x <= b
+         |  (c-a)*(b-a)       
+         |
+F(x)  =  |
+         |                2
+         |           (x-c)
+         |  1  -  -----------   si b <= x <= c
+         |        (c-a)*(c-b)       
+         |_       
+
+
+
+a. Busque las distribuciones triangulares del capítulo y compruebe que cumplen con esta función.
+
+b. Construya una función triangular de [0,5], cuyo punto máximo se encuentre en el punto 2.
+
+
+
+
+
+() Ejercicio 2
+
+Utilice el método de la transformada inversa para generar 5 observaciones aleatorias de la siguiente distribución de probabilidad.
+
+          _
+         |
+         |  x - 1   si 1 <= x <= 2
+f(x)  =  |
+         |  3 - x   si 2 <= x <= 3
+         |_
+
+
+
+
+
+
+() Ejercicio 3
+
+Utilice el método de aceptación y rechazo para generar 5 observaciones de la siguiente distribución de probabilidad.
+
+
+          (x - 10)
+f(x)  =   --------     si 10 <= x <= 20
+            50
+
+
+
+
+
+
+() Ejercicio 4
+
+Utilice el método más adecuado para generar números al azar que sigan la siguiente distribución de probabilidad.
+
+                2
+         (x - 3)
+f(x)  =  -------   si 0<= x <= 6
+           18
+
+
+
+
+
+() Ejercicio 5
+
+Utilice el método más adecuado para generar números al azar que sigan la siguiente distribución de probabilidad.
+
+
+              2       -2 t x
+f(x)  =  (2 t)   x   e         para  x >= 0
+
+
+
+
+
+
+() Ejercicio 6
+
+Utilice el proceso de descomposición e integración para partir la siguiente distribución en 10 intervalos. Construya luego el algoritmo para generar números aleatorios de la siguiente distribución de probabilidad.
+
+                3
+         (x + 1)
+f(x)  =  -------     si -1 <= x <= 1
+            4
+
+
+
+
+
+() Ejercicio 7
+
+
+Utilizado métodos especiales construya el algoritmo y genere 5 observaciones para cada una de las distribuciones siguientes.
+
+
+
+a. La distribución geométrica, utilice un valor de p=0.40
+
+                x-1
+f(x)  =  (1 - p)    p   x=1,2,3,...
+
+
+
+b. Para una distribución normal con una media de 10 y una desvición estándar de 5
+
+
+c. Para una distribución normal con media de 0 y distribución estándar de 1.
+
+
+d. Para una distribución ji cuadrado con 2 grados de libertad.
+
+
+
+
+() Ejercicio 8
+
+Utilice el método de la transformada inversa para las siguientes distribuciones de probabilidad.
+
+
+
+
+ f(x)
+   |
+   |
+5/4.
+   | .
+   |   .
+   |     .
+   |       .
+1/4|         . . . . . .
+   |         |         |
+   |         |         |
+   |_________|_________|__________ 
+             1         2
+
+
+
+
+
+() Ejercicio 9
+
+Utilice el método de la transformada inversa para las siguientes distribuciones de probabilidad.
+
+
+ f(x)
+   |
+   |
+   |
+   |
+   |
+   |
+3/4. . . . . .
+   |         | .
+   |         |   .
+   |         |     .
+   |_________|_______.____________
+             1      5/3
+
+
+
+
+
+() Ejercicio 10
+
+Utilice el método de aceptación y rechazo para la siguiente distribución de probabilidad.
+
+
+
+
+  f(x)
+    |
+    |
+ 7/4|                   .
+    |                 . |
+    |               .   |
+    |             .     |
+    |           .       |
+ 1/4. . . . . .         |
+    |         |         |
+    |         |         |
+    |_________|_________|__________
+              1        3/2
+
+
+
+
+
+() Ejercicio 11
+
+Utilice el método de aceptación y rechazo para las siguientes distribuciones de probabilidad.
+
+
+ f(x)
+   |
+   |
+3/4. . . . . .
+   |         |
+   |         |
+   |         |
+   |         |
+1/4|         . . . . . .
+   |         |         |
+   |         |         |
+   |_________|_________|__________
+             1         2
+
+
+
+
+() Ejercicio 12
+
+Utilice el método de descomposición e integración para las siguientes distribuciones de probabilidad. Utilice un número suficientemente grande de intervalos.
+
+
+ f(x)
+   |
+   |
+3/4|                   .
+   |                 . | .
+   |               .   |   .
+   |             .     |     .
+   |           .       |       .
+1/4|         .         |         .
+   |         |         |         |
+   |         |         |         |
+   |_________|_________|_________|__________
+             8         9        10
+
+
+
+
+
+() Ejercicio 13
+
+Utilice el método de descomposición e integración para las siguientes distribuciones de probabilidad. Utilice un número suficientemente grande de intervalos.
+
+
+ f(x)
+   |
+   |
+   |
+   |
+   |
+1/2|                   . . . . . .
+   |                 . |         | .
+   |               .   |         |   .
+   |             .     |         |     .
+   |           .       |         |       .
+   |_________._________|_________|_________.__________
+             1         2         3         4
+
+
+
+\end{verbatim}
