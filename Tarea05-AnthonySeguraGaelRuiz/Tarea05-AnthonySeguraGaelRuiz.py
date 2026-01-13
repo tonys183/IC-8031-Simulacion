@@ -1,4 +1,4 @@
-from scipy.stats import  expon, binom, geom, poisson, truncnorm
+from scipy.stats import  expon, binom, geom, truncnorm
 import numpy as np
 import os
 
@@ -56,7 +56,7 @@ def exeWorkflow(combServidor):
     while tiempoTotal < tiempoLimite:
         tiempoTotal += tiempoEntreClientes()
         tiempoCliente = tiempoTotal
-        print(f'Tiempo actual: {tiempoTotal}')
+        #print(f'Tiempo actual: {tiempoTotal}')
         _, fin = estaciones['cajas'].procesar_cliente(tiempoCliente, tiempoServiMap['cajas']())
         tiempoSalidaCliente = fin
         
