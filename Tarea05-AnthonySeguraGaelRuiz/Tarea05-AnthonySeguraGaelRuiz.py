@@ -85,26 +85,27 @@ def exeWorkflow(combServidor, imprimir):
 
     return np.mean(esperas), np.var(esperas)
 
-def saveFile(combi, mejorMedia, mejorVar, carpeta, nombreArchi):
+def saveFile(combi, media, var, carpeta, nombreArchi, modo, spaceStr, i):
     ruta = os.path.join(carpeta, nombreArchi)
-    with open(ruta, "w") as f:
-        f.write("--- REPORTE DE CONFIGURACIÓN ---\n")
+    with open(ruta, modo) as f:
+        f.write(f"---- {i}) Datos Configuración {combi} ----\n")
         f.write(f"Cajas:     {combi[0]}\n")
         f.write(f"Refrescos: {combi[1]}\n")
         f.write(f"Freidora:  {combi[2]}\n")
         f.write(f"Postres:   {combi[3]}\n")
         f.write(f"Pollo:     {combi[4]}\n")
-        f.write("-" * 32 + "\n")
-        f.write(f"Tiempo de Espera Promedio (W): {mejorMedia:.4f}\n")
-        f.write(f"Varianza (Var): {mejorVar:.4f}\n")
+        f.write(f"\nTiempo de Espera Promedio (W): {media:.4f}\n")
+        f.write(f"Varianza (Var): {var:.4f}\n")
+        f.write("-"*49+spaceStr)
 
 def main():
     gen = genCombi(7, 5)
-    gen = sorted(gen, key=np.var)
+    globalBestBal   = (float('inf'), None, None) 
     globalBestMedia = (float('inf'), (0, 0), None)
     globalBestVar = (float('inf'), (0, 0), None)
     n = 5
-    for _, combi in enumerate(gen):
+    open(os.path.join("configs", "config_all.txt"), "w").close()
+    for i, combi in enumerate(gen):
         mediaL = varL = 0
         for _ in range(n):
             m, v = exeWorkflow(combi, imprimir=False)
@@ -113,14 +114,16 @@ def main():
 
         mediaL/=n
         varL/=n
+        balance = mediaL+2*np.sqrt(varL)
+        globalBestBal = min(globalBestBal, (balance, (mediaL, varL), combi))
         globalBestMedia = min(globalBestMedia, (mediaL, (mediaL, varL), combi))
         globalBestVar = min(globalBestVar, (varL, (mediaL, varL), combi))
 
-        nombreArchi = f"config_{combi[0]}_{combi[1]}_{combi[2]}_{combi[3]}_{combi[4]}.txt"
-        saveFile(combi, mediaL, varL, "configs", nombreArchi)
+        saveFile(combi, mediaL, varL, "configs", "config_all.txt", "a", "\n\n", i+1)
     
-    saveFile(globalBestMedia[2], *globalBestMedia[1], "configs", "config_mejor_media.txt")
-    saveFile(globalBestVar[2], *globalBestVar[1], "configs", "config_mejor_varianza.txt")
+    saveFile(globalBestMedia[2], *globalBestMedia[1], "configs", "config_mejor_media.txt", "w", "", 1)
+    saveFile(globalBestVar[2], *globalBestVar[1], "configs", "config_mejor_varianza.txt", "w", "", 1)
+    saveFile(globalBestBal[2], *globalBestBal[1], "configs", "config_mejor_equilibrada.txt", "w", "", 1)
 
 if __name__ == "__main__":
     main()
