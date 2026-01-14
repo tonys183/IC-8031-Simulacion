@@ -57,16 +57,15 @@ def exeWorkflow(combServidor):
         tiempoTotal += tiempoEntreClientes()
         tiempoCliente = tiempoTotal
         #print(f'Tiempo actual: {tiempoTotal}')
-        _, fin = estaciones['cajas'].procesar_cliente(tiempoCliente, tiempoServiMap['cajas']())
-        tiempoSalidaCliente = fin
-        
+        tiempoEnCaja, inicioOrden = estaciones['cajas'].procesar_cliente(tiempoCliente, tiempoServiMap['cajas']())
+        tiempoSalidaCliente = inicioOrden
         orden = genOrden()
         for _ in range(ordenDist()):
             for servicio in orden:
-                _, fin = estaciones[servicio].procesar_cliente(tiempoCliente, tiempoServiMap[servicio]())
+                _, fin = estaciones[servicio].procesar_cliente(inicioOrden, tiempoServiMap[servicio]())
                 tiempoSalidaCliente = max(fin, tiempoSalidaCliente)
 
-        if (tiempoSalidaCliente<tiempoLimite): esperas.append(tiempoSalidaCliente-tiempoCliente)
+        if (tiempoSalidaCliente<tiempoLimite): esperas.append((tiempoSalidaCliente-inicioOrden)+tiempoEnCaja)
 
     return np.mean(esperas), np.var(esperas)
 
@@ -91,7 +90,7 @@ def main():
     for i, combi in enumerate(gen):
         mejorMedia = float('inf')
         mejorVar = float('inf')
-        for _ in range(5):
+        for _ in range(1):
             m, v = exeWorkflow(combi)
             mejorMedia, mejorVar = min(mejorMedia, m), min(mejorVar, v)
 
