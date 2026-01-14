@@ -66,7 +66,7 @@ def exeWorkflow(combServidor):
                 _, fin = estaciones[servicio].procesar_cliente(inicioOrden, tiempoServiMap[servicio]())
                 tiempoSalidaCliente = max(fin, tiempoSalidaCliente)
 
-        esperas.append(tiempoSalidaCliente-inicioOrden)
+        esperas.append(tiempoSalidaCliente-tiempoCliente)
 
     if not esperas: return float('inf'), float('inf')
     return np.mean(esperas), np.var(esperas)
@@ -89,7 +89,8 @@ def main():
     mediaCombiOptima = varCombiOptima = (float('inf'),float('inf'))
     bestMediaCombi = ()
     bestVarComb = ()
-    for i, combi in enumerate(gen):
+    gen = [(3,2,2,1,5)]
+    for combi in gen:
         mejorMedia = float('inf')
         mejorVar = float('inf')
         for _ in range(5):
