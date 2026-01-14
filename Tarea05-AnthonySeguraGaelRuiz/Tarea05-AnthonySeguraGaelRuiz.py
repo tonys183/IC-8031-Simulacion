@@ -2,23 +2,17 @@ from scipy.stats import  expon, binom, geom, truncnorm
 import numpy as np
 import os
 
-probsWorkflow = {"refrescos": 0.9, "freidora": 0.7, "postres": 0.25, "pollo": 0.3} 
-tiempoLimite = 480 
-
 class Servidor:
-    def __init__(self, num_empleados):
-        self.empleados_libres_hasta = [0.0] * num_empleados
+    def __init__(self, numEmple):
+        self.empleadosLibresHasta = [0.0]*numEmple
         
-    def procesar_cliente(self, tiempo_llegada, duracion_servicio):
-        turno_mas_pronto = min(self.empleados_libres_hasta)
-        idx_empleado = self.empleados_libres_hasta.index(turno_mas_pronto)
-        inicio_atencion = max(tiempo_llegada, turno_mas_pronto)
-        
-        tiempo_espera = inicio_atencion - tiempo_llegada
-        fin_atencion = inicio_atencion + duracion_servicio
-        self.empleados_libres_hasta[idx_empleado] = fin_atencion
-        
-        return tiempo_espera, fin_atencion
+    def procesar_cliente(self, tiempoLlegada, duracion):
+        masCerca = min(self.empleadosLibresHasta)
+        inicioAtenc = max(tiempoLlegada, masCerca)
+        tiempoEspera = inicioAtenc-tiempoLlegada
+        finAtenc = inicioAtenc+duracion
+        self.empleadosLibresHasta[self.empleadosLibresHasta.index(masCerca)] = finAtenc
+        return tiempoEspera, finAtenc
 
 def genCombi(n, k):
     if k == 1:
@@ -32,6 +26,7 @@ def funNormalDisc(mu, sigma, minVal):
     a = (minVal-mu)/sigma
     return lambda: int(np.round(truncnorm(a, np.inf, loc=mu, scale=sigma).rvs()))
 
+probsWorkflow = {"refrescos": 0.9, "freidora": 0.7, "postres": 0.25, "pollo": 0.3} 
 tiempoServiMap = {
     "cajas": lambda: expon(scale=2.5).rvs(),     
     "refrescos": lambda: expon(scale=0.75).rvs(),   
@@ -53,7 +48,7 @@ def exeWorkflow(combServidor):
     esperas = []
     tiempoEntreClientes = lambda: expon(scale=3.0).rvs()
     ordenDist = lambda: binom(n=5, p=0.4).rvs()
-    while tiempoTotal < tiempoLimite:
+    while tiempoTotal < 480:
         tiempoTotal += tiempoEntreClientes()
         tiempoCliente = tiempoTotal
         #print(f'Tiempo actual: {tiempoTotal}')
@@ -86,29 +81,24 @@ def saveFile(combi, mejorMedia, mejorVar, carpeta, nombreArchi):
 
 def main():
     gen = genCombi(7, 5)
-    mediaCombiOptima = varCombiOptima = (float('inf'),float('inf'))
-    bestMediaCombi = ()
-    bestVarComb = ()
-    for i, combi in enumerate(gen):
-        mejorMedia = float('inf')
-        mejorVar = float('inf')
+    gen = sorted(gen, key=np.var)
+    globalBestMedia = (float('inf'), (0, 0), None)
+    globalBestVar = (float('inf'), (0, 0), None)
+
+    for _, combi in enumerate(gen):
+        localMejor = (float('inf'), float('inf'))
         for _ in range(5):
             m, v = exeWorkflow(combi)
-            (mejorMedia, mejorVar) = min((mejorMedia, mejorVar), (m, v))
+            localMejor = min(localMejor, (m, v))
 
-        if (mejorMedia < mediaCombiOptima[0]):
-            bestMediaCombi = combi
-            mediaCombiOptima = (mejorMedia,mejorVar)
-
-        if (mejorVar < varCombiOptima[1]):
-            bestVarComb = combi
-            varCombiOptima = (mejorMedia,mejorVar)
+            globalBestMedia = min(globalBestMedia, (m, (m, v), combi))
+            globalBestVar = min(globalBestVar, (v, (m, v), combi))
 
         nombreArchi = f"config_{combi[0]}_{combi[1]}_{combi[2]}_{combi[3]}_{combi[4]}.txt"
-        saveFile(combi, mejorMedia, mejorVar, "configs", nombreArchi)
+        saveFile(combi, localMejor[0], localMejor[1], "configs", nombreArchi)
     
-    saveFile(bestMediaCombi, *mediaCombiOptima, "configs", "config_mejor_media.txt")
-    saveFile(bestVarComb, *varCombiOptima, "configs", "config_mejor_varianza.txt")
+    saveFile(globalBestMedia[2], *globalBestMedia[1], "configs", "config_mejor_media.txt")
+    saveFile(globalBestVar[2], *globalBestVar[1], "configs", "config_mejor_varianza.txt")
 
 if __name__ == "__main__":
     main()
