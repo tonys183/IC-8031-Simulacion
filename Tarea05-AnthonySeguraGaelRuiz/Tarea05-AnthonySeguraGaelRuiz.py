@@ -89,8 +89,7 @@ def main():
     mediaCombiOptima = varCombiOptima = (float('inf'),float('inf'))
     bestMediaCombi = ()
     bestVarComb = ()
-    gen = [(3,2,2,1,5)]
-    for combi in gen:
+    for i, combi in enumerate(gen):
         mejorMedia = float('inf')
         mejorVar = float('inf')
         for _ in range(5):
