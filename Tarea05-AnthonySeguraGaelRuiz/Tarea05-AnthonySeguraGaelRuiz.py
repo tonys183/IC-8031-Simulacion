@@ -51,22 +51,24 @@ def exeWorkflow(combServidor):
     estaciones = {nombres[i]:Servidor(combServidor[i]) for i in range(5)}
     tiempoTotal = 0.0
     esperas = []
-    tiempoEntreClientes = lambda: expon(scale=1/3).rvs()
+    tiempoEntreClientes = lambda: expon(scale=3.0).rvs()
     ordenDist = lambda: binom(n=5, p=0.4).rvs()
     while tiempoTotal < tiempoLimite:
         tiempoTotal += tiempoEntreClientes()
         tiempoCliente = tiempoTotal
         #print(f'Tiempo actual: {tiempoTotal}')
-        tiempoEnCaja, inicioOrden = estaciones['cajas'].procesar_cliente(tiempoCliente, tiempoServiMap['cajas']())
-        tiempoSalidaCliente = inicioOrden
+        _, finCajas = estaciones['cajas'].procesar_cliente(tiempoCliente, tiempoServiMap['cajas']())
+        inicioOrden = finCajas
+        tiempoSalidaCliente = finCajas
         orden = genOrden()
         for _ in range(ordenDist()):
             for servicio in orden:
                 _, fin = estaciones[servicio].procesar_cliente(inicioOrden, tiempoServiMap[servicio]())
                 tiempoSalidaCliente = max(fin, tiempoSalidaCliente)
 
-        if (tiempoSalidaCliente<tiempoLimite): esperas.append((tiempoSalidaCliente-inicioOrden)+tiempoEnCaja)
+        esperas.append(tiempoSalidaCliente-inicioOrden)
 
+    if not esperas: return float('inf'), float('inf')
     return np.mean(esperas), np.var(esperas)
 
 def saveFile(combi, mejorMedia, mejorVar, carpeta, nombreArchi):
@@ -90,15 +92,15 @@ def main():
     for i, combi in enumerate(gen):
         mejorMedia = float('inf')
         mejorVar = float('inf')
-        for _ in range(1):
+        for _ in range(5):
             m, v = exeWorkflow(combi)
-            mejorMedia, mejorVar = min(mejorMedia, m), min(mejorVar, v)
+            (mejorMedia, mejorVar) = min((mejorMedia, mejorVar), (m, v))
 
-        if (mejorMedia>mediaCombiOptima[0]):
+        if (mejorMedia < mediaCombiOptima[0]):
             bestMediaCombi = combi
             mediaCombiOptima = (mejorMedia,mejorVar)
 
-        if (mejorVar>varCombiOptima[1]):
+        if (mejorVar < varCombiOptima[1]):
             bestVarComb = combi
             varCombiOptima = (mejorMedia,mejorVar)
 
