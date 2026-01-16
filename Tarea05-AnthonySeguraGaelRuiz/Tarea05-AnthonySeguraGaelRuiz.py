@@ -21,8 +21,8 @@ def genCombi(n, k):
     if k == 1:
         yield (n+1,)
         return
-    for i in range(n + 1):
-        for resto in genCombi(n - i, k - 1):
+    for i in range(n+1):
+        for resto in genCombi(n-i, k-1):
             yield (i+1,) + resto
 
 def funNormalDisc(mu, sigma, minVal):
@@ -33,7 +33,7 @@ probsWorkflow = {"refrescos": 0.9, "freidora": 0.7, "postres": 0.25, "pollo": 0.
 tiempoServiMap = {
     "cajas": lambda: expon(scale=2.5).rvs(),     
     "refrescos": lambda: expon(scale=0.75).rvs(),   
-    "freidora": funNormalDisc(mu=3, sigma=0.5, minVal=1),
+    "freidora": funNormalDisc(mu=3, sigma=1, minVal=1),
     "postres": lambda: binom(n=5, p=0.6).rvs(),
     "pollo": lambda: geom(p=0.1).rvs(),
 }
@@ -59,14 +59,15 @@ def exeWorkflow(combServidor, imprimir):
         print("-" * 90)
 
     numCliente = 0
-    while tiempoTotal < tiempoLimite:
+    while 1:
         tiempoTotal += tiempoEntreClientes()
+        if (tiempoTotal>tiempoLimite): break
         numCliente += 1
         tiempoCliente = tiempoTotal 
         duracion = tiempoServiMap['cajas']()
         tiempoEspera, finCajas, indxEmple = estaciones['cajas'].procesar_cliente(tiempoCliente, duracion)
         
-        if imprimir and tiempoTotal < tiempoLimite:
+        if imprimir:
             print(f"{numCliente:<4} | {'Cajas':<10} | {f'Cajero {indxEmple}':<10} | {tiempoCliente:8.2f} | {tiempoCliente+tiempoEspera:8.2f} | {duracion:8.2f} | {finCajas:8.2f} | {tiempoEspera:8.2f}")
 
         inicioOrden = finCajas
@@ -77,11 +78,17 @@ def exeWorkflow(combServidor, imprimir):
                 duracion = tiempoServiMap[servicio]()
                 tiempoEspera, fin, indxEmple = estaciones[servicio].procesar_cliente(inicioOrden, duracion)
                 tiempoSalidaCliente = max(fin, tiempoSalidaCliente)
-                if imprimir and tiempoTotal < tiempoLimite:
+                if imprimir:
                     print(f"{'':<4} | {servicio:<10} | {f'Emp {indxEmple}':<10} | {inicioOrden:8.2f} | {inicioOrden+tiempoEspera:8.2f} | {duracion:8.2f} | {fin:8.2f} | {tiempoEspera:8.2f}")
-        
-        if imprimir and tiempoTotal < tiempoLimite: print("-"*90)
-        esperas.append(tiempoSalidaCliente-tiempoCliente)
+        esperaTotal = tiempoSalidaCliente-tiempoCliente
+        if imprimir: 
+            print(
+                f"{'':<4} | {'TOTAL':<10} | {'Cliente':<10} | "
+                f"{tiempoCliente:8.2f} | {'':>8} | {'':>8} | {tiempoSalidaCliente:8.2f} | {esperaTotal:8.2f}"
+            )
+            if tiempoTotal <= tiempoLimite: print("-"*90)
+
+        esperas.append(esperaTotal)
 
     return np.mean(esperas), np.var(esperas)
 
@@ -103,12 +110,14 @@ def main():
     globalBestBal   = (float('inf'), None, None) 
     globalBestMedia = (float('inf'), (0, 0), None)
     globalBestVar = (float('inf'), (0, 0), None)
-    n = 5
+    n = 100
     open(os.path.join("configs", "config_all.txt"), "w").close()
     for i, combi in enumerate(gen):
         mediaL = varL = 0
-        for _ in range(n):
-            m, v = exeWorkflow(combi, imprimir=False)
+        for a in range(n):
+            show = not (a%(n//3))
+            if show: print(f'Dia número {a}')
+            m, v = exeWorkflow(combi, imprimir=show)
             mediaL += m
             varL +=v
 
