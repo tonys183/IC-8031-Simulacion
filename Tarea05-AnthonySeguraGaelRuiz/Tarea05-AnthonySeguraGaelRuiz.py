@@ -1,8 +1,8 @@
-from scipy.stats import  expon, binom, geom, truncnorm
 import numpy as np
 import os
 
 tiempoLimite = 480
+randomGen = np.random.default_rng()
 
 class Servidor:
     def __init__(self, numEmple):
@@ -26,31 +26,31 @@ def genCombi(n, k):
             yield (i+1,) + resto
 
 def funNormalDisc(mu, sigma, minVal):
-    a = (minVal-mu)/sigma
-    return lambda: int(np.round(truncnorm(a, np.inf, loc=mu, scale=sigma).rvs()))
+    val = randomGen.normal(loc=mu, scale=sigma)
+    return int(val) if val >= minVal else 0
 
 probsWorkflow = {"refrescos": 0.9, "freidora": 0.7, "postres": 0.25, "pollo": 0.3} 
 tiempoServiMap = {
-    "cajas": lambda: expon(scale=2.5).rvs(),     
-    "refrescos": lambda: expon(scale=0.75).rvs(),   
-    "freidora": funNormalDisc(mu=3, sigma=1, minVal=1),
-    "postres": lambda: binom(n=5, p=0.6).rvs(),
-    "pollo": lambda: geom(p=0.1).rvs(),
+    "cajas": lambda: randomGen.exponential(scale=2.5),     
+    "refrescos": lambda: randomGen.exponential(scale=0.75),   
+    "freidora": lambda: funNormalDisc(mu=3, sigma=1, minVal=1),
+    "postres": lambda: randomGen.binomial(n=5, p=0.6),
+    "pollo": lambda: randomGen.geometric(p=0.1),
 }
 
 def tiempoServi(estacion):
     return tiempoServiMap[estacion]()
 
 def genOrden():
-    return [servicio for servicio, prob in probsWorkflow.items() if np.random.random() <= prob]
+    return [servicio for servicio, prob in probsWorkflow.items() if randomGen.random() <= prob]
 
 def exeWorkflow(combServidor, imprimir):
     nombres = ['cajas','refrescos', 'freidora', 'postres', 'pollo']
     estaciones = {nombres[i]:Servidor(combServidor[i]) for i in range(5)}
     tiempoTotal = 0.0
     esperas = []
-    tiempoEntreClientes = lambda: expon(scale=3.0).rvs()
-    ordenDist = lambda: binom(n=5, p=0.4).rvs()
+    tiempoEntreClientes = lambda: randomGen.exponential(scale=3.0)
+    ordenDist = lambda: randomGen.binomial(n=5, p=0.4)
     
     if imprimir:
         print("\n" + "="*90)
@@ -89,7 +89,6 @@ def exeWorkflow(combServidor, imprimir):
             if tiempoTotal <= tiempoLimite: print("-"*90)
 
         esperas.append(esperaTotal)
-
     return np.mean(esperas), np.var(esperas)
 
 def saveFile(combi, media, var, carpeta, nombreArchi, modo, spaceStr, i):
@@ -110,7 +109,7 @@ def main():
     globalBestBal   = (float('inf'), None, None) 
     globalBestMedia = (float('inf'), (0, 0), None)
     globalBestVar = (float('inf'), (0, 0), None)
-    n = 100
+    n = 1000
     open(os.path.join("configs", "config_all.txt"), "w").close()
     for i, combi in enumerate(gen):
         mediaL = varL = 0
@@ -127,7 +126,6 @@ def main():
         globalBestBal = min(globalBestBal, (balance, (mediaL, varL), combi))
         globalBestMedia = min(globalBestMedia, (mediaL, (mediaL, varL), combi))
         globalBestVar = min(globalBestVar, (varL, (mediaL, varL), combi))
-
         saveFile(combi, mediaL, varL, "configs", "config_all.txt", "a", "\n\n", i+1)
     
     saveFile(globalBestMedia[2], *globalBestMedia[1], "configs", "config_mejor_media.txt", "w", "", 1)
