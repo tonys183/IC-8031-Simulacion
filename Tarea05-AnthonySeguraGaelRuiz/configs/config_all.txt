@@ -1,0 +1,3630 @@
+---- 1) Datos Configuración (1, 1, 1, 1, 8) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     8
+
+Tiempo de Espera Promedio (W): 50.9383
+Varianza (Var): 1552.1744
+-------------------------------------------------
+
+---- 2) Datos Configuración (1, 1, 1, 2, 7) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     7
+
+Tiempo de Espera Promedio (W): 51.3090
+Varianza (Var): 1643.4275
+-------------------------------------------------
+
+---- 3) Datos Configuración (1, 1, 1, 3, 6) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   3
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 50.4386
+Varianza (Var): 1559.8974
+-------------------------------------------------
+
+---- 4) Datos Configuración (1, 1, 1, 4, 5) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   4
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 50.6821
+Varianza (Var): 1622.2655
+-------------------------------------------------
+
+---- 5) Datos Configuración (1, 1, 1, 5, 4) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   5
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 50.9049
+Varianza (Var): 1536.1041
+-------------------------------------------------
+
+---- 6) Datos Configuración (1, 1, 1, 6, 3) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   6
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 51.6126
+Varianza (Var): 1551.7405
+-------------------------------------------------
+
+---- 7) Datos Configuración (1, 1, 1, 7, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   7
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 56.8509
+Varianza (Var): 1918.5547
+-------------------------------------------------
+
+---- 8) Datos Configuración (1, 1, 1, 8, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  1
+Postres:   8
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 115.0902
+Varianza (Var): 21719.4766
+-------------------------------------------------
+
+---- 9) Datos Configuración (1, 1, 2, 1, 7) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     7
+
+Tiempo de Espera Promedio (W): 21.1135
+Varianza (Var): 174.6768
+-------------------------------------------------
+
+---- 10) Datos Configuración (1, 1, 2, 2, 6) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 20.3756
+Varianza (Var): 169.5525
+-------------------------------------------------
+
+---- 11) Datos Configuración (1, 1, 2, 3, 5) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   3
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 20.1825
+Varianza (Var): 168.0809
+-------------------------------------------------
+
+---- 12) Datos Configuración (1, 1, 2, 4, 4) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   4
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.8431
+Varianza (Var): 191.2794
+-------------------------------------------------
+
+---- 13) Datos Configuración (1, 1, 2, 5, 3) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   5
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.3173
+Varianza (Var): 252.7699
+-------------------------------------------------
+
+---- 14) Datos Configuración (1, 1, 2, 6, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   6
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.9076
+Varianza (Var): 1215.7848
+-------------------------------------------------
+
+---- 15) Datos Configuración (1, 1, 2, 7, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  2
+Postres:   7
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.9134
+Varianza (Var): 22969.1496
+-------------------------------------------------
+
+---- 16) Datos Configuración (1, 1, 3, 1, 6) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  3
+Postres:   1
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 20.6845
+Varianza (Var): 179.3511
+-------------------------------------------------
+
+---- 17) Datos Configuración (1, 1, 3, 2, 5) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  3
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 19.6149
+Varianza (Var): 170.5591
+-------------------------------------------------
+
+---- 18) Datos Configuración (1, 1, 3, 3, 4) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  3
+Postres:   3
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.2482
+Varianza (Var): 190.0232
+-------------------------------------------------
+
+---- 19) Datos Configuración (1, 1, 3, 4, 3) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  3
+Postres:   4
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.1390
+Varianza (Var): 255.5208
+-------------------------------------------------
+
+---- 20) Datos Configuración (1, 1, 3, 5, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  3
+Postres:   5
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.8832
+Varianza (Var): 1218.9624
+-------------------------------------------------
+
+---- 21) Datos Configuración (1, 1, 3, 6, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  3
+Postres:   6
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 88.1187
+Varianza (Var): 21924.5345
+-------------------------------------------------
+
+---- 22) Datos Configuración (1, 1, 4, 1, 5) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  4
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 20.0099
+Varianza (Var): 175.5970
+-------------------------------------------------
+
+---- 23) Datos Configuración (1, 1, 4, 2, 4) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  4
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 19.5686
+Varianza (Var): 181.4582
+-------------------------------------------------
+
+---- 24) Datos Configuración (1, 1, 4, 3, 3) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  4
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.3344
+Varianza (Var): 258.9117
+-------------------------------------------------
+
+---- 25) Datos Configuración (1, 1, 4, 4, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  4
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.6985
+Varianza (Var): 1161.7506
+-------------------------------------------------
+
+---- 26) Datos Configuración (1, 1, 4, 5, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  4
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.0042
+Varianza (Var): 22662.9285
+-------------------------------------------------
+
+---- 27) Datos Configuración (1, 1, 5, 1, 4) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  5
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.9098
+Varianza (Var): 197.8885
+-------------------------------------------------
+
+---- 28) Datos Configuración (1, 1, 5, 2, 3) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  5
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.7873
+Varianza (Var): 264.2217
+-------------------------------------------------
+
+---- 29) Datos Configuración (1, 1, 5, 3, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  5
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.9795
+Varianza (Var): 1247.1102
+-------------------------------------------------
+
+---- 30) Datos Configuración (1, 1, 5, 4, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  5
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 88.3855
+Varianza (Var): 22160.8717
+-------------------------------------------------
+
+---- 31) Datos Configuración (1, 1, 6, 1, 3) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  6
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.6902
+Varianza (Var): 274.2866
+-------------------------------------------------
+
+---- 32) Datos Configuración (1, 1, 6, 2, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  6
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.6573
+Varianza (Var): 1167.2815
+-------------------------------------------------
+
+---- 33) Datos Configuración (1, 1, 6, 3, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  6
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.5225
+Varianza (Var): 23001.9949
+-------------------------------------------------
+
+---- 34) Datos Configuración (1, 1, 7, 1, 2) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  7
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.3805
+Varianza (Var): 1147.5523
+-------------------------------------------------
+
+---- 35) Datos Configuración (1, 1, 7, 2, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  7
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.7125
+Varianza (Var): 22737.4700
+-------------------------------------------------
+
+---- 36) Datos Configuración (1, 1, 8, 1, 1) ----
+Cajas:     1
+Refrescos: 1
+Freidora:  8
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.6871
+Varianza (Var): 22303.8158
+-------------------------------------------------
+
+---- 37) Datos Configuración (1, 2, 1, 1, 7) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     7
+
+Tiempo de Espera Promedio (W): 50.2938
+Varianza (Var): 1509.3402
+-------------------------------------------------
+
+---- 38) Datos Configuración (1, 2, 1, 2, 6) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   2
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 50.4431
+Varianza (Var): 1575.4267
+-------------------------------------------------
+
+---- 39) Datos Configuración (1, 2, 1, 3, 5) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   3
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 50.1088
+Varianza (Var): 1572.8481
+-------------------------------------------------
+
+---- 40) Datos Configuración (1, 2, 1, 4, 4) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   4
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 49.9420
+Varianza (Var): 1527.7438
+-------------------------------------------------
+
+---- 41) Datos Configuración (1, 2, 1, 5, 3) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   5
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 50.8752
+Varianza (Var): 1520.5520
+-------------------------------------------------
+
+---- 42) Datos Configuración (1, 2, 1, 6, 2) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   6
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 55.9833
+Varianza (Var): 1886.3887
+-------------------------------------------------
+
+---- 43) Datos Configuración (1, 2, 1, 7, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  1
+Postres:   7
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 112.3359
+Varianza (Var): 20549.8218
+-------------------------------------------------
+
+---- 44) Datos Configuración (1, 2, 2, 1, 6) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  2
+Postres:   1
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 20.9423
+Varianza (Var): 179.6150
+-------------------------------------------------
+
+---- 45) Datos Configuración (1, 2, 2, 2, 5) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  2
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 20.0372
+Varianza (Var): 173.7283
+-------------------------------------------------
+
+---- 46) Datos Configuración (1, 2, 2, 3, 4) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  2
+Postres:   3
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.3634
+Varianza (Var): 185.0837
+-------------------------------------------------
+
+---- 47) Datos Configuración (1, 2, 2, 4, 3) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  2
+Postres:   4
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.2925
+Varianza (Var): 267.4055
+-------------------------------------------------
+
+---- 48) Datos Configuración (1, 2, 2, 5, 2) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  2
+Postres:   5
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.1439
+Varianza (Var): 1124.3571
+-------------------------------------------------
+
+---- 49) Datos Configuración (1, 2, 2, 6, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  2
+Postres:   6
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.3566
+Varianza (Var): 22587.7974
+-------------------------------------------------
+
+---- 50) Datos Configuración (1, 2, 3, 1, 5) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  3
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 20.0780
+Varianza (Var): 179.6797
+-------------------------------------------------
+
+---- 51) Datos Configuración (1, 2, 3, 2, 4) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  3
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 19.8620
+Varianza (Var): 191.3676
+-------------------------------------------------
+
+---- 52) Datos Configuración (1, 2, 3, 3, 3) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  3
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 20.8800
+Varianza (Var): 261.0260
+-------------------------------------------------
+
+---- 53) Datos Configuración (1, 2, 3, 4, 2) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  3
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 29.7847
+Varianza (Var): 1124.8010
+-------------------------------------------------
+
+---- 54) Datos Configuración (1, 2, 3, 5, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  3
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.3373
+Varianza (Var): 23414.6237
+-------------------------------------------------
+
+---- 55) Datos Configuración (1, 2, 4, 1, 4) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  4
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.5698
+Varianza (Var): 199.8219
+-------------------------------------------------
+
+---- 56) Datos Configuración (1, 2, 4, 2, 3) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  4
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.1033
+Varianza (Var): 271.4502
+-------------------------------------------------
+
+---- 57) Datos Configuración (1, 2, 4, 3, 2) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  4
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.1836
+Varianza (Var): 1204.9287
+-------------------------------------------------
+
+---- 58) Datos Configuración (1, 2, 4, 4, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  4
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.5893
+Varianza (Var): 23519.2635
+-------------------------------------------------
+
+---- 59) Datos Configuración (1, 2, 5, 1, 3) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  5
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.0157
+Varianza (Var): 267.7605
+-------------------------------------------------
+
+---- 60) Datos Configuración (1, 2, 5, 2, 2) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  5
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.1934
+Varianza (Var): 1180.6959
+-------------------------------------------------
+
+---- 61) Datos Configuración (1, 2, 5, 3, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  5
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.7975
+Varianza (Var): 23647.4882
+-------------------------------------------------
+
+---- 62) Datos Configuración (1, 2, 6, 1, 2) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  6
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.3323
+Varianza (Var): 1142.2264
+-------------------------------------------------
+
+---- 63) Datos Configuración (1, 2, 6, 2, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  6
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.5180
+Varianza (Var): 22968.3963
+-------------------------------------------------
+
+---- 64) Datos Configuración (1, 2, 7, 1, 1) ----
+Cajas:     1
+Refrescos: 2
+Freidora:  7
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.2615
+Varianza (Var): 22335.2390
+-------------------------------------------------
+
+---- 65) Datos Configuración (1, 3, 1, 1, 6) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  1
+Postres:   1
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 49.8028
+Varianza (Var): 1539.3298
+-------------------------------------------------
+
+---- 66) Datos Configuración (1, 3, 1, 2, 5) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  1
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 51.4592
+Varianza (Var): 1636.3895
+-------------------------------------------------
+
+---- 67) Datos Configuración (1, 3, 1, 3, 4) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  1
+Postres:   3
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 50.0899
+Varianza (Var): 1570.0344
+-------------------------------------------------
+
+---- 68) Datos Configuración (1, 3, 1, 4, 3) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  1
+Postres:   4
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 51.5397
+Varianza (Var): 1629.8389
+-------------------------------------------------
+
+---- 69) Datos Configuración (1, 3, 1, 5, 2) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  1
+Postres:   5
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 57.1937
+Varianza (Var): 2016.1541
+-------------------------------------------------
+
+---- 70) Datos Configuración (1, 3, 1, 6, 1) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  1
+Postres:   6
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 111.5902
+Varianza (Var): 20296.3214
+-------------------------------------------------
+
+---- 71) Datos Configuración (1, 3, 2, 1, 5) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  2
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 20.9347
+Varianza (Var): 183.2157
+-------------------------------------------------
+
+---- 72) Datos Configuración (1, 3, 2, 2, 4) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  2
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.2304
+Varianza (Var): 186.7199
+-------------------------------------------------
+
+---- 73) Datos Configuración (1, 3, 2, 3, 3) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  2
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.9522
+Varianza (Var): 257.9110
+-------------------------------------------------
+
+---- 74) Datos Configuración (1, 3, 2, 4, 2) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  2
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 32.2446
+Varianza (Var): 1284.8883
+-------------------------------------------------
+
+---- 75) Datos Configuración (1, 3, 2, 5, 1) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  2
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.6116
+Varianza (Var): 22974.6343
+-------------------------------------------------
+
+---- 76) Datos Configuración (1, 3, 3, 1, 4) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  3
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 20.6713
+Varianza (Var): 200.3822
+-------------------------------------------------
+
+---- 77) Datos Configuración (1, 3, 3, 2, 3) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  3
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.3848
+Varianza (Var): 266.8259
+-------------------------------------------------
+
+---- 78) Datos Configuración (1, 3, 3, 3, 2) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  3
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.0433
+Varianza (Var): 1253.3565
+-------------------------------------------------
+
+---- 79) Datos Configuración (1, 3, 3, 4, 1) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  3
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 88.3312
+Varianza (Var): 22269.8208
+-------------------------------------------------
+
+---- 80) Datos Configuración (1, 3, 4, 1, 3) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  4
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.4835
+Varianza (Var): 276.1000
+-------------------------------------------------
+
+---- 81) Datos Configuración (1, 3, 4, 2, 2) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  4
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 29.9441
+Varianza (Var): 1151.4661
+-------------------------------------------------
+
+---- 82) Datos Configuración (1, 3, 4, 3, 1) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  4
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 87.6816
+Varianza (Var): 21974.1549
+-------------------------------------------------
+
+---- 83) Datos Configuración (1, 3, 5, 1, 2) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  5
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.3752
+Varianza (Var): 1179.1474
+-------------------------------------------------
+
+---- 84) Datos Configuración (1, 3, 5, 2, 1) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  5
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 88.7087
+Varianza (Var): 22800.6662
+-------------------------------------------------
+
+---- 85) Datos Configuración (1, 3, 6, 1, 1) ----
+Cajas:     1
+Refrescos: 3
+Freidora:  6
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 91.4694
+Varianza (Var): 23255.1140
+-------------------------------------------------
+
+---- 86) Datos Configuración (1, 4, 1, 1, 5) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  1
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 49.9833
+Varianza (Var): 1508.8060
+-------------------------------------------------
+
+---- 87) Datos Configuración (1, 4, 1, 2, 4) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  1
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 50.2272
+Varianza (Var): 1578.9070
+-------------------------------------------------
+
+---- 88) Datos Configuración (1, 4, 1, 3, 3) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  1
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 51.7731
+Varianza (Var): 1612.2273
+-------------------------------------------------
+
+---- 89) Datos Configuración (1, 4, 1, 4, 2) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  1
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 58.2231
+Varianza (Var): 2016.7649
+-------------------------------------------------
+
+---- 90) Datos Configuración (1, 4, 1, 5, 1) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  1
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 111.4738
+Varianza (Var): 20060.3240
+-------------------------------------------------
+
+---- 91) Datos Configuración (1, 4, 2, 1, 4) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  2
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 21.5175
+Varianza (Var): 196.7330
+-------------------------------------------------
+
+---- 92) Datos Configuración (1, 4, 2, 2, 3) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  2
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.3772
+Varianza (Var): 271.3188
+-------------------------------------------------
+
+---- 93) Datos Configuración (1, 4, 2, 3, 2) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  2
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.5346
+Varianza (Var): 1135.6355
+-------------------------------------------------
+
+---- 94) Datos Configuración (1, 4, 2, 4, 1) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  2
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.8327
+Varianza (Var): 22916.2350
+-------------------------------------------------
+
+---- 95) Datos Configuración (1, 4, 3, 1, 3) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  3
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 21.8611
+Varianza (Var): 262.8619
+-------------------------------------------------
+
+---- 96) Datos Configuración (1, 4, 3, 2, 2) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  3
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.3066
+Varianza (Var): 1129.1881
+-------------------------------------------------
+
+---- 97) Datos Configuración (1, 4, 3, 3, 1) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  3
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 87.3803
+Varianza (Var): 21903.3717
+-------------------------------------------------
+
+---- 98) Datos Configuración (1, 4, 4, 1, 2) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  4
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.9797
+Varianza (Var): 1134.0068
+-------------------------------------------------
+
+---- 99) Datos Configuración (1, 4, 4, 2, 1) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  4
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.7789
+Varianza (Var): 23342.8507
+-------------------------------------------------
+
+---- 100) Datos Configuración (1, 4, 5, 1, 1) ----
+Cajas:     1
+Refrescos: 4
+Freidora:  5
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 91.8775
+Varianza (Var): 23301.3575
+-------------------------------------------------
+
+---- 101) Datos Configuración (1, 5, 1, 1, 4) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  1
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 51.9063
+Varianza (Var): 1644.5395
+-------------------------------------------------
+
+---- 102) Datos Configuración (1, 5, 1, 2, 3) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  1
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 51.1532
+Varianza (Var): 1566.2297
+-------------------------------------------------
+
+---- 103) Datos Configuración (1, 5, 1, 3, 2) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  1
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 56.6901
+Varianza (Var): 1931.5043
+-------------------------------------------------
+
+---- 104) Datos Configuración (1, 5, 1, 4, 1) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  1
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 113.5540
+Varianza (Var): 20946.0677
+-------------------------------------------------
+
+---- 105) Datos Configuración (1, 5, 2, 1, 3) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  2
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 22.6179
+Varianza (Var): 261.6827
+-------------------------------------------------
+
+---- 106) Datos Configuración (1, 5, 2, 2, 2) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  2
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 30.8557
+Varianza (Var): 1112.4465
+-------------------------------------------------
+
+---- 107) Datos Configuración (1, 5, 2, 3, 1) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  2
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.5395
+Varianza (Var): 23278.2480
+-------------------------------------------------
+
+---- 108) Datos Configuración (1, 5, 3, 1, 2) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  3
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 31.3735
+Varianza (Var): 1176.2719
+-------------------------------------------------
+
+---- 109) Datos Configuración (1, 5, 3, 2, 1) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  3
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 88.3925
+Varianza (Var): 22572.5417
+-------------------------------------------------
+
+---- 110) Datos Configuración (1, 5, 4, 1, 1) ----
+Cajas:     1
+Refrescos: 5
+Freidora:  4
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.0726
+Varianza (Var): 22161.5624
+-------------------------------------------------
+
+---- 111) Datos Configuración (1, 6, 1, 1, 3) ----
+Cajas:     1
+Refrescos: 6
+Freidora:  1
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 51.2284
+Varianza (Var): 1524.8133
+-------------------------------------------------
+
+---- 112) Datos Configuración (1, 6, 1, 2, 2) ----
+Cajas:     1
+Refrescos: 6
+Freidora:  1
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 56.9803
+Varianza (Var): 1975.5830
+-------------------------------------------------
+
+---- 113) Datos Configuración (1, 6, 1, 3, 1) ----
+Cajas:     1
+Refrescos: 6
+Freidora:  1
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 111.0463
+Varianza (Var): 19877.4316
+-------------------------------------------------
+
+---- 114) Datos Configuración (1, 6, 2, 1, 2) ----
+Cajas:     1
+Refrescos: 6
+Freidora:  2
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 32.2762
+Varianza (Var): 1153.0185
+-------------------------------------------------
+
+---- 115) Datos Configuración (1, 6, 2, 2, 1) ----
+Cajas:     1
+Refrescos: 6
+Freidora:  2
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 89.4856
+Varianza (Var): 22126.3741
+-------------------------------------------------
+
+---- 116) Datos Configuración (1, 6, 3, 1, 1) ----
+Cajas:     1
+Refrescos: 6
+Freidora:  3
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 88.9325
+Varianza (Var): 21920.9477
+-------------------------------------------------
+
+---- 117) Datos Configuración (1, 7, 1, 1, 2) ----
+Cajas:     1
+Refrescos: 7
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 56.5158
+Varianza (Var): 1876.0721
+-------------------------------------------------
+
+---- 118) Datos Configuración (1, 7, 1, 2, 1) ----
+Cajas:     1
+Refrescos: 7
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 113.7426
+Varianza (Var): 21138.9721
+-------------------------------------------------
+
+---- 119) Datos Configuración (1, 7, 2, 1, 1) ----
+Cajas:     1
+Refrescos: 7
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 90.0517
+Varianza (Var): 21972.4065
+-------------------------------------------------
+
+---- 120) Datos Configuración (1, 8, 1, 1, 1) ----
+Cajas:     1
+Refrescos: 8
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 112.9357
+Varianza (Var): 20238.5702
+-------------------------------------------------
+
+---- 121) Datos Configuración (2, 1, 1, 1, 7) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     7
+
+Tiempo de Espera Promedio (W): 45.8563
+Varianza (Var): 1679.6694
+-------------------------------------------------
+
+---- 122) Datos Configuración (2, 1, 1, 2, 6) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 45.1283
+Varianza (Var): 1655.0307
+-------------------------------------------------
+
+---- 123) Datos Configuración (2, 1, 1, 3, 5) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   3
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 44.9214
+Varianza (Var): 1674.3498
+-------------------------------------------------
+
+---- 124) Datos Configuración (2, 1, 1, 4, 4) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   4
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 44.2439
+Varianza (Var): 1581.5007
+-------------------------------------------------
+
+---- 125) Datos Configuración (2, 1, 1, 5, 3) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   5
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.4821
+Varianza (Var): 1607.2757
+-------------------------------------------------
+
+---- 126) Datos Configuración (2, 1, 1, 6, 2) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   6
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.9095
+Varianza (Var): 2035.6999
+-------------------------------------------------
+
+---- 127) Datos Configuración (2, 1, 1, 7, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  1
+Postres:   7
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.2164
+Varianza (Var): 20407.5628
+-------------------------------------------------
+
+---- 128) Datos Configuración (2, 1, 2, 1, 6) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 12.4725
+Varianza (Var): 84.1487
+-------------------------------------------------
+
+---- 129) Datos Configuración (2, 1, 2, 2, 5) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 11.6976
+Varianza (Var): 79.0007
+-------------------------------------------------
+
+---- 130) Datos Configuración (2, 1, 2, 3, 4) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   3
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 12.0790
+Varianza (Var): 95.8585
+-------------------------------------------------
+
+---- 131) Datos Configuración (2, 1, 2, 4, 3) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   4
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.8005
+Varianza (Var): 176.3667
+-------------------------------------------------
+
+---- 132) Datos Configuración (2, 1, 2, 5, 2) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   5
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.6299
+Varianza (Var): 1014.6901
+-------------------------------------------------
+
+---- 133) Datos Configuración (2, 1, 2, 6, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   6
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.2783
+Varianza (Var): 23122.8098
+-------------------------------------------------
+
+---- 134) Datos Configuración (2, 1, 3, 1, 5) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  3
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 11.7201
+Varianza (Var): 87.5393
+-------------------------------------------------
+
+---- 135) Datos Configuración (2, 1, 3, 2, 4) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  3
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 11.1986
+Varianza (Var): 91.6372
+-------------------------------------------------
+
+---- 136) Datos Configuración (2, 1, 3, 3, 3) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  3
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 12.7271
+Varianza (Var): 166.1579
+-------------------------------------------------
+
+---- 137) Datos Configuración (2, 1, 3, 4, 2) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  3
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.3365
+Varianza (Var): 1109.0176
+-------------------------------------------------
+
+---- 138) Datos Configuración (2, 1, 3, 5, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  3
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.0641
+Varianza (Var): 22961.3619
+-------------------------------------------------
+
+---- 139) Datos Configuración (2, 1, 4, 1, 4) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  4
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 11.9835
+Varianza (Var): 101.8002
+-------------------------------------------------
+
+---- 140) Datos Configuración (2, 1, 4, 2, 3) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  4
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 12.8347
+Varianza (Var): 179.7877
+-------------------------------------------------
+
+---- 141) Datos Configuración (2, 1, 4, 3, 2) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  4
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.2842
+Varianza (Var): 1123.0096
+-------------------------------------------------
+
+---- 142) Datos Configuración (2, 1, 4, 4, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  4
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.9450
+Varianza (Var): 23649.2744
+-------------------------------------------------
+
+---- 143) Datos Configuración (2, 1, 5, 1, 3) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  5
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.6803
+Varianza (Var): 183.3774
+-------------------------------------------------
+
+---- 144) Datos Configuración (2, 1, 5, 2, 2) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  5
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.1343
+Varianza (Var): 1085.6160
+-------------------------------------------------
+
+---- 145) Datos Configuración (2, 1, 5, 3, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  5
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.5440
+Varianza (Var): 23700.0101
+-------------------------------------------------
+
+---- 146) Datos Configuración (2, 1, 6, 1, 2) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  6
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.3646
+Varianza (Var): 1165.0432
+-------------------------------------------------
+
+---- 147) Datos Configuración (2, 1, 6, 2, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  6
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.2178
+Varianza (Var): 22869.1049
+-------------------------------------------------
+
+---- 148) Datos Configuración (2, 1, 7, 1, 1) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  7
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.5084
+Varianza (Var): 23321.2869
+-------------------------------------------------
+
+---- 149) Datos Configuración (2, 2, 1, 1, 6) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 45.1971
+Varianza (Var): 1682.9925
+-------------------------------------------------
+
+---- 150) Datos Configuración (2, 2, 1, 2, 5) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  1
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 45.8848
+Varianza (Var): 1794.4778
+-------------------------------------------------
+
+---- 151) Datos Configuración (2, 2, 1, 3, 4) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  1
+Postres:   3
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 44.0277
+Varianza (Var): 1612.8529
+-------------------------------------------------
+
+---- 152) Datos Configuración (2, 2, 1, 4, 3) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  1
+Postres:   4
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 44.9507
+Varianza (Var): 1622.3948
+-------------------------------------------------
+
+---- 153) Datos Configuración (2, 2, 1, 5, 2) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  1
+Postres:   5
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.7283
+Varianza (Var): 1980.1206
+-------------------------------------------------
+
+---- 154) Datos Configuración (2, 2, 1, 6, 1) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  1
+Postres:   6
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.8810
+Varianza (Var): 20471.9718
+-------------------------------------------------
+
+---- 155) Datos Configuración (2, 2, 2, 1, 5) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  2
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 12.2005
+Varianza (Var): 90.0210
+-------------------------------------------------
+
+---- 156) Datos Configuración (2, 2, 2, 2, 4) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  2
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 11.7967
+Varianza (Var): 97.8339
+-------------------------------------------------
+
+---- 157) Datos Configuración (2, 2, 2, 3, 3) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  2
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.5231
+Varianza (Var): 181.9441
+-------------------------------------------------
+
+---- 158) Datos Configuración (2, 2, 2, 4, 2) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  2
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.9679
+Varianza (Var): 1134.2308
+-------------------------------------------------
+
+---- 159) Datos Configuración (2, 2, 2, 5, 1) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  2
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.1341
+Varianza (Var): 23349.1455
+-------------------------------------------------
+
+---- 160) Datos Configuración (2, 2, 3, 1, 4) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  3
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 11.5911
+Varianza (Var): 103.1030
+-------------------------------------------------
+
+---- 161) Datos Configuración (2, 2, 3, 2, 3) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  3
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 12.4884
+Varianza (Var): 183.3424
+-------------------------------------------------
+
+---- 162) Datos Configuración (2, 2, 3, 3, 2) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  3
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 21.8048
+Varianza (Var): 1147.4795
+-------------------------------------------------
+
+---- 163) Datos Configuración (2, 2, 3, 4, 1) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  3
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.8991
+Varianza (Var): 23263.0502
+-------------------------------------------------
+
+---- 164) Datos Configuración (2, 2, 4, 1, 3) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  4
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.1968
+Varianza (Var): 190.1457
+-------------------------------------------------
+
+---- 165) Datos Configuración (2, 2, 4, 2, 2) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  4
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 21.8339
+Varianza (Var): 1173.3810
+-------------------------------------------------
+
+---- 166) Datos Configuración (2, 2, 4, 3, 1) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  4
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 80.1864
+Varianza (Var): 22878.9558
+-------------------------------------------------
+
+---- 167) Datos Configuración (2, 2, 5, 1, 2) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  5
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.4651
+Varianza (Var): 1110.4369
+-------------------------------------------------
+
+---- 168) Datos Configuración (2, 2, 5, 2, 1) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  5
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 80.6327
+Varianza (Var): 22835.4742
+-------------------------------------------------
+
+---- 169) Datos Configuración (2, 2, 6, 1, 1) ----
+Cajas:     2
+Refrescos: 2
+Freidora:  6
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 80.1835
+Varianza (Var): 22279.4149
+-------------------------------------------------
+
+---- 170) Datos Configuración (2, 3, 1, 1, 5) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  1
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 45.2498
+Varianza (Var): 1665.9381
+-------------------------------------------------
+
+---- 171) Datos Configuración (2, 3, 1, 2, 4) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  1
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 44.7331
+Varianza (Var): 1683.7992
+-------------------------------------------------
+
+---- 172) Datos Configuración (2, 3, 1, 3, 3) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  1
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.8684
+Varianza (Var): 1743.1122
+-------------------------------------------------
+
+---- 173) Datos Configuración (2, 3, 1, 4, 2) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  1
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.1120
+Varianza (Var): 2050.1709
+-------------------------------------------------
+
+---- 174) Datos Configuración (2, 3, 1, 5, 1) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  1
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.0152
+Varianza (Var): 20717.1837
+-------------------------------------------------
+
+---- 175) Datos Configuración (2, 3, 2, 1, 4) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  2
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 12.5553
+Varianza (Var): 104.6290
+-------------------------------------------------
+
+---- 176) Datos Configuración (2, 3, 2, 2, 3) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  2
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.3605
+Varianza (Var): 174.6145
+-------------------------------------------------
+
+---- 177) Datos Configuración (2, 3, 2, 3, 2) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  2
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.2323
+Varianza (Var): 1167.5211
+-------------------------------------------------
+
+---- 178) Datos Configuración (2, 3, 2, 4, 1) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  2
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.9946
+Varianza (Var): 22964.9609
+-------------------------------------------------
+
+---- 179) Datos Configuración (2, 3, 3, 1, 3) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  3
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.1303
+Varianza (Var): 183.3401
+-------------------------------------------------
+
+---- 180) Datos Configuración (2, 3, 3, 2, 2) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  3
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 21.8454
+Varianza (Var): 1112.8510
+-------------------------------------------------
+
+---- 181) Datos Configuración (2, 3, 3, 3, 1) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  3
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.3798
+Varianza (Var): 23066.4882
+-------------------------------------------------
+
+---- 182) Datos Configuración (2, 3, 4, 1, 2) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  4
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.4120
+Varianza (Var): 1107.7673
+-------------------------------------------------
+
+---- 183) Datos Configuración (2, 3, 4, 2, 1) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  4
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.4447
+Varianza (Var): 23344.9523
+-------------------------------------------------
+
+---- 184) Datos Configuración (2, 3, 5, 1, 1) ----
+Cajas:     2
+Refrescos: 3
+Freidora:  5
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.7817
+Varianza (Var): 23313.7677
+-------------------------------------------------
+
+---- 185) Datos Configuración (2, 4, 1, 1, 4) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  1
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 45.1762
+Varianza (Var): 1689.8815
+-------------------------------------------------
+
+---- 186) Datos Configuración (2, 4, 1, 2, 3) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  1
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 44.5465
+Varianza (Var): 1606.7401
+-------------------------------------------------
+
+---- 187) Datos Configuración (2, 4, 1, 3, 2) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  1
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.6540
+Varianza (Var): 2004.3553
+-------------------------------------------------
+
+---- 188) Datos Configuración (2, 4, 1, 4, 1) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  1
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.3186
+Varianza (Var): 21334.0937
+-------------------------------------------------
+
+---- 189) Datos Configuración (2, 4, 2, 1, 3) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  2
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 14.0775
+Varianza (Var): 178.9192
+-------------------------------------------------
+
+---- 190) Datos Configuración (2, 4, 2, 2, 2) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  2
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.9925
+Varianza (Var): 1136.9868
+-------------------------------------------------
+
+---- 191) Datos Configuración (2, 4, 2, 3, 1) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  2
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.1758
+Varianza (Var): 23715.6516
+-------------------------------------------------
+
+---- 192) Datos Configuración (2, 4, 3, 1, 2) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  3
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.4290
+Varianza (Var): 1069.3302
+-------------------------------------------------
+
+---- 193) Datos Configuración (2, 4, 3, 2, 1) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  3
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.0099
+Varianza (Var): 23331.9581
+-------------------------------------------------
+
+---- 194) Datos Configuración (2, 4, 4, 1, 1) ----
+Cajas:     2
+Refrescos: 4
+Freidora:  4
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.0003
+Varianza (Var): 23662.9322
+-------------------------------------------------
+
+---- 195) Datos Configuración (2, 5, 1, 1, 3) ----
+Cajas:     2
+Refrescos: 5
+Freidora:  1
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 46.4641
+Varianza (Var): 1655.1150
+-------------------------------------------------
+
+---- 196) Datos Configuración (2, 5, 1, 2, 2) ----
+Cajas:     2
+Refrescos: 5
+Freidora:  1
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.8434
+Varianza (Var): 2003.4109
+-------------------------------------------------
+
+---- 197) Datos Configuración (2, 5, 1, 3, 1) ----
+Cajas:     2
+Refrescos: 5
+Freidora:  1
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 109.7324
+Varianza (Var): 21593.2140
+-------------------------------------------------
+
+---- 198) Datos Configuración (2, 5, 2, 1, 2) ----
+Cajas:     2
+Refrescos: 5
+Freidora:  2
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.4808
+Varianza (Var): 1080.4310
+-------------------------------------------------
+
+---- 199) Datos Configuración (2, 5, 2, 2, 1) ----
+Cajas:     2
+Refrescos: 5
+Freidora:  2
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.1798
+Varianza (Var): 23457.1144
+-------------------------------------------------
+
+---- 200) Datos Configuración (2, 5, 3, 1, 1) ----
+Cajas:     2
+Refrescos: 5
+Freidora:  3
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 84.5735
+Varianza (Var): 24081.7720
+-------------------------------------------------
+
+---- 201) Datos Configuración (2, 6, 1, 1, 2) ----
+Cajas:     2
+Refrescos: 6
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.0997
+Varianza (Var): 1973.8763
+-------------------------------------------------
+
+---- 202) Datos Configuración (2, 6, 1, 2, 1) ----
+Cajas:     2
+Refrescos: 6
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.9774
+Varianza (Var): 20719.1339
+-------------------------------------------------
+
+---- 203) Datos Configuración (2, 6, 2, 1, 1) ----
+Cajas:     2
+Refrescos: 6
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 84.0602
+Varianza (Var): 23282.5110
+-------------------------------------------------
+
+---- 204) Datos Configuración (2, 7, 1, 1, 1) ----
+Cajas:     2
+Refrescos: 7
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 110.1848
+Varianza (Var): 22019.7968
+-------------------------------------------------
+
+---- 205) Datos Configuración (3, 1, 1, 1, 6) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     6
+
+Tiempo de Espera Promedio (W): 45.6264
+Varianza (Var): 1703.2020
+-------------------------------------------------
+
+---- 206) Datos Configuración (3, 1, 1, 2, 5) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 44.7191
+Varianza (Var): 1656.0086
+-------------------------------------------------
+
+---- 207) Datos Configuración (3, 1, 1, 3, 4) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  1
+Postres:   3
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 45.2729
+Varianza (Var): 1690.6578
+-------------------------------------------------
+
+---- 208) Datos Configuración (3, 1, 1, 4, 3) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  1
+Postres:   4
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 44.2666
+Varianza (Var): 1530.6974
+-------------------------------------------------
+
+---- 209) Datos Configuración (3, 1, 1, 5, 2) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  1
+Postres:   5
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.4495
+Varianza (Var): 1925.9803
+-------------------------------------------------
+
+---- 210) Datos Configuración (3, 1, 1, 6, 1) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  1
+Postres:   6
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.0597
+Varianza (Var): 20483.7199
+-------------------------------------------------
+
+---- 211) Datos Configuración (3, 1, 2, 1, 5) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 12.2301
+Varianza (Var): 82.8645
+-------------------------------------------------
+
+---- 212) Datos Configuración (3, 1, 2, 2, 4) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 11.9304
+Varianza (Var): 91.8055
+-------------------------------------------------
+
+---- 213) Datos Configuración (3, 1, 2, 3, 3) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  2
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.5075
+Varianza (Var): 171.2703
+-------------------------------------------------
+
+---- 214) Datos Configuración (3, 1, 2, 4, 2) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  2
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.3494
+Varianza (Var): 1139.4766
+-------------------------------------------------
+
+---- 215) Datos Configuración (3, 1, 2, 5, 1) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  2
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.0612
+Varianza (Var): 23067.4851
+-------------------------------------------------
+
+---- 216) Datos Configuración (3, 1, 3, 1, 4) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  3
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 11.8926
+Varianza (Var): 99.8993
+-------------------------------------------------
+
+---- 217) Datos Configuración (3, 1, 3, 2, 3) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  3
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 12.6870
+Varianza (Var): 166.2630
+-------------------------------------------------
+
+---- 218) Datos Configuración (3, 1, 3, 3, 2) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  3
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.1175
+Varianza (Var): 1075.9888
+-------------------------------------------------
+
+---- 219) Datos Configuración (3, 1, 3, 4, 1) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  3
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.3222
+Varianza (Var): 23404.7885
+-------------------------------------------------
+
+---- 220) Datos Configuración (3, 1, 4, 1, 3) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  4
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.2834
+Varianza (Var): 174.7455
+-------------------------------------------------
+
+---- 221) Datos Configuración (3, 1, 4, 2, 2) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  4
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.1866
+Varianza (Var): 1122.1999
+-------------------------------------------------
+
+---- 222) Datos Configuración (3, 1, 4, 3, 1) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  4
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.3671
+Varianza (Var): 23234.6767
+-------------------------------------------------
+
+---- 223) Datos Configuración (3, 1, 5, 1, 2) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  5
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.7363
+Varianza (Var): 1100.8464
+-------------------------------------------------
+
+---- 224) Datos Configuración (3, 1, 5, 2, 1) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  5
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.4907
+Varianza (Var): 24071.8391
+-------------------------------------------------
+
+---- 225) Datos Configuración (3, 1, 6, 1, 1) ----
+Cajas:     3
+Refrescos: 1
+Freidora:  6
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.8445
+Varianza (Var): 22478.8982
+-------------------------------------------------
+
+---- 226) Datos Configuración (3, 2, 1, 1, 5) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 44.2479
+Varianza (Var): 1637.8621
+-------------------------------------------------
+
+---- 227) Datos Configuración (3, 2, 1, 2, 4) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  1
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 44.2402
+Varianza (Var): 1659.6238
+-------------------------------------------------
+
+---- 228) Datos Configuración (3, 2, 1, 3, 3) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  1
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.2064
+Varianza (Var): 1640.4438
+-------------------------------------------------
+
+---- 229) Datos Configuración (3, 2, 1, 4, 2) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  1
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.9673
+Varianza (Var): 2032.3063
+-------------------------------------------------
+
+---- 230) Datos Configuración (3, 2, 1, 5, 1) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  1
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.9672
+Varianza (Var): 21358.8460
+-------------------------------------------------
+
+---- 231) Datos Configuración (3, 2, 2, 1, 4) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  2
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 12.2583
+Varianza (Var): 99.4121
+-------------------------------------------------
+
+---- 232) Datos Configuración (3, 2, 2, 2, 3) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  2
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.2649
+Varianza (Var): 174.7221
+-------------------------------------------------
+
+---- 233) Datos Configuración (3, 2, 2, 3, 2) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  2
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.5479
+Varianza (Var): 1096.6599
+-------------------------------------------------
+
+---- 234) Datos Configuración (3, 2, 2, 4, 1) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  2
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.5537
+Varianza (Var): 23746.1612
+-------------------------------------------------
+
+---- 235) Datos Configuración (3, 2, 3, 1, 3) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  3
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 12.9672
+Varianza (Var): 176.9270
+-------------------------------------------------
+
+---- 236) Datos Configuración (3, 2, 3, 2, 2) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  3
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 21.5176
+Varianza (Var): 1102.4711
+-------------------------------------------------
+
+---- 237) Datos Configuración (3, 2, 3, 3, 1) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  3
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 80.4035
+Varianza (Var): 22823.6562
+-------------------------------------------------
+
+---- 238) Datos Configuración (3, 2, 4, 1, 2) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  4
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 21.8922
+Varianza (Var): 1059.3888
+-------------------------------------------------
+
+---- 239) Datos Configuración (3, 2, 4, 2, 1) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  4
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.1873
+Varianza (Var): 23524.1771
+-------------------------------------------------
+
+---- 240) Datos Configuración (3, 2, 5, 1, 1) ----
+Cajas:     3
+Refrescos: 2
+Freidora:  5
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 80.4362
+Varianza (Var): 22519.3592
+-------------------------------------------------
+
+---- 241) Datos Configuración (3, 3, 1, 1, 4) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  1
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 43.9753
+Varianza (Var): 1651.8187
+-------------------------------------------------
+
+---- 242) Datos Configuración (3, 3, 1, 2, 3) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  1
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 44.9304
+Varianza (Var): 1625.8512
+-------------------------------------------------
+
+---- 243) Datos Configuración (3, 3, 1, 3, 2) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  1
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 49.2245
+Varianza (Var): 1893.1488
+-------------------------------------------------
+
+---- 244) Datos Configuración (3, 3, 1, 4, 1) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  1
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 108.9187
+Varianza (Var): 21316.9522
+-------------------------------------------------
+
+---- 245) Datos Configuración (3, 3, 2, 1, 3) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  2
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.8225
+Varianza (Var): 173.6307
+-------------------------------------------------
+
+---- 246) Datos Configuración (3, 3, 2, 2, 2) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  2
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.3131
+Varianza (Var): 1185.2719
+-------------------------------------------------
+
+---- 247) Datos Configuración (3, 3, 2, 3, 1) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  2
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.5469
+Varianza (Var): 22788.7898
+-------------------------------------------------
+
+---- 248) Datos Configuración (3, 3, 3, 1, 2) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  3
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.1463
+Varianza (Var): 1086.1039
+-------------------------------------------------
+
+---- 249) Datos Configuración (3, 3, 3, 2, 1) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  3
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.0695
+Varianza (Var): 23633.5673
+-------------------------------------------------
+
+---- 250) Datos Configuración (3, 3, 4, 1, 1) ----
+Cajas:     3
+Refrescos: 3
+Freidora:  4
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.6583
+Varianza (Var): 23496.0139
+-------------------------------------------------
+
+---- 251) Datos Configuración (3, 4, 1, 1, 3) ----
+Cajas:     3
+Refrescos: 4
+Freidora:  1
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.7224
+Varianza (Var): 1673.5111
+-------------------------------------------------
+
+---- 252) Datos Configuración (3, 4, 1, 2, 2) ----
+Cajas:     3
+Refrescos: 4
+Freidora:  1
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.6999
+Varianza (Var): 1958.5398
+-------------------------------------------------
+
+---- 253) Datos Configuración (3, 4, 1, 3, 1) ----
+Cajas:     3
+Refrescos: 4
+Freidora:  1
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 105.8246
+Varianza (Var): 20420.2535
+-------------------------------------------------
+
+---- 254) Datos Configuración (3, 4, 2, 1, 2) ----
+Cajas:     3
+Refrescos: 4
+Freidora:  2
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.7006
+Varianza (Var): 1147.6061
+-------------------------------------------------
+
+---- 255) Datos Configuración (3, 4, 2, 2, 1) ----
+Cajas:     3
+Refrescos: 4
+Freidora:  2
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.4973
+Varianza (Var): 23192.1468
+-------------------------------------------------
+
+---- 256) Datos Configuración (3, 4, 3, 1, 1) ----
+Cajas:     3
+Refrescos: 4
+Freidora:  3
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.8770
+Varianza (Var): 23803.0979
+-------------------------------------------------
+
+---- 257) Datos Configuración (3, 5, 1, 1, 2) ----
+Cajas:     3
+Refrescos: 5
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.4705
+Varianza (Var): 2005.7441
+-------------------------------------------------
+
+---- 258) Datos Configuración (3, 5, 1, 2, 1) ----
+Cajas:     3
+Refrescos: 5
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.8548
+Varianza (Var): 20580.6962
+-------------------------------------------------
+
+---- 259) Datos Configuración (3, 5, 2, 1, 1) ----
+Cajas:     3
+Refrescos: 5
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.5452
+Varianza (Var): 23378.7769
+-------------------------------------------------
+
+---- 260) Datos Configuración (3, 6, 1, 1, 1) ----
+Cajas:     3
+Refrescos: 6
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 105.5693
+Varianza (Var): 20077.6686
+-------------------------------------------------
+
+---- 261) Datos Configuración (4, 1, 1, 1, 5) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 45.5021
+Varianza (Var): 1676.3334
+-------------------------------------------------
+
+---- 262) Datos Configuración (4, 1, 1, 2, 4) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 44.4407
+Varianza (Var): 1630.4572
+-------------------------------------------------
+
+---- 263) Datos Configuración (4, 1, 1, 3, 3) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  1
+Postres:   3
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.8980
+Varianza (Var): 1658.9232
+-------------------------------------------------
+
+---- 264) Datos Configuración (4, 1, 1, 4, 2) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  1
+Postres:   4
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.8869
+Varianza (Var): 1951.1888
+-------------------------------------------------
+
+---- 265) Datos Configuración (4, 1, 1, 5, 1) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  1
+Postres:   5
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 111.4022
+Varianza (Var): 22603.5155
+-------------------------------------------------
+
+---- 266) Datos Configuración (4, 1, 2, 1, 4) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 12.6945
+Varianza (Var): 98.4117
+-------------------------------------------------
+
+---- 267) Datos Configuración (4, 1, 2, 2, 3) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.5125
+Varianza (Var): 164.7516
+-------------------------------------------------
+
+---- 268) Datos Configuración (4, 1, 2, 3, 2) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  2
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.3702
+Varianza (Var): 1161.2218
+-------------------------------------------------
+
+---- 269) Datos Configuración (4, 1, 2, 4, 1) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  2
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.4679
+Varianza (Var): 22727.0939
+-------------------------------------------------
+
+---- 270) Datos Configuración (4, 1, 3, 1, 3) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  3
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.6259
+Varianza (Var): 181.7578
+-------------------------------------------------
+
+---- 271) Datos Configuración (4, 1, 3, 2, 2) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  3
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.3102
+Varianza (Var): 1122.0633
+-------------------------------------------------
+
+---- 272) Datos Configuración (4, 1, 3, 3, 1) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  3
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.0583
+Varianza (Var): 23790.3707
+-------------------------------------------------
+
+---- 273) Datos Configuración (4, 1, 4, 1, 2) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  4
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.7290
+Varianza (Var): 1073.8297
+-------------------------------------------------
+
+---- 274) Datos Configuración (4, 1, 4, 2, 1) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  4
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.7575
+Varianza (Var): 24238.7896
+-------------------------------------------------
+
+---- 275) Datos Configuración (4, 1, 5, 1, 1) ----
+Cajas:     4
+Refrescos: 1
+Freidora:  5
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 84.7448
+Varianza (Var): 24033.1550
+-------------------------------------------------
+
+---- 276) Datos Configuración (4, 2, 1, 1, 4) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 45.2626
+Varianza (Var): 1694.2258
+-------------------------------------------------
+
+---- 277) Datos Configuración (4, 2, 1, 2, 3) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  1
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 44.7878
+Varianza (Var): 1640.6790
+-------------------------------------------------
+
+---- 278) Datos Configuración (4, 2, 1, 3, 2) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  1
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.0696
+Varianza (Var): 1946.8452
+-------------------------------------------------
+
+---- 279) Datos Configuración (4, 2, 1, 4, 1) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  1
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.9237
+Varianza (Var): 21079.8788
+-------------------------------------------------
+
+---- 280) Datos Configuración (4, 2, 2, 1, 3) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  2
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 13.9241
+Varianza (Var): 175.9943
+-------------------------------------------------
+
+---- 281) Datos Configuración (4, 2, 2, 2, 2) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  2
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.4764
+Varianza (Var): 1073.0207
+-------------------------------------------------
+
+---- 282) Datos Configuración (4, 2, 2, 3, 1) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  2
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.7604
+Varianza (Var): 22928.0744
+-------------------------------------------------
+
+---- 283) Datos Configuración (4, 2, 3, 1, 2) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  3
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.0806
+Varianza (Var): 1173.3355
+-------------------------------------------------
+
+---- 284) Datos Configuración (4, 2, 3, 2, 1) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  3
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.9030
+Varianza (Var): 24102.3959
+-------------------------------------------------
+
+---- 285) Datos Configuración (4, 2, 4, 1, 1) ----
+Cajas:     4
+Refrescos: 2
+Freidora:  4
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.4311
+Varianza (Var): 23399.7603
+-------------------------------------------------
+
+---- 286) Datos Configuración (4, 3, 1, 1, 3) ----
+Cajas:     4
+Refrescos: 3
+Freidora:  1
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.2463
+Varianza (Var): 1639.6507
+-------------------------------------------------
+
+---- 287) Datos Configuración (4, 3, 1, 2, 2) ----
+Cajas:     4
+Refrescos: 3
+Freidora:  1
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 49.9285
+Varianza (Var): 1922.8024
+-------------------------------------------------
+
+---- 288) Datos Configuración (4, 3, 1, 3, 1) ----
+Cajas:     4
+Refrescos: 3
+Freidora:  1
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 105.5576
+Varianza (Var): 20237.3434
+-------------------------------------------------
+
+---- 289) Datos Configuración (4, 3, 2, 1, 2) ----
+Cajas:     4
+Refrescos: 3
+Freidora:  2
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.7584
+Varianza (Var): 1155.3824
+-------------------------------------------------
+
+---- 290) Datos Configuración (4, 3, 2, 2, 1) ----
+Cajas:     4
+Refrescos: 3
+Freidora:  2
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 80.8403
+Varianza (Var): 22337.2915
+-------------------------------------------------
+
+---- 291) Datos Configuración (4, 3, 3, 1, 1) ----
+Cajas:     4
+Refrescos: 3
+Freidora:  3
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.3490
+Varianza (Var): 23780.9617
+-------------------------------------------------
+
+---- 292) Datos Configuración (4, 4, 1, 1, 2) ----
+Cajas:     4
+Refrescos: 4
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 49.8451
+Varianza (Var): 1913.9576
+-------------------------------------------------
+
+---- 293) Datos Configuración (4, 4, 1, 2, 1) ----
+Cajas:     4
+Refrescos: 4
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 108.0720
+Varianza (Var): 21167.3807
+-------------------------------------------------
+
+---- 294) Datos Configuración (4, 4, 2, 1, 1) ----
+Cajas:     4
+Refrescos: 4
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.3735
+Varianza (Var): 22991.1660
+-------------------------------------------------
+
+---- 295) Datos Configuración (4, 5, 1, 1, 1) ----
+Cajas:     4
+Refrescos: 5
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.0649
+Varianza (Var): 20283.1065
+-------------------------------------------------
+
+---- 296) Datos Configuración (5, 1, 1, 1, 4) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     4
+
+Tiempo de Espera Promedio (W): 45.7257
+Varianza (Var): 1668.8553
+-------------------------------------------------
+
+---- 297) Datos Configuración (5, 1, 1, 2, 3) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 44.8355
+Varianza (Var): 1535.3857
+-------------------------------------------------
+
+---- 298) Datos Configuración (5, 1, 1, 3, 2) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  1
+Postres:   3
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.1422
+Varianza (Var): 1998.6988
+-------------------------------------------------
+
+---- 299) Datos Configuración (5, 1, 1, 4, 1) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  1
+Postres:   4
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.6467
+Varianza (Var): 21372.7640
+-------------------------------------------------
+
+---- 300) Datos Configuración (5, 1, 2, 1, 3) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 14.3638
+Varianza (Var): 173.5487
+-------------------------------------------------
+
+---- 301) Datos Configuración (5, 1, 2, 2, 2) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.0363
+Varianza (Var): 1077.5900
+-------------------------------------------------
+
+---- 302) Datos Configuración (5, 1, 2, 3, 1) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  2
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.5412
+Varianza (Var): 23230.1160
+-------------------------------------------------
+
+---- 303) Datos Configuración (5, 1, 3, 1, 2) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  3
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.0468
+Varianza (Var): 1095.7724
+-------------------------------------------------
+
+---- 304) Datos Configuración (5, 1, 3, 2, 1) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  3
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.7469
+Varianza (Var): 22987.3064
+-------------------------------------------------
+
+---- 305) Datos Configuración (5, 1, 4, 1, 1) ----
+Cajas:     5
+Refrescos: 1
+Freidora:  4
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.7801
+Varianza (Var): 23122.6852
+-------------------------------------------------
+
+---- 306) Datos Configuración (5, 2, 1, 1, 3) ----
+Cajas:     5
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.8222
+Varianza (Var): 1665.8756
+-------------------------------------------------
+
+---- 307) Datos Configuración (5, 2, 1, 2, 2) ----
+Cajas:     5
+Refrescos: 2
+Freidora:  1
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.6895
+Varianza (Var): 1970.0225
+-------------------------------------------------
+
+---- 308) Datos Configuración (5, 2, 1, 3, 1) ----
+Cajas:     5
+Refrescos: 2
+Freidora:  1
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.7623
+Varianza (Var): 21350.5377
+-------------------------------------------------
+
+---- 309) Datos Configuración (5, 2, 2, 1, 2) ----
+Cajas:     5
+Refrescos: 2
+Freidora:  2
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 22.8618
+Varianza (Var): 1040.2223
+-------------------------------------------------
+
+---- 310) Datos Configuración (5, 2, 2, 2, 1) ----
+Cajas:     5
+Refrescos: 2
+Freidora:  2
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 83.5549
+Varianza (Var): 23582.8935
+-------------------------------------------------
+
+---- 311) Datos Configuración (5, 2, 3, 1, 1) ----
+Cajas:     5
+Refrescos: 2
+Freidora:  3
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.2255
+Varianza (Var): 23054.6727
+-------------------------------------------------
+
+---- 312) Datos Configuración (5, 3, 1, 1, 2) ----
+Cajas:     5
+Refrescos: 3
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.4383
+Varianza (Var): 2029.4802
+-------------------------------------------------
+
+---- 313) Datos Configuración (5, 3, 1, 2, 1) ----
+Cajas:     5
+Refrescos: 3
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 105.3877
+Varianza (Var): 20079.3534
+-------------------------------------------------
+
+---- 314) Datos Configuración (5, 3, 2, 1, 1) ----
+Cajas:     5
+Refrescos: 3
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 84.0441
+Varianza (Var): 23410.3661
+-------------------------------------------------
+
+---- 315) Datos Configuración (5, 4, 1, 1, 1) ----
+Cajas:     5
+Refrescos: 4
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.5727
+Varianza (Var): 20331.9827
+-------------------------------------------------
+
+---- 316) Datos Configuración (6, 1, 1, 1, 3) ----
+Cajas:     6
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     3
+
+Tiempo de Espera Promedio (W): 45.0124
+Varianza (Var): 1595.8648
+-------------------------------------------------
+
+---- 317) Datos Configuración (6, 1, 1, 2, 2) ----
+Cajas:     6
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.4067
+Varianza (Var): 2007.5247
+-------------------------------------------------
+
+---- 318) Datos Configuración (6, 1, 1, 3, 1) ----
+Cajas:     6
+Refrescos: 1
+Freidora:  1
+Postres:   3
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.4081
+Varianza (Var): 20335.2184
+-------------------------------------------------
+
+---- 319) Datos Configuración (6, 1, 2, 1, 2) ----
+Cajas:     6
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 23.6618
+Varianza (Var): 1052.9963
+-------------------------------------------------
+
+---- 320) Datos Configuración (6, 1, 2, 2, 1) ----
+Cajas:     6
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.4514
+Varianza (Var): 22790.3094
+-------------------------------------------------
+
+---- 321) Datos Configuración (6, 1, 3, 1, 1) ----
+Cajas:     6
+Refrescos: 1
+Freidora:  3
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 82.9656
+Varianza (Var): 22966.4276
+-------------------------------------------------
+
+---- 322) Datos Configuración (6, 2, 1, 1, 2) ----
+Cajas:     6
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 51.9156
+Varianza (Var): 2029.2491
+-------------------------------------------------
+
+---- 323) Datos Configuración (6, 2, 1, 2, 1) ----
+Cajas:     6
+Refrescos: 2
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 108.5239
+Varianza (Var): 21436.4675
+-------------------------------------------------
+
+---- 324) Datos Configuración (6, 2, 2, 1, 1) ----
+Cajas:     6
+Refrescos: 2
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 84.0201
+Varianza (Var): 23531.1810
+-------------------------------------------------
+
+---- 325) Datos Configuración (6, 3, 1, 1, 1) ----
+Cajas:     6
+Refrescos: 3
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 108.5786
+Varianza (Var): 21221.3163
+-------------------------------------------------
+
+---- 326) Datos Configuración (7, 1, 1, 1, 2) ----
+Cajas:     7
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     2
+
+Tiempo de Espera Promedio (W): 50.6399
+Varianza (Var): 1898.6108
+-------------------------------------------------
+
+---- 327) Datos Configuración (7, 1, 1, 2, 1) ----
+Cajas:     7
+Refrescos: 1
+Freidora:  1
+Postres:   2
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 108.1435
+Varianza (Var): 20985.0315
+-------------------------------------------------
+
+---- 328) Datos Configuración (7, 1, 2, 1, 1) ----
+Cajas:     7
+Refrescos: 1
+Freidora:  2
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 81.9891
+Varianza (Var): 22039.8188
+-------------------------------------------------
+
+---- 329) Datos Configuración (7, 2, 1, 1, 1) ----
+Cajas:     7
+Refrescos: 2
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 107.9702
+Varianza (Var): 21053.1202
+-------------------------------------------------
+
+---- 330) Datos Configuración (8, 1, 1, 1, 1) ----
+Cajas:     8
+Refrescos: 1
+Freidora:  1
+Postres:   1
+Pollo:     1
+
+Tiempo de Espera Promedio (W): 106.6176
+Varianza (Var): 20511.3300
+-------------------------------------------------
+

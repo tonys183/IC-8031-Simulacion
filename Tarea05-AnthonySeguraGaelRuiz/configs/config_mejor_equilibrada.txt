@@ -1,0 +1,10 @@
+---- 1) Datos Configuración (2, 1, 2, 2, 5) ----
+Cajas:     2
+Refrescos: 1
+Freidora:  2
+Postres:   2
+Pollo:     5
+
+Tiempo de Espera Promedio (W): 11.6976
+Varianza (Var): 79.0007
+-------------------------------------------------
