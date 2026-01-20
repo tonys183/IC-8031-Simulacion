@@ -8,7 +8,7 @@ class Servidor:
     def __init__(self, numEmple):
         self.empleadosLibresHasta = [0.0]*numEmple
         
-    def procesar_cliente(self, tiempoLlegada, duracion):
+    def atender(self, tiempoLlegada, duracion):
         masCerca = min(self.empleadosLibresHasta)
         indxEmple = self.empleadosLibresHasta.index(masCerca)
         inicioAtenc = max(tiempoLlegada, masCerca)
@@ -65,7 +65,7 @@ def exeWorkflow(combServidor, imprimir):
         numCliente += 1
         tiempoCliente = tiempoTotal 
         duracion = tiempoServiMap['cajas']()
-        tiempoEspera, finCajas, indxEmple = estaciones['cajas'].procesar_cliente(tiempoCliente, duracion)
+        tiempoEspera, finCajas, indxEmple = estaciones['cajas'].atender(tiempoCliente, duracion)
         
         if imprimir:
             print(f"{numCliente:<4} | {'Cajas':<10} | {f'Cajero {indxEmple}':<10} | {tiempoCliente:8.2f} | {tiempoCliente+tiempoEspera:8.2f} | {duracion:8.2f} | {finCajas:8.2f} | {tiempoEspera:8.2f}")
@@ -76,7 +76,7 @@ def exeWorkflow(combServidor, imprimir):
         for _ in range(ordenDist()):
             for servicio in orden:
                 duracion = tiempoServiMap[servicio]()
-                tiempoEspera, fin, indxEmple = estaciones[servicio].procesar_cliente(inicioOrden, duracion)
+                tiempoEspera, fin, indxEmple = estaciones[servicio].atender(inicioOrden, duracion)
                 tiempoSalidaCliente = max(fin, tiempoSalidaCliente)
                 if imprimir:
                     print(f"{'':<4} | {servicio:<10} | {f'Emp {indxEmple}':<10} | {inicioOrden:8.2f} | {inicioOrden+tiempoEspera:8.2f} | {duracion:8.2f} | {fin:8.2f} | {tiempoEspera:8.2f}")
@@ -114,7 +114,7 @@ def main():
     for i, combi in enumerate(gen):
         mediaL = varL = 0
         for a in range(n):
-            show = not (a%(n//3))
+            show = False
             if show: print(f'Dia número {a}')
             m, v = exeWorkflow(combi, imprimir=show)
             mediaL += m
