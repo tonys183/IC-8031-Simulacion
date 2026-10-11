@@ -1,5 +1,15 @@
 # IC-8031 — Simulación
 
+<p align="center">🎲</p>
+
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square">
+</p>
+
+<p align="center">
+  <a href="#temas-generales">Temas generales</a> · <a href="#proyecto-sistema-de-colas-en-un-restaurante-de-comida-rápida">Proyecto</a>
+</p>
+
 Tareas y proyecto del curso Simulación (IC-8031), desarrollados en Python. El repositorio reúne ejercicios de probabilidad, generación de números pseudoaleatorios, pruebas estadísticas, distribuciones y simulación de sistemas de colas.
 
 ## Temas generales
